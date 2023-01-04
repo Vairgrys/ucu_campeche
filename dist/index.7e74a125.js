@@ -2908,68 +2908,27 @@ var _buttons = require("./components/Buttons");
 var _buttonsDefault = parcelHelpers.interopDefault(_buttons);
 var _inputs = require("./components/Inputs");
 var _inputsDefault = parcelHelpers.interopDefault(_inputs);
+var _login = require("./modules/Login");
+var _loginDefault = parcelHelpers.interopDefault(_login);
 function App() {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "w-screen h-screen bg-slate-200 dark:bg-slate-800 flex flex-row justify-center items-center",
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "w-[600px] h-[450px] bg-white dark:bg-slate-600 shadow-lg p-4",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                        className: "",
-                        children: [
-                            "React esta funcionando ",
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonsDefault.default), {
-                                text: "Este es el texto que yo le quiero poner aqui"
-                            }, void 0, false, {
-                                fileName: "src/app/app.jsx",
-                                lineNumber: 13,
-                                columnNumber: 61
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/app/app.jsx",
-                        lineNumber: 13,
-                        columnNumber: 21
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                        className: "",
-                        children: [
-                            "React esta No funcionando ",
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonsDefault.default), {
-                                text: "Este no es el que quiero"
-                            }, void 0, false, {
-                                fileName: "src/app/app.jsx",
-                                lineNumber: 14,
-                                columnNumber: 64
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/app/app.jsx",
-                        lineNumber: 14,
-                        columnNumber: 21
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                        fileName: "src/app/app.jsx",
-                        lineNumber: 15,
-                        columnNumber: 21
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _inputsDefault.default), {
-                        placeholder: "Escribe tu usuario"
-                    }, void 0, false, {
-                        fileName: "src/app/app.jsx",
-                        lineNumber: 16,
-                        columnNumber: 21
-                    }, this)
-                ]
-            }, void 0, true, {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginDefault.default), {}, void 0, false, {
+                    fileName: "src/app/app.jsx",
+                    lineNumber: 14,
+                    columnNumber: 21
+                }, this)
+            }, void 0, false, {
                 fileName: "src/app/app.jsx",
-                lineNumber: 12,
+                lineNumber: 13,
                 columnNumber: 17
             }, this)
         }, void 0, false, {
             fileName: "src/app/app.jsx",
-            lineNumber: 11,
+            lineNumber: 12,
             columnNumber: 13
         }, this)
     }, void 0, false);
@@ -2979,7 +2938,7 @@ const container = document.getElementById("app");
 const root = (0, _client.createRoot)(container);
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
     fileName: "src/app/app.jsx",
-    lineNumber: 27,
+    lineNumber: 25,
     columnNumber: 13
 }, undefined));
 var _c;
@@ -2990,7 +2949,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./components/Buttons":"4NM6a","./components/Inputs":"gMFth"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./components/Buttons":"4NM6a","./components/Inputs":"gMFth","./modules/Login":"g0ZyR"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("3279171ad76e34b1");
 
@@ -27402,6 +27361,101 @@ $RefreshReg$(_c, "MiInput");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["1xC6H","f4dWP","i3Ovo"], "i3Ovo", "parcelRequirea72e")
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"g0ZyR":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$352b = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$352b.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _inputs = require("../components/Inputs");
+var _inputsDefault = parcelHelpers.interopDefault(_inputs);
+var _buttons = require("../components/Buttons");
+var _buttonsDefault = parcelHelpers.interopDefault(_buttons);
+function Login() {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                    children: "Iniciar Sesion"
+                }, void 0, false, {
+                    fileName: "src/app/modules/Login.jsx",
+                    lineNumber: 9,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
+                    fileName: "src/app/modules/Login.jsx",
+                    lineNumber: 10,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                    htmlFor: "",
+                    children: "usuario"
+                }, void 0, false, {
+                    fileName: "src/app/modules/Login.jsx",
+                    lineNumber: 11,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _inputsDefault.default), {
+                    placeholder: "escribe tu usuario"
+                }, void 0, false, {
+                    fileName: "src/app/modules/Login.jsx",
+                    lineNumber: 12,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
+                    fileName: "src/app/modules/Login.jsx",
+                    lineNumber: 13,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                    htmlFor: "",
+                    children: "contrase\xf1a"
+                }, void 0, false, {
+                    fileName: "src/app/modules/Login.jsx",
+                    lineNumber: 14,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _inputsDefault.default), {
+                    placeholder: "escribe tu contrase\xf1a"
+                }, void 0, false, {
+                    fileName: "src/app/modules/Login.jsx",
+                    lineNumber: 15,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                    fileName: "src/app/modules/Login.jsx",
+                    lineNumber: 16,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonsDefault.default), {
+                    text: "iniciar sesion"
+                }, void 0, false, {
+                    fileName: "src/app/modules/Login.jsx",
+                    lineNumber: 17,
+                    columnNumber: 17
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "src/app/modules/Login.jsx",
+            lineNumber: 8,
+            columnNumber: 13
+        }, this)
+    }, void 0, false);
+}
+_c = Login;
+exports.default = Login;
+var _c;
+$RefreshReg$(_c, "Login");
+
+  $parcel$ReactRefreshHelpers$352b.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","../components/Inputs":"gMFth","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../components/Buttons":"4NM6a"}]},["1xC6H","f4dWP","i3Ovo"], "i3Ovo", "parcelRequirea72e")
 
 //# sourceMappingURL=index.7e74a125.js.map
