@@ -143,8 +143,8 @@
     }
   }
 })({"1xC6H":[function(require,module,exports) {
-var Refresh = require("69af57a63c277c6f");
-var ErrorOverlay = require("929758ce12e5ccc4");
+var Refresh = require("258a4935cb2b98d1");
+var ErrorOverlay = require("cc6fce3ddc0a8fbd");
 Refresh.injectIntoGlobalHook(window);
 window.$RefreshReg$ = function() {};
 window.$RefreshSig$ = function() {
@@ -163,11 +163,11 @@ window.addEventListener("parcelhmraccept", ()=>{
     ErrorOverlay.dismissRuntimeErrors();
 });
 
-},{"69af57a63c277c6f":"786KC","929758ce12e5ccc4":"1dldy"}],"786KC":[function(require,module,exports) {
+},{"258a4935cb2b98d1":"786KC","cc6fce3ddc0a8fbd":"1dldy"}],"786KC":[function(require,module,exports) {
 "use strict";
-module.exports = require("21e399d3fb566b70");
+module.exports = require("a25bc6a8d33bdb94");
 
-},{"21e399d3fb566b70":"hdge7"}],"hdge7":[function(require,module,exports) {
+},{"a25bc6a8d33bdb94":"hdge7"}],"hdge7":[function(require,module,exports) {
 /** @license React v0.9.0
  * react-refresh-runtime.development.js
  *
@@ -628,7 +628,7 @@ module.exports = require("21e399d3fb566b70");
 })();
 
 },{}],"1dldy":[function(require,module,exports) {
-var process = require("59849011f9a3415d");
+var process = require("2c2a81119dabff4a");
 !function(e, t) {
     module.exports = t();
 }(window, function() {
@@ -2358,7 +2358,7 @@ var process = require("59849011f9a3415d");
     ]);
 });
 
-},{"59849011f9a3415d":"d5jf4"}],"d5jf4":[function(require,module,exports) {
+},{"2c2a81119dabff4a":"d5jf4"}],"d5jf4":[function(require,module,exports) {
 // shim for using process in browser
 var process = module.exports = {};
 // cached from whatever global is present so that test runners that stub it
@@ -2904,31 +2904,60 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _client = require("react-dom/client");
-var _buttons = require("./components/Buttons");
-var _buttonsDefault = parcelHelpers.interopDefault(_buttons);
-var _inputs = require("./components/Inputs");
-var _inputsDefault = parcelHelpers.interopDefault(_inputs);
 var _login = require("./modules/Login");
 var _loginDefault = parcelHelpers.interopDefault(_login);
+var _enfermeraSvg = require(".././img/Enfermera.svg");
+var _enfermeraSvgDefault = parcelHelpers.interopDefault(_enfermeraSvg);
+var _buttons = require("./components/Buttons");
 function App() {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            className: "w-screen h-screen bg-slate-200 dark:bg-slate-800 flex flex-row justify-center items-center",
-            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                className: "w-[600px] h-[450px] bg-white dark:bg-slate-600 shadow-lg p-4",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginDefault.default), {}, void 0, false, {
+            className: "w-screen h-screen flex relative bg-slate-200 dark:bg-slate-800 justify-center items-center",
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "w-[200px] h-[400px] flex flex-col items-center bg-gradient-to-t from-gray-400 to-slate-600 dark:to-amber-300 rounded-l-lg shadow-lg flex flex-row justify-center items-center content-center",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                        className: "",
+                        src: (0, _enfermeraSvgDefault.default),
+                        alt: ""
+                    }, void 0, false, {
+                        fileName: "src/app/app.jsx",
+                        lineNumber: 13,
+                        columnNumber: 17
+                    }, this)
+                }, void 0, false, {
                     fileName: "src/app/app.jsx",
-                    lineNumber: 14,
-                    columnNumber: 21
+                    lineNumber: 12,
+                    columnNumber: 13
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "w-[600px] h-[400px] bg-gray-100 dark:bg-slate-600 dark:text-white rounded-r-lg shadow-lg p-4",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginDefault.default), {}, void 0, false, {
+                        fileName: "src/app/app.jsx",
+                        lineNumber: 16,
+                        columnNumber: 21
+                    }, this)
+                }, void 0, false, {
+                    fileName: "src/app/app.jsx",
+                    lineNumber: 15,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "flex absolute top-2 right-0 mb-4 mr-4",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttons.BotonDark), {}, void 0, false, {
+                        fileName: "src/app/app.jsx",
+                        lineNumber: 18,
+                        columnNumber: 69
+                    }, this)
+                }, void 0, false, {
+                    fileName: "src/app/app.jsx",
+                    lineNumber: 18,
+                    columnNumber: 14
                 }, this)
-            }, void 0, false, {
-                fileName: "src/app/app.jsx",
-                lineNumber: 13,
-                columnNumber: 17
-            }, this)
-        }, void 0, false, {
+            ]
+        }, void 0, true, {
             fileName: "src/app/app.jsx",
-            lineNumber: 12,
+            lineNumber: 11,
             columnNumber: 13
         }, this)
     }, void 0, false);
@@ -2938,7 +2967,7 @@ const container = document.getElementById("app");
 const root = (0, _client.createRoot)(container);
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
     fileName: "src/app/app.jsx",
-    lineNumber: 25,
+    lineNumber: 28,
     columnNumber: 13
 }, undefined));
 var _c;
@@ -2949,11 +2978,11 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./components/Buttons":"4NM6a","./components/Inputs":"gMFth","./modules/Login":"g0ZyR"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./modules/Login":"g0ZyR",".././img/Enfermera.svg":"aCfJj","./components/Buttons":"4NM6a"}],"iTorj":[function(require,module,exports) {
 "use strict";
-module.exports = require("3279171ad76e34b1");
+module.exports = require("ffb9d3cd69c3cb91");
 
-},{"3279171ad76e34b1":"48uCM"}],"48uCM":[function(require,module,exports) {
+},{"ffb9d3cd69c3cb91":"48uCM"}],"48uCM":[function(require,module,exports) {
 /**
  * @license React
  * react-jsx-dev-runtime.development.js
@@ -2965,7 +2994,7 @@ module.exports = require("3279171ad76e34b1");
  */ "use strict";
 (function() {
     "use strict";
-    var React = require("dcb28f6f268b129");
+    var React = require("33525f52758e1798");
     // ATTENTION
     // When adding new symbols to this file,
     // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
@@ -3784,11 +3813,11 @@ module.exports = require("3279171ad76e34b1");
     exports.jsxDEV = jsxDEV$1;
 })();
 
-},{"dcb28f6f268b129":"21dqq"}],"21dqq":[function(require,module,exports) {
+},{"33525f52758e1798":"21dqq"}],"21dqq":[function(require,module,exports) {
 "use strict";
-module.exports = require("29e1aa15fbe89ae9");
+module.exports = require("9215b2e4544669bb");
 
-},{"29e1aa15fbe89ae9":"6YvXz"}],"6YvXz":[function(require,module,exports) {
+},{"9215b2e4544669bb":"6YvXz"}],"6YvXz":[function(require,module,exports) {
 /**
  * @license React
  * react.development.js
@@ -5656,7 +5685,7 @@ module.exports = require("29e1aa15fbe89ae9");
 
 },{}],"lOjBx":[function(require,module,exports) {
 "use strict";
-var m = require("abf0e5fdd9d469ae");
+var m = require("92b4cf23e8ddd1b3");
 var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
 exports.createRoot = function(c, o) {
     i.usingClientEntryPoint = true;
@@ -5675,7 +5704,7 @@ exports.hydrateRoot = function(c, h, o) {
     }
 };
 
-},{"abf0e5fdd9d469ae":"j6uA9"}],"j6uA9":[function(require,module,exports) {
+},{"92b4cf23e8ddd1b3":"j6uA9"}],"j6uA9":[function(require,module,exports) {
 "use strict";
 function checkDCE() {
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === "undefined" || typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== "function") return;
@@ -5689,9 +5718,9 @@ function checkDCE() {
     // a false positive.
     throw new Error("^_^");
 }
-module.exports = require("92682103a8c4057b");
+module.exports = require("dc1d7ee440430c32");
 
-},{"92682103a8c4057b":"3iA9v"}],"3iA9v":[function(require,module,exports) {
+},{"dc1d7ee440430c32":"3iA9v"}],"3iA9v":[function(require,module,exports) {
 /**
  * @license React
  * react-dom.development.js
@@ -5704,8 +5733,8 @@ module.exports = require("92682103a8c4057b");
 (function() {
     "use strict";
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-    var React = require("d4d4ab0128be8b33");
-    var Scheduler = require("480e030ae07a08af");
+    var React = require("b2cae0535ce6bd42");
+    var Scheduler = require("cd9dd1a6b57f8f5e");
     var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
     var suppressWarning = false;
     function setSuppressWarning(newSuppressWarning) {
@@ -26676,11 +26705,11 @@ module.exports = require("92682103a8c4057b");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{"d4d4ab0128be8b33":"21dqq","480e030ae07a08af":"juvHo"}],"juvHo":[function(require,module,exports) {
+},{"b2cae0535ce6bd42":"21dqq","cd9dd1a6b57f8f5e":"juvHo"}],"juvHo":[function(require,module,exports) {
 "use strict";
-module.exports = require("14825411968f2ed0");
+module.exports = require("51850b818caab1d1");
 
-},{"14825411968f2ed0":"RqdIf"}],"RqdIf":[function(require,module,exports) {
+},{"51850b818caab1d1":"RqdIf"}],"RqdIf":[function(require,module,exports) {
 /**
  * @license React
  * scheduler.development.js
@@ -27166,7 +27195,7 @@ exports.export = function(dest, destName, get) {
 
 },{}],"km3Ru":[function(require,module,exports) {
 "use strict";
-var Refresh = require("f0fff4c8404bbe31");
+var Refresh = require("9ed0a19cb416f07b");
 function debounce(func, delay) {
     var args;
     {
@@ -27298,70 +27327,7 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"f0fff4c8404bbe31":"786KC"}],"4NM6a":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$84e6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$84e6.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-function MiBoton(props) {
-    const { text =""  } = props;
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-        className: "p-2 text-white font-medium bg-blue-500",
-        children: text
-    }, void 0, false, {
-        fileName: "src/app/components/Buttons.jsx",
-        lineNumber: 8,
-        columnNumber: 13
-    }, this);
-}
-_c = MiBoton;
-exports.default = MiBoton;
-var _c;
-$RefreshReg$(_c, "MiBoton");
-
-  $parcel$ReactRefreshHelpers$84e6.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gMFth":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$08c5 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$08c5.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-function MiInput(props) {
-    const { placeholder =""  } = props;
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-        type: "text",
-        placeholder: placeholder,
-        className: "p-2 text-white font-medium bg-slate-200"
-    }, void 0, false, {
-        fileName: "src/app/components/Inputs.jsx",
-        lineNumber: 8,
-        columnNumber: 13
-    }, this);
-}
-_c = MiInput;
-exports.default = MiInput;
-var _c;
-$RefreshReg$(_c, "MiInput");
-
-  $parcel$ReactRefreshHelpers$08c5.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"g0ZyR":[function(require,module,exports) {
+},{"9ed0a19cb416f07b":"786KC"}],"g0ZyR":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$352b = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27374,74 +27340,99 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _inputs = require("../components/Inputs");
 var _inputsDefault = parcelHelpers.interopDefault(_inputs);
 var _buttons = require("../components/Buttons");
-var _buttonsDefault = parcelHelpers.interopDefault(_buttons);
 function Login() {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            class: "font-Barlow1 font-extrabold",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                    children: "Iniciar Sesion"
+                    class: "text-xl",
+                    children: "INICIAR SESI\xd3N"
+                }, void 0, false, {
+                    fileName: "src/app/modules/Login.jsx",
+                    lineNumber: 8,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    class: "relative my-3",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
+                        fileName: "src/app/modules/Login.jsx",
+                        lineNumber: 10,
+                        columnNumber: 13
+                    }, this)
                 }, void 0, false, {
                     fileName: "src/app/modules/Login.jsx",
                     lineNumber: 9,
-                    columnNumber: 17
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
-                    fileName: "src/app/modules/Login.jsx",
-                    lineNumber: 10,
-                    columnNumber: 17
+                    columnNumber: 15
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                    htmlFor: "",
-                    children: "usuario"
-                }, void 0, false, {
-                    fileName: "src/app/modules/Login.jsx",
-                    lineNumber: 11,
-                    columnNumber: 17
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _inputsDefault.default), {
-                    placeholder: "escribe tu usuario"
+                    for: "input-group-1",
+                    class: "block mb-2",
+                    children: "Usuario"
                 }, void 0, false, {
                     fileName: "src/app/modules/Login.jsx",
                     lineNumber: 12,
-                    columnNumber: 17
+                    columnNumber: 13
                 }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _inputsDefault.default), {
+                    type: "text",
+                    icono: "user",
+                    id: "input-group-1",
+                    placeholder: "Escriba su nombre de usuario"
+                }, void 0, false, {
                     fileName: "src/app/modules/Login.jsx",
                     lineNumber: 13,
-                    columnNumber: 17
+                    columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                    htmlFor: "",
-                    children: "contrase\xf1a"
+                    for: "input-group-1",
+                    class: "block mb-2",
+                    children: "Contrase\xf1a"
                 }, void 0, false, {
                     fileName: "src/app/modules/Login.jsx",
                     lineNumber: 14,
-                    columnNumber: 17
+                    columnNumber: 13
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _inputsDefault.default), {
-                    placeholder: "escribe tu contrase\xf1a"
+                    type: "password",
+                    icono: "pass",
+                    id: "input-group-2",
+                    placeholder: "Escriba su contrase\xf1a"
                 }, void 0, false, {
                     fileName: "src/app/modules/Login.jsx",
                     lineNumber: 15,
-                    columnNumber: 17
+                    columnNumber: 9
                 }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "flex mt-6 flex-row justify-end",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttons.MiBoton), {
+                            icono: "check",
+                            text: "Iniciar sesi\xf3n"
+                        }, void 0, false, {
+                            fileName: "src/app/modules/Login.jsx",
+                            lineNumber: 17,
+                            columnNumber: 9
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttons.MiBoton), {
+                            icono: "invite",
+                            color: "alternative",
+                            text: "Entrar como invitado"
+                        }, void 0, false, {
+                            fileName: "src/app/modules/Login.jsx",
+                            lineNumber: 18,
+                            columnNumber: 9
+                        }, this)
+                    ]
+                }, void 0, true, {
                     fileName: "src/app/modules/Login.jsx",
                     lineNumber: 16,
-                    columnNumber: 17
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonsDefault.default), {
-                    text: "iniciar sesion"
-                }, void 0, false, {
-                    fileName: "src/app/modules/Login.jsx",
-                    lineNumber: 17,
-                    columnNumber: 17
+                    columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/app/modules/Login.jsx",
-            lineNumber: 8,
+            lineNumber: 7,
             columnNumber: 13
         }, this)
     }, void 0, false);
@@ -27456,6 +27447,342 @@ $RefreshReg$(_c, "Login");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","../components/Inputs":"gMFth","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../components/Buttons":"4NM6a"}]},["1xC6H","f4dWP","i3Ovo"], "i3Ovo", "parcelRequirea72e")
+},{"react/jsx-dev-runtime":"iTorj","../components/Inputs":"gMFth","../components/Buttons":"4NM6a","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"gMFth":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$08c5 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$08c5.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _iconsJsx = require("./Icons.jsx");
+var _iconsJsxDefault = parcelHelpers.interopDefault(_iconsJsx);
+function MiInput(props) {
+    const { placeholder ="" , icono ="user" , type ="text"  } = props;
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            class: "relative mb-6",
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    class: "absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _iconsJsxDefault.default), {
+                        icono: icono
+                    }, void 0, false, {
+                        fileName: "src/app/components/Inputs.jsx",
+                        lineNumber: 14,
+                        columnNumber: 12
+                    }, this)
+                }, void 0, false, {
+                    fileName: "src/app/components/Inputs.jsx",
+                    lineNumber: 13,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                    type: type,
+                    placeholder: placeholder,
+                    className: "rounded-lg border-1 border-gray-400 pl-10 p-2.5 w-full dark:bg-gray-600 dark:text-blue"
+                }, void 0, false, {
+                    fileName: "src/app/components/Inputs.jsx",
+                    lineNumber: 16,
+                    columnNumber: 13
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "src/app/components/Inputs.jsx",
+            lineNumber: 12,
+            columnNumber: 9
+        }, this)
+    }, void 0, false);
+}
+_c = MiInput;
+exports.default = MiInput;
+var _c;
+$RefreshReg$(_c, "MiInput");
+
+  $parcel$ReactRefreshHelpers$08c5.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./Icons.jsx":"2RhpD"}],"2RhpD":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$354b = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$354b.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+function Icon(props) {
+    const { icono ="pass"  } = props;
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: [
+            icono == "user" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
+                class: "w-6 h-6",
+                fill: "none",
+                stroke: "currentColor",
+                viewBox: "0 0 24 24",
+                xmlns: "http://www.w3.org/2000/svg",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round",
+                    "stroke-width": "2",
+                    d: "M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                }, void 0, false, {
+                    fileName: "src/app/components/Icons.jsx",
+                    lineNumber: 9,
+                    columnNumber: 139
+                }, this)
+            }, void 0, false, {
+                fileName: "src/app/components/Icons.jsx",
+                lineNumber: 9,
+                columnNumber: 29
+            }, this),
+            icono == "pass" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
+                class: "w-6 h-6",
+                fill: "none",
+                stroke: "currentColor",
+                viewBox: "0 0 24 24",
+                xmlns: "http://www.w3.org/2000/svg",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round",
+                    "stroke-width": "2",
+                    d: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                }, void 0, false, {
+                    fileName: "src/app/components/Icons.jsx",
+                    lineNumber: 10,
+                    columnNumber: 139
+                }, this)
+            }, void 0, false, {
+                fileName: "src/app/components/Icons.jsx",
+                lineNumber: 10,
+                columnNumber: 29
+            }, this),
+            icono == "check" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
+                class: "w-6 h-6",
+                fill: "none",
+                stroke: "currentColor",
+                viewBox: "0 0 24 24",
+                xmlns: "http://www.w3.org/2000/svg",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round",
+                    "stroke-width": "2",
+                    d: "M5 13l4 4L19 7"
+                }, void 0, false, {
+                    fileName: "src/app/components/Icons.jsx",
+                    lineNumber: 11,
+                    columnNumber: 140
+                }, this)
+            }, void 0, false, {
+                fileName: "src/app/components/Icons.jsx",
+                lineNumber: 11,
+                columnNumber: 30
+            }, this),
+            icono == "invite" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
+                class: "w-6 h-6",
+                fill: "none",
+                stroke: "currentColor",
+                viewBox: "0 0 24 24",
+                xmlns: "http://www.w3.org/2000/svg",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round",
+                        "stroke-width": "2",
+                        d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    }, void 0, false, {
+                        fileName: "src/app/components/Icons.jsx",
+                        lineNumber: 12,
+                        columnNumber: 141
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round",
+                        "stroke-width": "2",
+                        d: "M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                    }, void 0, false, {
+                        fileName: "src/app/components/Icons.jsx",
+                        lineNumber: 12,
+                        columnNumber: 255
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/app/components/Icons.jsx",
+                lineNumber: 12,
+                columnNumber: 31
+            }, this)
+        ]
+    }, void 0, true);
+}
+_c = Icon;
+exports.default = Icon;
+var _c;
+$RefreshReg$(_c, "Icon");
+
+  $parcel$ReactRefreshHelpers$354b.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"4NM6a":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$84e6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$84e6.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MiBoton", ()=>MiBoton);
+parcelHelpers.export(exports, "BotonDark", ()=>BotonDark);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _iconsJsx = require("./Icons.jsx");
+var _iconsJsxDefault = parcelHelpers.interopDefault(_iconsJsx);
+var _react = require("react");
+var _s = $RefreshSig$();
+function MiBoton(props) {
+    const { text ="" , icono ="user" , color ="primary"  } = props;
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: [
+            color == "primary" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                type: "button",
+                className: "p-2 px-5 ml-2 border-2 flex focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 bg-blue-600 cursor-pointer text-white hover:bg-blue-400 focus:ring-4 focus:ring-blue-300 hover:text-white rounded-lg dark:border-blue-800 dark:border-2 dark:hover:bg-blue-800 items-center",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _iconsJsxDefault.default), {
+                        icono: icono
+                    }, void 0, false, {
+                        fileName: "src/app/components/Buttons.jsx",
+                        lineNumber: 12,
+                        columnNumber: 364
+                    }, this),
+                    text
+                ]
+            }, void 0, true, {
+                fileName: "src/app/components/Buttons.jsx",
+                lineNumber: 12,
+                columnNumber: 36
+            }, this),
+            color == "alternative" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                type: "button",
+                className: "p-2 px-5 ml-2 border-2 flex text-gray-600 border-gray-400 bg-white-600 font-bold hover:bg-gray-400 hover:text-white rounded-lg dark:border-gray-400 dark:border-2 dark:bg-gray-600 dark:hover:bg-gray-400 dark:text-white",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _iconsJsxDefault.default), {
+                        icono: icono
+                    }, void 0, false, {
+                        fileName: "src/app/components/Buttons.jsx",
+                        lineNumber: 13,
+                        columnNumber: 292
+                    }, this),
+                    text
+                ]
+            }, void 0, true, {
+                fileName: "src/app/components/Buttons.jsx",
+                lineNumber: 13,
+                columnNumber: 40
+            }, this)
+        ]
+    }, void 0, true);
+}
+_c = MiBoton;
+function BotonDark(props) {
+    _s();
+    const { text =""  } = props;
+    const [theme, setTheme] = (0, _react.useState)("dark");
+    (0, _react.useEffect)(()=>{
+        if (theme === "dark") document.documentElement.classList.add("dark");
+        else document.documentElement.classList.remove("dark");
+    }, [
+        theme
+    ]);
+    const handleThemeSwitch = ()=>{
+        setTheme(theme === "dark" ? "light" : "dark");
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+        onClick: handleThemeSwitch,
+        className: "py-2 p-2 px-2 ml-2 border-2 text-white bg-amber-400 font-bold hover:bg-amber-300 hover:text-white rounded-lg dark:border-2 dark:bg-white dark:hover:bg-amber-300 dark:text-gray-600",
+        children: [
+            text,
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
+                xmlns: "http://www.w3.org/2000/svg",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                "stroke-width": "1.5",
+                stroke: "currentColor",
+                class: "w-6 h-6",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round",
+                    d: "M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                }, void 0, false, {
+                    fileName: "src/app/components/Buttons.jsx",
+                    lineNumber: 41,
+                    columnNumber: 13
+                }, this)
+            }, void 0, false, {
+                fileName: "src/app/components/Buttons.jsx",
+                lineNumber: 40,
+                columnNumber: 247
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "src/app/components/Buttons.jsx",
+        lineNumber: 40,
+        columnNumber: 13
+    }, this);
+}
+_s(BotonDark, "D0ekClnfIGVExrH5c3Ka+aWcxxE=");
+_c1 = BotonDark;
+var _c, _c1;
+$RefreshReg$(_c, "MiBoton");
+$RefreshReg$(_c1, "BotonDark");
+
+  $parcel$ReactRefreshHelpers$84e6.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq","./Icons.jsx":"2RhpD"}],"aCfJj":[function(require,module,exports) {
+module.exports = require("4a68e5778195df7").getBundleURL("hXNHT") + "Enfermera.0a92fda6.svg" + "?" + Date.now();
+
+},{"4a68e5778195df7":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}]},["1xC6H","f4dWP","i3Ovo"], "i3Ovo", "parcelRequirea72e")
 
 //# sourceMappingURL=index.7e74a125.js.map

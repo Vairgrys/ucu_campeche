@@ -5,6 +5,9 @@ module.exports = {
     "./src/**/*.{html,js,jsx}",
   ],
   theme: {
+    fontFamily: {
+      'Barlow1': ['Barlow', 'sans-serif']
+    },
     extend: {},
   },
   plugins: [
