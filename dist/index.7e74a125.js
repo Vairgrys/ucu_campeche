@@ -27644,6 +27644,10 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _iconsJsx = require("./Icons.jsx");
 var _iconsJsxDefault = parcelHelpers.interopDefault(_iconsJsx);
 var _react = require("react");
+var _bsSunSvg = require("../../img/BsSun.svg");
+var _bsSunSvgDefault = parcelHelpers.interopDefault(_bsSunSvg);
+var _bsMoonSvg = require("../../img/BsMoon.svg");
+var _bsMoonSvgDefault = parcelHelpers.interopDefault(_bsMoonSvg);
 var _s = $RefreshSig$();
 function MiBoton(props) {
     const { text ="" , icono ="user" , color ="primary"  } = props;
@@ -27651,14 +27655,14 @@ function MiBoton(props) {
         children: [
             color == "primary" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                 type: "button",
-                className: "p-2 px-5 ml-2 border-2 flex focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 bg-blue-600 cursor-pointer text-white hover:bg-blue-400 focus:ring-4 focus:ring-blue-300 hover:text-white rounded-lg dark:border-blue-800 dark:border-2 dark:hover:bg-blue-800 items-center",
+                className: "p-2 px-5 ml-2 place-items-start border-2 flex focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 bg-blue-600 cursor-pointer text-white hover:bg-blue-400 focus:ring-4 focus:ring-blue-300 hover:text-white rounded-lg dark:border-blue-800 dark:border-2 dark:hover:bg-blue-800 items-center",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _iconsJsxDefault.default), {
                         icono: icono
                     }, void 0, false, {
                         fileName: "src/app/components/Buttons.jsx",
                         lineNumber: 12,
-                        columnNumber: 364
+                        columnNumber: 382
                     }, this),
                     text
                 ]
@@ -27693,6 +27697,7 @@ function BotonDark(props) {
     _s();
     const { text =""  } = props;
     const [theme, setTheme] = (0, _react.useState)("dark");
+    changeIcon = theme === "dark" ? (0, _bsSunSvgDefault.default) : (0, _bsMoonSvgDefault.default);
     (0, _react.useEffect)(()=>{
         if (theme === "dark") document.documentElement.classList.add("dark");
         else document.documentElement.classList.remove("dark");
@@ -27704,34 +27709,23 @@ function BotonDark(props) {
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
         onClick: handleThemeSwitch,
-        className: "py-2 p-2 px-2 ml-2 border-2 text-white bg-amber-400 font-bold hover:bg-amber-300 hover:text-white rounded-lg dark:border-2 dark:bg-white dark:hover:bg-amber-300 dark:text-gray-600",
+        className: "ml-2 border-2 text-white bg-gray-400 font-bold hover:bg-gray-300 hover:text-white rounded-lg dark:border-2 dark:bg-white dark:hover:bg-gray-200 dark:text-gray-600",
         children: [
             text,
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
-                xmlns: "http://www.w3.org/2000/svg",
-                fill: "none",
-                viewBox: "0 0 24 24",
-                "stroke-width": "1.5",
-                stroke: "currentColor",
-                class: "w-6 h-6",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
-                    "stroke-linecap": "round",
-                    "stroke-linejoin": "round",
-                    d: "M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-                }, void 0, false, {
-                    fileName: "src/app/components/Buttons.jsx",
-                    lineNumber: 41,
-                    columnNumber: 13
-                }, this)
+            " ",
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                width: "40px",
+                height: "40px",
+                src: changeIcon
             }, void 0, false, {
                 fileName: "src/app/components/Buttons.jsx",
-                lineNumber: 40,
-                columnNumber: 247
+                lineNumber: 44,
+                columnNumber: 231
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/app/components/Buttons.jsx",
-        lineNumber: 40,
+        lineNumber: 44,
         columnNumber: 13
     }, this);
 }
@@ -27746,10 +27740,10 @@ $RefreshReg$(_c1, "BotonDark");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq","./Icons.jsx":"2RhpD"}],"aCfJj":[function(require,module,exports) {
-module.exports = require("4a68e5778195df7").getBundleURL("hXNHT") + "Enfermera.0a92fda6.svg" + "?" + Date.now();
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq","./Icons.jsx":"2RhpD","../../img/BsSun.svg":"9ps0g","../../img/BsMoon.svg":"5ZJCm"}],"9ps0g":[function(require,module,exports) {
+module.exports = require("5516815c9a912750").getBundleURL("hXNHT") + "BsSun.4c0a899f.svg" + "?" + Date.now();
 
-},{"4a68e5778195df7":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+},{"5516815c9a912750":"lgJ39"}],"lgJ39":[function(require,module,exports) {
 "use strict";
 var bundleURL = {};
 function getBundleURLCached(id) {
@@ -27783,6 +27777,12 @@ exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 exports.getOrigin = getOrigin;
 
-},{}]},["1xC6H","f4dWP","i3Ovo"], "i3Ovo", "parcelRequirea72e")
+},{}],"5ZJCm":[function(require,module,exports) {
+module.exports = require("782f44a1f9acc5c1").getBundleURL("hXNHT") + "BsMoon.3f7d2ccf.svg" + "?" + Date.now();
+
+},{"782f44a1f9acc5c1":"lgJ39"}],"aCfJj":[function(require,module,exports) {
+module.exports = require("4a68e5778195df7").getBundleURL("hXNHT") + "Enfermera.0a92fda6.svg" + "?" + Date.now();
+
+},{"4a68e5778195df7":"lgJ39"}]},["1xC6H","f4dWP","i3Ovo"], "i3Ovo", "parcelRequirea72e")
 
 //# sourceMappingURL=index.7e74a125.js.map
