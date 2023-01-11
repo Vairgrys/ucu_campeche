@@ -16,8 +16,7 @@ function MiBoton (props) {
 } 
 
 import { useState, useEffect } from 'react';
-import BsSun from '../../img/BsSun.svg';
-import BsMoon from '../../img/BsMoon.svg';
+import icon from './Icons'
 
 function BotonDark (props){
     const {
@@ -25,8 +24,6 @@ function BotonDark (props){
     } = props;
 
     const [theme, setTheme] = useState('dark');
-
-    changeIcon = theme === "dark" ? BsSun : BsMoon
 
     useEffect(() => {
       if (theme === "dark") {
@@ -41,7 +38,7 @@ function BotonDark (props){
     };
 
     return (
-            <button onClick={handleThemeSwitch} className="ml-2 border-2 text-white bg-gray-400 font-bold hover:bg-gray-300 hover:text-white rounded-lg dark:border-2 dark:bg-white dark:hover:bg-gray-200 dark:text-gray-600">{text} <img width="40px" height="40px" src={changeIcon}></img>
+            <button onClick={handleThemeSwitch} className="p-1 ml-2 border-2 text-white bg-gray-300 font-bold hover:bg-gray-400 hover:text-white rounded-lg dark:border-2 dark:bg-blue-400 dark:border-blue-400 dark:hover:border-blue-300 dark:hover:bg-blue-300 dark:text-gray-600">{text} <Icon icono={theme}>{icon}</Icon>
           </button>
     )            
 } 

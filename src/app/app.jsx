@@ -15,7 +15,7 @@ function App () {
                 <div className="w-[600px] h-[400px] bg-gray-100 dark:bg-slate-600 dark:text-white rounded-r-lg shadow-lg p-4">
                     <Login></Login>
                 </div> 
-             <div className="flex absolute top-2 right-0 mb-4 mr-4"><BotonDark></BotonDark></div>
+             <div className="flex absolute bottom-2 right-0 mb-4 mr-4"><BotonDark></BotonDark></div>
             </div> 
         </>
     ) 

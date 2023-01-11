@@ -2943,11 +2943,11 @@ function App() {
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "flex absolute top-2 right-0 mb-4 mr-4",
+                    className: "flex absolute bottom-2 right-0 mb-4 mr-4",
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttons.BotonDark), {}, void 0, false, {
                         fileName: "src/app/app.jsx",
                         lineNumber: 18,
-                        columnNumber: 69
+                        columnNumber: 72
                     }, this)
                 }, void 0, false, {
                     fileName: "src/app/app.jsx",
@@ -27343,10 +27343,10 @@ var _buttons = require("../components/Buttons");
 function Login() {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            class: "font-Barlow1 font-extrabold",
+            className: "font-Barlow1 font-extrabold",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                    class: "text-xl",
+                    className: "text-xl",
                     children: "INICIAR SESI\xd3N"
                 }, void 0, false, {
                     fileName: "src/app/modules/Login.jsx",
@@ -27354,7 +27354,7 @@ function Login() {
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    class: "relative my-3",
+                    className: "relative my-3",
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
                         fileName: "src/app/modules/Login.jsx",
                         lineNumber: 10,
@@ -27367,7 +27367,7 @@ function Login() {
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                     for: "input-group-1",
-                    class: "block mb-2",
+                    className: "block mb-2",
                     children: "Usuario"
                 }, void 0, false, {
                     fileName: "src/app/modules/Login.jsx",
@@ -27386,7 +27386,7 @@ function Login() {
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                     for: "input-group-1",
-                    class: "block mb-2",
+                    className: "block mb-2",
                     children: "Contrase\xf1a"
                 }, void 0, false, {
                     fileName: "src/app/modules/Login.jsx",
@@ -27463,10 +27463,10 @@ function MiInput(props) {
     const { placeholder ="" , icono ="user" , type ="text"  } = props;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            class: "relative mb-6",
+            className: "relative mb-6",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    class: "absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none",
+                    className: "absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none",
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _iconsJsxDefault.default), {
                         icono: icono
                     }, void 0, false, {
@@ -27516,89 +27516,93 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _bsMoonSvg = require("../../img/BsMoon.svg");
+var _bsMoonSvgDefault = parcelHelpers.interopDefault(_bsMoonSvg);
+var _bsSunSvg = require("../../img/BsSun.svg");
+var _bsSunSvgDefault = parcelHelpers.interopDefault(_bsSunSvg);
 function Icon(props) {
     const { icono ="pass"  } = props;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             icono == "user" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
-                class: "w-6 h-6",
+                className: "w-6 h-6",
                 fill: "none",
                 stroke: "currentColor",
                 viewBox: "0 0 24 24",
                 xmlns: "http://www.w3.org/2000/svg",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
-                    "stroke-linecap": "round",
-                    "stroke-linejoin": "round",
-                    "stroke-width": "2",
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: "2",
                     d: "M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 }, void 0, false, {
                     fileName: "src/app/components/Icons.jsx",
-                    lineNumber: 9,
-                    columnNumber: 139
+                    lineNumber: 12,
+                    columnNumber: 143
                 }, this)
             }, void 0, false, {
                 fileName: "src/app/components/Icons.jsx",
-                lineNumber: 9,
+                lineNumber: 12,
                 columnNumber: 29
             }, this),
             icono == "pass" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
-                class: "w-6 h-6",
+                className: "w-6 h-6",
                 fill: "none",
                 stroke: "currentColor",
                 viewBox: "0 0 24 24",
                 xmlns: "http://www.w3.org/2000/svg",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
-                    "stroke-linecap": "round",
-                    "stroke-linejoin": "round",
-                    "stroke-width": "2",
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: "2",
                     d: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
                 }, void 0, false, {
                     fileName: "src/app/components/Icons.jsx",
-                    lineNumber: 10,
-                    columnNumber: 139
+                    lineNumber: 13,
+                    columnNumber: 143
                 }, this)
             }, void 0, false, {
                 fileName: "src/app/components/Icons.jsx",
-                lineNumber: 10,
+                lineNumber: 13,
                 columnNumber: 29
             }, this),
             icono == "check" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
-                class: "w-6 h-6",
+                className: "w-6 h-6",
                 fill: "none",
                 stroke: "currentColor",
                 viewBox: "0 0 24 24",
                 xmlns: "http://www.w3.org/2000/svg",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
-                    "stroke-linecap": "round",
-                    "stroke-linejoin": "round",
-                    "stroke-width": "2",
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: "2",
                     d: "M5 13l4 4L19 7"
                 }, void 0, false, {
                     fileName: "src/app/components/Icons.jsx",
-                    lineNumber: 11,
-                    columnNumber: 140
+                    lineNumber: 14,
+                    columnNumber: 144
                 }, this)
             }, void 0, false, {
                 fileName: "src/app/components/Icons.jsx",
-                lineNumber: 11,
+                lineNumber: 14,
                 columnNumber: 30
             }, this),
             icono == "invite" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("svg", {
-                class: "w-6 h-6",
+                className: "w-6 h-6",
                 fill: "none",
                 stroke: "currentColor",
                 viewBox: "0 0 24 24",
                 xmlns: "http://www.w3.org/2000/svg",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
-                        "stroke-linecap": "round",
-                        "stroke-linejoin": "round",
-                        "stroke-width": "2",
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
+                        strokeWidth: "2",
                         d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                     }, void 0, false, {
                         fileName: "src/app/components/Icons.jsx",
-                        lineNumber: 12,
-                        columnNumber: 141
+                        lineNumber: 15,
+                        columnNumber: 145
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("path", {
                         "stroke-linecap": "round",
@@ -27607,14 +27611,32 @@ function Icon(props) {
                         d: "M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
                     }, void 0, false, {
                         fileName: "src/app/components/Icons.jsx",
-                        lineNumber: 12,
-                        columnNumber: 255
+                        lineNumber: 15,
+                        columnNumber: 256
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/app/components/Icons.jsx",
-                lineNumber: 12,
+                lineNumber: 15,
                 columnNumber: 31
+            }, this),
+            icono == "dark" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                width: "40px",
+                height: "40px",
+                src: (0, _bsSunSvgDefault.default)
+            }, void 0, false, {
+                fileName: "src/app/components/Icons.jsx",
+                lineNumber: 16,
+                columnNumber: 29
+            }, this),
+            icono == "light" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                width: "40px",
+                height: "40px",
+                src: (0, _bsMoonSvgDefault.default)
+            }, void 0, false, {
+                fileName: "src/app/components/Icons.jsx",
+                lineNumber: 17,
+                columnNumber: 30
             }, this)
         ]
     }, void 0, true);
@@ -27629,7 +27651,47 @@ $RefreshReg$(_c, "Icon");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"4NM6a":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../img/BsMoon.svg":"5ZJCm","../../img/BsSun.svg":"9ps0g"}],"5ZJCm":[function(require,module,exports) {
+module.exports = require("782f44a1f9acc5c1").getBundleURL("hXNHT") + "BsMoon.3f7d2ccf.svg" + "?" + Date.now();
+
+},{"782f44a1f9acc5c1":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"9ps0g":[function(require,module,exports) {
+module.exports = require("5516815c9a912750").getBundleURL("hXNHT") + "BsSun.4c0a899f.svg" + "?" + Date.now();
+
+},{"5516815c9a912750":"lgJ39"}],"4NM6a":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$84e6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27644,10 +27706,8 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _iconsJsx = require("./Icons.jsx");
 var _iconsJsxDefault = parcelHelpers.interopDefault(_iconsJsx);
 var _react = require("react");
-var _bsSunSvg = require("../../img/BsSun.svg");
-var _bsSunSvgDefault = parcelHelpers.interopDefault(_bsSunSvg);
-var _bsMoonSvg = require("../../img/BsMoon.svg");
-var _bsMoonSvgDefault = parcelHelpers.interopDefault(_bsMoonSvg);
+var _icons = require("./Icons");
+var _iconsDefault = parcelHelpers.interopDefault(_icons);
 var _s = $RefreshSig$();
 function MiBoton(props) {
     const { text ="" , icono ="user" , color ="primary"  } = props;
@@ -27697,7 +27757,6 @@ function BotonDark(props) {
     _s();
     const { text =""  } = props;
     const [theme, setTheme] = (0, _react.useState)("dark");
-    changeIcon = theme === "dark" ? (0, _bsSunSvgDefault.default) : (0, _bsMoonSvgDefault.default);
     (0, _react.useEffect)(()=>{
         if (theme === "dark") document.documentElement.classList.add("dark");
         else document.documentElement.classList.remove("dark");
@@ -27709,23 +27768,22 @@ function BotonDark(props) {
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
         onClick: handleThemeSwitch,
-        className: "ml-2 border-2 text-white bg-gray-400 font-bold hover:bg-gray-300 hover:text-white rounded-lg dark:border-2 dark:bg-white dark:hover:bg-gray-200 dark:text-gray-600",
+        className: "p-1 ml-2 border-2 text-white bg-gray-300 font-bold hover:bg-gray-400 hover:text-white rounded-lg dark:border-2 dark:bg-blue-400 dark:border-blue-400 dark:hover:border-blue-300 dark:hover:bg-blue-300 dark:text-gray-600",
         children: [
             text,
             " ",
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                width: "40px",
-                height: "40px",
-                src: changeIcon
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _iconsJsxDefault.default), {
+                icono: theme,
+                children: (0, _iconsDefault.default)
             }, void 0, false, {
                 fileName: "src/app/components/Buttons.jsx",
-                lineNumber: 44,
-                columnNumber: 231
+                lineNumber: 41,
+                columnNumber: 286
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/app/components/Buttons.jsx",
-        lineNumber: 44,
+        lineNumber: 41,
         columnNumber: 13
     }, this);
 }
@@ -27740,47 +27798,7 @@ $RefreshReg$(_c1, "BotonDark");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq","./Icons.jsx":"2RhpD","../../img/BsSun.svg":"9ps0g","../../img/BsMoon.svg":"5ZJCm"}],"9ps0g":[function(require,module,exports) {
-module.exports = require("5516815c9a912750").getBundleURL("hXNHT") + "BsSun.4c0a899f.svg" + "?" + Date.now();
-
-},{"5516815c9a912750":"lgJ39"}],"lgJ39":[function(require,module,exports) {
-"use strict";
-var bundleURL = {};
-function getBundleURLCached(id) {
-    var value = bundleURL[id];
-    if (!value) {
-        value = getBundleURL();
-        bundleURL[id] = value;
-    }
-    return value;
-}
-function getBundleURL() {
-    try {
-        throw new Error();
-    } catch (err) {
-        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
-        if (matches) // The first two stack frames will be this function and getBundleURLCached.
-        // Use the 3rd one, which will be a runtime in the original bundle.
-        return getBaseURL(matches[2]);
-    }
-    return "/";
-}
-function getBaseURL(url) {
-    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
-} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
-function getOrigin(url) {
-    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
-    if (!matches) throw new Error("Origin not found");
-    return matches[0];
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-exports.getOrigin = getOrigin;
-
-},{}],"5ZJCm":[function(require,module,exports) {
-module.exports = require("782f44a1f9acc5c1").getBundleURL("hXNHT") + "BsMoon.3f7d2ccf.svg" + "?" + Date.now();
-
-},{"782f44a1f9acc5c1":"lgJ39"}],"aCfJj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq","./Icons.jsx":"2RhpD","./Icons":"2RhpD"}],"aCfJj":[function(require,module,exports) {
 module.exports = require("4a68e5778195df7").getBundleURL("hXNHT") + "Enfermera.0a92fda6.svg" + "?" + Date.now();
 
 },{"4a68e5778195df7":"lgJ39"}]},["1xC6H","f4dWP","i3Ovo"], "i3Ovo", "parcelRequirea72e")
