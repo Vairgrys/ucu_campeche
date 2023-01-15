@@ -3,6 +3,8 @@
 # dependencies
 /node_modules
 /.parcel-cache
+dist
+dist/**
 
 
 /.pnp
@@ -24,3 +26,5 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+package-lock.json
+.paletteColors

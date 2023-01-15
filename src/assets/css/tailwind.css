@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Urbanist&display=swap");
+* {
+	font-family: "Urbanist", sans-serif;
+	/* font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif; */
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

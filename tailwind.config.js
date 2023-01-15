@@ -6,7 +6,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'Barlow1': ['Barlow', 'sans-serif']
+      'urban': ['Urbanist', 'sans-serif']
     },
     extend: {},
   },
