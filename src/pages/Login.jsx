@@ -35,7 +35,7 @@ function Login() {
 					</div>
 					<div
 						className={` w-[500px] bg-slate-50 dark:bg-slate-800 dark:text-white p-4`}>
-						<div className='font-Barlow font-extrabold'>
+						<div className='font-extrabold'>
 							<h1 className='text-xl'>INICIAR SESIÓN</h1>
 							<div className='relative my-3'>
 								<hr />
