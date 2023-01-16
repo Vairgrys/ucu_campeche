@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import Icon from "./Icons.jsx";
 
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
@@ -21,7 +20,6 @@ function InputIcon(props) {
 	const {
 		value = "",
 		placeholder = "",
-		icono = "user",
 		type = "text",
 		handlerChange = () => {},
 		addCSS = {
@@ -33,7 +31,7 @@ function InputIcon(props) {
 		<>
 			<div className='relative mb-6'>
 				<div className='absolute inset-y-0 left-0 flex text-slate-500 items-center pl-3 pointer-events-none'>
-					<Icon icono={icono}></Icon>
+					{props.children}
 				</div>
 				<input
 					type={type}
@@ -56,7 +54,6 @@ function InputMike() {
 }
 
 Input.Mike = InputMike;
-
 Input.icon = InputIcon;
 
 export default Input;

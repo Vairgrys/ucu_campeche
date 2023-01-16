@@ -1,6 +1,7 @@
 import Input from "../components/Inputs";
 import Button from "../components/Buttons";
 import logo from "../assets/img/Enfermera.svg";
+import { FaUser, FaLock } from "react-icons/fa";
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -19,7 +20,7 @@ function Login() {
 	return (
 		<>
 			<div
-				className={`w-screen h-screen flex relative bg-teal-100 dark:bg-slate-900 justify-center items-center`}>
+				className={`w-screen h-screen flex relative bg-blue-500 dark:bg-slate-900 justify-center items-center`}>
 				<motion.div
 					initial={{ opacity: 0, y: -500 }}
 					whileInView={{
@@ -49,9 +50,10 @@ function Login() {
 								handlerChange={setUsername}
 								value={username}
 								type='text'
-								icono='user'
 								id='input-group-1'
-								placeholder='Escriba su nombre de usuario'></Input.icon>
+								placeholder='Escriba su nombre de usuario'>
+								<FaUser></FaUser>
+							</Input.icon>
 							<label
 								htmlFor='input-group-1'
 								className='block mb-2'>
@@ -61,9 +63,10 @@ function Login() {
 								handlerChange={setPassword}
 								value={password}
 								type='password'
-								icono='pass'
 								id='input-group-2'
-								placeholder='Escriba su contraseña'></Input.icon>
+								placeholder='Escriba su contraseña'>
+								<FaLock></FaLock>
+							</Input.icon>
 							<div className='flex mt-6 flex-row justify-end'>
 								<Button
 									handlerClick={iniciarSesion}
