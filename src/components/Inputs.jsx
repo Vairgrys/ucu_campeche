@@ -29,7 +29,7 @@ function InputIcon(props) {
 
 	return (
 		<>
-			<div className='relative mb-6'>
+			<div className='relative mb-4'>
 				<div className='absolute inset-y-0 left-0 flex text-slate-500 items-center pl-3 pointer-events-none'>
 					{props.children}
 				</div>

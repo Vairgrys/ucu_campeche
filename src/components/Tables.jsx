@@ -42,7 +42,7 @@ function Td(props) {
 }
 
 function Tr(props) {
-	return <tr className='border-[1px] border-slate-200'>{props.children}</tr>;
+	return <tr className='border-slate-200'>{props.children}</tr>;
 }
 
 Table.Header = Header;

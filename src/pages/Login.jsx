@@ -1,7 +1,7 @@
 import Input from "../components/Inputs";
 import Button from "../components/Buttons";
 import logo from "../assets/img/Enfermera.svg";
-import { FaUser, FaLock } from "react-icons/fa";
+import {FaUserCircle, FaLock, FaEye} from "react-icons/fa";
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -20,7 +20,7 @@ function Login() {
 	return (
 		<>
 			<div
-				className={`w-screen h-screen flex relative bg-blue-500 dark:bg-slate-900 justify-center items-center`}>
+				className={`w-screen h-screen flex relative bg-teal-100 dark:bg-slate-900 justify-center items-center`}>
 				<motion.div
 					initial={{ opacity: 0, y: -500 }}
 					whileInView={{
@@ -52,7 +52,7 @@ function Login() {
 								type='text'
 								id='input-group-1'
 								placeholder='Escriba su nombre de usuario'>
-								<FaUser></FaUser>
+									<FaUserCircle></FaUserCircle>
 							</Input.icon>
 							<label
 								htmlFor='input-group-1'
@@ -68,14 +68,15 @@ function Login() {
 								<FaLock></FaLock>
 							</Input.icon>
 							<div className='flex mt-6 flex-row justify-end'>
+								<Button handlerClick={iniciarSesion}>
+										Iniciar sesión
+									</Button>
 								<Button
-									handlerClick={iniciarSesion}
-									icono='check'
-									text='Iniciar sesión'></Button>
-								<Button
-									icono='invite'
-									color='alternative'
-									text='Entrar como invitado'></Button>
+									addCSS='bg-slate-400 hover:bg-slate-600 ring-slate-300'>
+										<FaEye></FaEye>
+										&nbsp;&nbsp;
+										Entrar como invitado
+									</Button>
 							</div>
 						</div>
 						<hr className='mt-6' />

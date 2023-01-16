@@ -2,52 +2,57 @@ import Table from "../../components/Tables";
 import Input from "../../components/Inputs";
 import Button from "../../components/Buttons";
 import {
+	FaBarcode,
 	FaBox,
-	FaBoxes,
+    FaBoxes,
+    FaMedkit,
 	FaFilePdf,
 	FaTrash,
-	FaWeight,
+	FaPencilAlt,
 } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
 var identifier = 0;
 
-function Despensa() {
-	const [product, setProduct] = useState("");
-	const [weight, setWeight] = useState("");
-	const [amount, setAmount] = useState('');
-	const [listaDespensa, setListaDespensa] = useState([]);
+function Medicamentos() {
+	const [code, setCode] = useState('');
+	const [medicine, setMedicine] = useState('');
+	const [description, setDescription] = useState('');
+    const [amount, setAmount] = useState('');
+	const [listaMedicamentos, setListaMedicamentos] = useState([]);
 
 	let number = 0;
 
-	onKeyDownHandler = e => {
+    onKeyDownHandler = e => {
     if (e.keyCode === 13) {
       generarDatos(e); return
     }
     };
 
 	function generarDatos(e) {
-		if (product === ''){
-            alert('Ingresa Producto');
-        }else if (weight === ''){
-            alert('Ingresa Peso');
+        if (code === ''){
+            alert('Ingresa Código');
+        }else if (medicine === ''){
+            alert('Ingresa Medicina');
+        }else if (description === ''){
+            alert('Ingresa Descripción');
         }else if (amount === ''){
             alert('Ingresa Cantidad');
-		}else{
-		identifier++;
-		setListaDespensa([
-			...listaDespensa,
-			{identifier, product, weight, amount},
-		]);
-		}
+        }else{
+            identifier++;
+            setListaMedicamentos([
+                ...listaMedicamentos,
+                {identifier, code, medicine, description, amount},
+            ]);
+        }
 	}
 
 	function eliminarProducto(idEliminar) {
-		let nuevaLista = listaDespensa.filter((filas) => {
+		let nuevaLista = listaMedicamentos.filter((filas) => {
 			return filas.identifier != idEliminar;
 		});
 
-		setListaDespensa(nuevaLista);
+		setListaMedicamentos(nuevaLista);
 	}
 
 	return (
@@ -55,24 +60,32 @@ function Despensa() {
 			<div className='w-screen h-screen flex relative to-teal-300 from-green-500 bg-gradient-to-t dark:bg-slate-900 justify-center items-center'>
 				<div className='w-[750px] h-[800px] flex flex-col item p-6 bg-slate-100 drop-shadow-lg rounded-lg'>
 					<h1 className='text-3xl text-orange-400'>
-						SERVICIO : DONACIÓN DE DESPENSA
+						SERVICIO : DONACIÓN DE MEDICINA
 					</h1>
 					<h2 className='text-xl'>PACIENTE: "Nombre"</h2>
-					<div onKeyDown={onKeyDownHandler} className='flex flex-row justify-center mt-6'>
-						<div className='flex flex-col justify-start mx-2'>
-							<label className=''>Producto</label>
+					<form onKeyDown={onKeyDownHandler} className='flex flex-row justify-center mt-6'>
+                        <div className='flex flex-col justify-start mx-2'>
+							<label className=''>Código</label>
 							<Input.icon
-								handlerChange={setProduct}
-								value={product}>
-								<FaBox></FaBox>
+								handlerChange={setCode}
+								value={code}>
+								<FaBarcode></FaBarcode>
 							</Input.icon>
 						</div>
 						<div className='flex flex-col justify-start mx-2'>
-							<label className=''>Peso / Tamaño</label>
+							<label className=''>Medicamento</label>
 							<Input.icon
-								handlerChange={setWeight}
-								value={weight}>
-								<FaWeight></FaWeight>
+								handlerChange={setMedicine}
+								value={medicine}>
+								<FaMedkit></FaMedkit>
+							</Input.icon>
+						</div>
+						<div className='flex flex-col justify-start mx-2'>
+							<label className=''>Descripción</label>
+							<Input.icon
+								handlerChange={setDescription}
+								value={description}>
+								<FaPencilAlt></FaPencilAlt>
 							</Input.icon>
 						</div>
 						<div className='flex flex-col justify-start mx-2'>
@@ -83,7 +96,7 @@ function Despensa() {
 								<FaBoxes></FaBoxes>
 							</Input.icon>
 						</div>
-					</div>
+					</form>
 					<h4 className='col-span-3 text-sm text-slate-400 mb-5'>
 						Presione Enter después de llenar los campos para agregar
 					</h4>
@@ -94,22 +107,22 @@ function Despensa() {
 						}}>
 						<Table.Header>
 							<Table.Tr>
-								<Table.Th>#</Table.Th>
-								<Table.Th>Producto</Table.Th>
-								<Table.Th>Peso</Table.Th>
+								<Table.Th>Código</Table.Th>
+								<Table.Th>Medicamento</Table.Th>
+								<Table.Th>Descripción</Table.Th>
 								<Table.Th>Cantidad</Table.Th>
 								<Table.Th></Table.Th>
 							</Table.Tr>
 						</Table.Header>
 						<Table.Body>
-							{listaDespensa &&
-								listaDespensa.map((fila) => {
+							{listaMedicamentos &&
+								listaMedicamentos.map((fila) => {
 									number++;
 									return (
 										<Table.Tr key={"fila" + number}>
-											<Table.Td>{number}</Table.Td>
-											<Table.Td>{fila.product}</Table.Td>
-											<Table.Td>{fila.weight}</Table.Td>
+                                            <Table.Td>{fila.code}</Table.Td>
+											<Table.Td>{fila.medicine}</Table.Td>
+											<Table.Td>{fila.description}</Table.Td>
 											<Table.Td>{fila.amount}</Table.Td>
 											<Table.Td>
 												<Button
@@ -131,7 +144,8 @@ function Despensa() {
 
 					<Button
 						addCSS='flex order-last bg-red-400 hover:bg-red-600 ring-red-300'
-						text='Generar'>
+						text='Generar'
+                        >  
 						<FaFilePdf></FaFilePdf>
 						&nbsp;&nbsp; Generar PDF
 					</Button>
@@ -142,4 +156,4 @@ function Despensa() {
 	);
 }
 
-export { Despensa };
+export { Medicamentos };
