@@ -4,8 +4,8 @@ import Button from "../../components/Buttons";
 import {
 	FaBarcode,
 	FaBox,
-    FaBoxes,
-    FaMedkit,
+	FaBoxes,
+	FaMedkit,
 	FaFilePdf,
 	FaTrash,
 	FaPencilAlt,
@@ -15,36 +15,45 @@ import { useEffect, useState } from "react";
 var identifier = 0;
 
 function Medicamentos() {
-	const [code, setCode] = useState('');
-	const [medicine, setMedicine] = useState('');
-	const [description, setDescription] = useState('');
-    const [amount, setAmount] = useState('');
+	const [code, setCode] = useState("");
+	const [amount, setAmount] = useState("");
+	const [isValid, setIsValid] = useState(false);
+	const [validMsg, setValidMsg] = useState("");
+	const [medicine, setMedicine] = useState("");
+	const [description, setDescription] = useState("");
 	const [listaMedicamentos, setListaMedicamentos] = useState([]);
 
 	let number = 0;
 
-    onKeyDownHandler = e => {
-    if (e.keyCode === 13) {
-      generarDatos(e); return
-    }
-    };
+	onKeyDownHandler = (e) => {
+		if (e.keyCode === 13) {
+			generarDatos(e);
+			return;
+		}
+	};
 
 	function generarDatos(e) {
-        if (code === ''){
-            alert('Ingresa Código');
-        }else if (medicine === ''){
-            alert('Ingresa Medicina');
-        }else if (description === ''){
-            alert('Ingresa Descripción');
-        }else if (amount === ''){
-            alert('Ingresa Cantidad');
-        }else{
-            identifier++;
-            setListaMedicamentos([
-                ...listaMedicamentos,
-                {identifier, code, medicine, description, amount},
-            ]);
-        }
+		try {
+			if (code === "")
+				throw new Error("Por favor llene el campo codigo *");
+			if (medicine === "")
+				throw new Error("Por favor llene el campo medicina *");
+			if (description === "")
+				throw new Error("Por favor llene el campo descripcion *");
+			if (amount === "")
+				throw new Error("Por favor llene el campo cantidad *");
+
+			identifier++;
+			setIsValid(true);
+			setListaMedicamentos([
+				...listaMedicamentos,
+				{ identifier, code, medicine, description, amount },
+			]);
+		} catch (err) {
+			console.log(err);
+			setIsValid(false);
+			setValidMsg(err.message);
+		}
 	}
 
 	function eliminarProducto(idEliminar) {
@@ -57,23 +66,30 @@ function Medicamentos() {
 
 	return (
 		<>
-			<div className='w-screen h-screen flex relative to-teal-300 from-green-500 bg-gradient-to-t dark:bg-slate-900 justify-center items-center'>
-				<div className='w-[750px] h-[800px] flex flex-col item p-6 bg-slate-100 drop-shadow-lg rounded-lg'>
+			<div className='w-screen h-screen flex relative to-green-600 from-green-400 bg-gradient-to-t dark:bg-slate-900 justify-center items-center'>
+				<div className='w-[1000px] h-[800px] flex flex-col item p-6 bg-slate-100 drop-shadow-lg rounded-lg'>
 					<h1 className='text-3xl text-orange-400'>
 						SERVICIO : DONACIÓN DE MEDICINA
 					</h1>
 					<h2 className='text-xl'>PACIENTE: "Nombre"</h2>
-					<form onKeyDown={onKeyDownHandler} className='flex flex-row justify-center mt-6'>
-                        <div className='flex flex-col justify-start mx-2'>
-							<label className=''>Código</label>
+					<form
+						onKeyDown={onKeyDownHandler}
+						className='flex flex-row justify-center mt-6'>
+						<div className='flex flex-col justify-start mx-2'>
+							<label className='text-slate-600'>Código</label>
 							<Input.icon
 								handlerChange={setCode}
+								addCSS={{
+									input: "tracking-widest text-slate-700 font-bold",
+								}}
 								value={code}>
 								<FaBarcode></FaBarcode>
 							</Input.icon>
 						</div>
 						<div className='flex flex-col justify-start mx-2'>
-							<label className=''>Medicamento</label>
+							<label className='text-slate-600'>
+								Medicamento
+							</label>
 							<Input.icon
 								handlerChange={setMedicine}
 								value={medicine}>
@@ -81,7 +97,9 @@ function Medicamentos() {
 							</Input.icon>
 						</div>
 						<div className='flex flex-col justify-start mx-2'>
-							<label className=''>Descripción</label>
+							<label className='text-slate-600'>
+								Descripción
+							</label>
 							<Input.icon
 								handlerChange={setDescription}
 								value={description}>
@@ -89,7 +107,7 @@ function Medicamentos() {
 							</Input.icon>
 						</div>
 						<div className='flex flex-col justify-start mx-2'>
-							<label className=''>Cantidad</label>
+							<label className='text-slate-600'>Cantidad</label>
 							<Input.icon
 								handlerChange={setAmount}
 								value={amount}>
@@ -97,12 +115,20 @@ function Medicamentos() {
 							</Input.icon>
 						</div>
 					</form>
-					<h4 className='col-span-3 text-sm text-slate-400 mb-5'>
-						Presione Enter después de llenar los campos para agregar
-					</h4>
+					<div className='ml-2'>
+						{!isValid && (
+							<p className='text-red-500 italic font-bold'>
+								{validMsg}
+							</p>
+						)}
+						<h4 className='col-span-3 text-sm text-slate-400 mb-5'>
+							Presione Enter después de llenar los campos para
+							agregar
+						</h4>
+					</div>
 					<Table
 						addCSS={{
-							container: "h-[700px] shadow-lg ",
+							container: "h-auto shadow-lg ",
 							table: "h-full ",
 						}}>
 						<Table.Header>
@@ -120,9 +146,11 @@ function Medicamentos() {
 									number++;
 									return (
 										<Table.Tr key={"fila" + number}>
-                                            <Table.Td>{fila.code}</Table.Td>
+											<Table.Td>{fila.code}</Table.Td>
 											<Table.Td>{fila.medicine}</Table.Td>
-											<Table.Td>{fila.description}</Table.Td>
+											<Table.Td>
+												{fila.description}
+											</Table.Td>
 											<Table.Td>{fila.amount}</Table.Td>
 											<Table.Td>
 												<Button
@@ -130,7 +158,7 @@ function Medicamentos() {
 														this,
 														fila.identifier
 													)}
-													addCSS='bg-red-400 hover:bg-red-600 ring-red-300 px-2'
+													addCSS='bg-red-500 hover:bg-red-600 ring-red-300 px-2'
 													text='Borrar'>
 													<FaTrash></FaTrash>
 												</Button>
@@ -141,14 +169,12 @@ function Medicamentos() {
 						</Table.Body>
 					</Table>
 					<div className='flex justify-end mt-6 right-2'>
-
-					<Button
-						addCSS='flex order-last bg-red-400 hover:bg-red-600 ring-red-300'
-						text='Generar'
-                        >  
-						<FaFilePdf></FaFilePdf>
-						&nbsp;&nbsp; Generar PDF
-					</Button>
+						<Button
+							addCSS='flex order-last bg-red-500 hover:bg-red-600 ring-red-300'
+							text='Generar'>
+							<FaFilePdf></FaFilePdf>
+							&nbsp;&nbsp; Generar PDF
+						</Button>
 					</div>
 				</div>
 			</div>

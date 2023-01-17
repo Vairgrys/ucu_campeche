@@ -38,11 +38,13 @@ function Th(props) {
 }
 
 function Td(props) {
-	return <td className='px-6 py-4'>{props.children}</td>;
+	return <td className='px-6 py-4 bg-slate-100'>{props.children}</td>;
 }
 
 function Tr(props) {
-	return <tr className='border-slate-200'>{props.children}</tr>;
+	return (
+		<tr className='border-b-[1px] border-slate-200'>{props.children}</tr>
+	);
 }
 
 Table.Header = Header;

@@ -1,13 +1,7 @@
 import Table from "../../components/Tables";
 import Input from "../../components/Inputs";
 import Button from "../../components/Buttons";
-import {
-	FaBox,
-	FaBoxes,
-	FaFilePdf,
-	FaTrash,
-	FaWeight,
-} from "react-icons/fa";
+import { FaBox, FaBoxes, FaFilePdf, FaTrash, FaWeight } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
 var identifier = 0;
@@ -15,30 +9,31 @@ var identifier = 0;
 function Despensa() {
 	const [product, setProduct] = useState("");
 	const [weight, setWeight] = useState("");
-	const [amount, setAmount] = useState('');
+	const [amount, setAmount] = useState("");
 	const [listaDespensa, setListaDespensa] = useState([]);
 
 	let number = 0;
 
-	onKeyDownHandler = e => {
-    if (e.keyCode === 13) {
-      generarDatos(e); return
-    }
-    };
+	onKeyDownHandler = (e) => {
+		if (e.keyCode === 13) {
+			generarDatos(e);
+			return;
+		}
+	};
 
 	function generarDatos(e) {
-		if (product === ''){
-            alert('Ingresa Producto');
-        }else if (weight === ''){
-            alert('Ingresa Peso');
-        }else if (amount === ''){
-            alert('Ingresa Cantidad');
-		}else{
-		identifier++;
-		setListaDespensa([
-			...listaDespensa,
-			{identifier, product, weight, amount},
-		]);
+		if (product === "") {
+			alert("Ingresa Producto");
+		} else if (weight === "") {
+			alert("Ingresa Peso");
+		} else if (amount === "") {
+			alert("Ingresa Cantidad");
+		} else {
+			identifier++;
+			setListaDespensa([
+				...listaDespensa,
+				{ identifier, product, weight, amount },
+			]);
 		}
 	}
 
@@ -52,32 +47,39 @@ function Despensa() {
 
 	return (
 		<>
-			<div className='w-screen h-screen flex relative to-teal-300 from-green-500 bg-gradient-to-t dark:bg-slate-900 justify-center items-center'>
-				<div className='w-[750px] h-[800px] flex flex-col item p-6 bg-slate-100 drop-shadow-lg rounded-lg'>
+			<div className='w-screen h-screen flex relative to-orange-300 from-orange-500 bg-gradient-to-t dark:bg-slate-900 justify-center items-center'>
+				<div className='w-[1000px] h-[800px] flex flex-col item p-6 bg-slate-100 drop-shadow-lg rounded-lg'>
 					<h1 className='text-3xl text-orange-400'>
 						SERVICIO : DONACIÓN DE DESPENSA
 					</h1>
 					<h2 className='text-xl'>PACIENTE: "Nombre"</h2>
-					<div onKeyDown={onKeyDownHandler} className='flex flex-row justify-center mt-6'>
-						<div className='flex flex-col justify-start mx-2'>
-							<label className=''>Producto</label>
+					<div
+						onKeyDown={onKeyDownHandler}
+						className='flex flex-row justify-center mt-6'>
+						<div className='flex flex-col justify-start mx-2 w-full'>
+							<label className='text-slate-600'>Producto</label>
 							<Input.icon
+								addCSS={{ input: "w-full" }}
 								handlerChange={setProduct}
 								value={product}>
 								<FaBox></FaBox>
 							</Input.icon>
 						</div>
-						<div className='flex flex-col justify-start mx-2'>
-							<label className=''>Peso / Tamaño</label>
+						<div className='flex flex-col justify-start mx-2 w-full'>
+							<label className='text-slate-600'>
+								Peso / Tamaño
+							</label>
 							<Input.icon
+								addCSS={{ input: "w-full " }}
 								handlerChange={setWeight}
 								value={weight}>
 								<FaWeight></FaWeight>
 							</Input.icon>
 						</div>
-						<div className='flex flex-col justify-start mx-2'>
-							<label className=''>Cantidad</label>
+						<div className='flex flex-col justify-start mx-2 w-full'>
+							<label className='text-slate-600'>Cantidad</label>
 							<Input.icon
+								addCSS={{ input: "w-full" }}
 								handlerChange={setAmount}
 								value={amount}>
 								<FaBoxes></FaBoxes>
@@ -89,7 +91,7 @@ function Despensa() {
 					</h4>
 					<Table
 						addCSS={{
-							container: "h-[700px] shadow-lg ",
+							container: "h-auto shadow-lg ",
 							table: "h-full ",
 						}}>
 						<Table.Header>
@@ -128,13 +130,12 @@ function Despensa() {
 						</Table.Body>
 					</Table>
 					<div className='flex justify-end mt-6 right-2'>
-
-					<Button
-						addCSS='flex order-last bg-red-400 hover:bg-red-600 ring-red-300'
-						text='Generar'>
-						<FaFilePdf></FaFilePdf>
-						&nbsp;&nbsp; Generar PDF
-					</Button>
+						<Button
+							addCSS='flex order-last bg-red-500 hover:bg-red-600 ring-red-300'
+							text='Generar'>
+							<FaFilePdf></FaFilePdf>
+							&nbsp;&nbsp; Generar PDF
+						</Button>
 					</div>
 				</div>
 			</div>

@@ -11,7 +11,7 @@ function Input(props) {
 		<input
 			type={type}
 			placeholder={placeholder}
-			className='rounded-lg border-1 border-slate-600 pl-10 p-2.5 w-full dark:bg-gray-700 dark:text-blue'
+			className='rounded-lg border-1 border-slate-400 pl-10 p-2.5 w-full dark:bg-gray-700 dark:text-blue'
 		/>
 	);
 }
@@ -30,7 +30,7 @@ function InputIcon(props) {
 	return (
 		<>
 			<div className='relative mb-4'>
-				<div className='absolute inset-y-0 left-0 flex text-slate-500 items-center pl-3 pointer-events-none'>
+				<div className='absolute inset-y-0 left-0 flex text-slate-600 items-center pl-3 pointer-events-none'>
 					{props.children}
 				</div>
 				<input
@@ -41,7 +41,7 @@ function InputIcon(props) {
 					value={value}
 					placeholder={placeholder}
 					className={twMerge(
-						`rounded-lg border-1 text-blue-500 border-slate-500 p-2.5 pl-10 w-full ${addCSS.input}`
+						`rounded-lg border-1 text-slate-600 font-medium border-slate-300 p-2.5 pl-10 w-full ${addCSS.input}`
 					)}
 				/>
 			</div>
