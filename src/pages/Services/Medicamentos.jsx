@@ -27,12 +27,12 @@ function Medicamentos() {
 
 	onKeyDownHandler = (e) => {
 		if (e.keyCode === 13) {
-			generarDatos(e);
+			generarMedicamentos(e);
 			return;
 		}
 	};
 
-	function generarDatos(e) {
+	function generarMedicamentos(e) {
 		try {
 			if (code === "")
 				throw new Error("Por favor llene el campo codigo *");
