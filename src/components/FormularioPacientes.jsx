@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { variant } from "../utils/variant";
 import { useEdad } from "../hooks/useEdad";
-import { FaPlus, FaTimes, FaTimesCircle } from "react-icons/fa";
+import { FaPlus, FaTimes } from "react-icons/fa";
 import { getImageListItemBarUtilityClass } from "@mui/material";
 import Button from "../components/Buttons";
 import Input from "../components/Inputs";
+import TextArea from "./Textarea";
 
 function FormularioPacientes(props) {
 	const { isOpen = false, toggleIsOpen = () => {} } = props;
@@ -66,110 +67,173 @@ function FormularioPacientes(props) {
 					left: "600px",
 				}}
 				animate={isOpen ? variant.modalPageIn : variant.modalPageOut}
-				className='w-[500px]  h-[700px] overflow-auto p-4 item bg-slate-50 relative shadow-xl rounded-lg'>
+				className='overflow-auto p-6 item bg-slate-50 relative shadow-xl rounded-lg'>
+				<div className='relative w-full h-full flex flex-col'>
+					<div className="absolute flex w-full justify-end">
 				<Button
 					handlerClick={() => {
 						toggleIsOpen(false);
 					}}
 					addCSS={
-						"absolute right-0 z-20 top-0 m-2 p-1 bg-red-600 hover:bg-red-400 focus:ring-0"
+						"right-0 z-20 top-0 p-0 border-0 hover:border-0 hover:bg-slate-50 hover:text-slate-400 text-slate-600 bg-slate-50 hover:focus:ring-0"
 					}>
-					<FaTimesCircle></FaTimesCircle>
+					<FaTimes></FaTimes>
 				</Button>
-				<div className='relative w-full h-full'>
-					<div className='flex'>
-						<div className=' flex flex-col w-full m-1'>
+					</div>
+					<div className='flex w-full'>
+						<div className='flex flex-col w-full m-1'>
 							<label>Nombre</label>
+							<div className="flex h-8">
 							<Input
 								placeholder='Ingresar Nombre(s)'
 								handlerChange={setName}
 								value={name}
-								addCSS={{ input: "h-[30px]" }}></Input>
+								></Input>
+							</div>
 						</div>
 						<div className='flex flex-col w-full m-1'>
 							<label>Apellidos</label>
+							<div className="flex h-8">
 							<Input
-								placeholder=''
+								placeholder='Ingresar Apellidos'
 								handlerChange={setLastName}
 								value={lastname}
-								addCSS={{ input: "h-[30px]" }}></Input>
+								></Input>
+							</div>
 						</div>
 					</div>
-					<label>Fecha de Nacimiento</label>
-					<Input.datepicker
+					<div className='flex w-full'>
+						<div className="flex flex-col w-full m-1">
+						<label>Fecha de Nacimiento</label>
+						<Input.datepicker
+						placeholder="Seleccionar fecha"
 						handlerChange={setBirthday}
-						value={birthday}></Input.datepicker>
-					<label>Edad</label>
+						value={birthday}
+						></Input.datepicker>
+						</div>
+						<div className="flex flex-col m-1 place-content-around">
+							<label>Edad</label> 
+							<div className="flex h-8">
+							<Input
+							disabled={true}
+							value={age}
+							>
+							</Input>
+							</div>
+						</div>
+						<div className="flex flex-col w-full m-1 place-content-around">
+							<label>Género</label>
+								<div className="flex h-8 justify-center">
+							<Input
+								placeholder='Selecciona tu género'
+								handlerChange={setSex}
+								value={sex}
+								></Input>
+								</div>
+						</div>
+					</div>
+					<div className="flex">
+							<div className="flex flex-col w-full m-1">
+							<label>Teléfono</label>
+							<div className="flex h-8">
+							<Input
+								placeholder='Ingresar teléfono'
+								handlerChange={setPhone}
+								value={phone}
+								></Input>
+							</div>
+							</div>
+					<div className="flex flex-col w-full m-1">
+						<label>Correo</label>
+						<div className="flex h-8">
 					<Input
-						disabled={true}
-						value={age}
-						addCSS={{
-							input: "h-[30px] bg-red-200",
-						}}>
-						{age}
-					</Input>
-					<label>Género</label>
-					<Input
-						handlerChange={setSex}
-						value={sex}
-						addCSS={{ input: "h-[30px]" }}></Input>
-					<label>Teléfono</label>
-					<Input
-						placeholder='Ingresa tu teléfono'
-						handlerChange={setPhone}
-						value={phone}
-						addCSS={{ input: "h-[30px]" }}></Input>
-					<label>Estado</label>
-					<Input
-						placeholder=''
-						handlerChange={setState}
-						value={state}
-						addCSS={{ input: "h-[30px]" }}></Input>
-					<label>Municipio</label>
-					<Input
-						placeholder=''
-						handlerChange={setCity}
-						value={city}
-						addCSS={{ input: "h-[30px]" }}></Input>
-					<label>Localidad</label>
-					<Input
-						placeholder=''
-						handlerChange={setLocation}
-						value={location}
-						addCSS={{ input: "h-[30px]" }}></Input>
-					<label>Dirección</label>
-					<Input
-						placeholder=''
-						handlerChange={setAddress}
-						value={address}
-						addCSS={{ input: "h-[30px]" }}></Input>
-					<label>Correo</label>
-					<Input
-						placeholder=''
+						placeholder='Ingresar correo electrónico'
 						handlerChange={setEmail}
 						value={email}
-						addCSS={{ input: "h-[30px]" }}></Input>
-					<label>Diagnóstico</label>
+						></Input>
+						</div>
+					</div>
+					</div>
+					<div className="flex w-full">
+						<div className="flex-col w-full m-1">
+					<label>Estado</label>
+					<div className="flex h-8">
 					<Input
-						placeholder=''
+						placeholder='Ingresar estado'
+						handlerChange={setState}
+						value={state}
+						></Input>
+					</div>
+						</div>
+						<div className="flex-col w-full m-1">
+					<label>Municipio</label>
+					<div className="flex h-8">
+					<Input
+						placeholder='Ingresar ciudad'
+						handlerChange={setCity}
+						value={city}
+						></Input>
+					</div>
+						</div>
+						<div className="flex-col w-full m-1">
+					<label>Localidad</label>
+					<div className="flex h-8">
+					<Input
+						placeholder='Ingresar localidad'
+						handlerChange={setLocation}
+						value={location}
+						></Input>
+						</div>
+					</div>
+					</div>
+					<div className="flex h-auto">
+					<div className="flex flex-col w-full">
+					<label>Dirección</label>
+					<TextArea
+						placeholder='Ingresar dirección'
+						handlerChange={setAddress}
+						value={address}
+						></TextArea>
+					</div>
+					</div>
+					<div className="flex w-full">
+					<div className="flex flex-col w-full">
+					<label>Diagnóstico</label>
+					<div className="flex h-full">
+					<TextArea
+						addCSS={"flex w-full"}
+						placeholder='Ingresar Diagnóstico'
 						handlerChange={setStatus}
 						value={status}
-						addCSS={{ input: "h-[30px]" }}>
-						Tratamiento
-					</Input>
+						>
+					</TextArea>
+					</div>
+					</div>
+					</div>
+					<div className="flex w-full">
+					<div className="flex flex-col w-full">
 					<label>Tratamiento</label>
-					<Input
-						placeholder=''
+					<div className="flex h-full">
+					<TextArea
+						addCSS={"flex w-full rounded-lg border-1"}
+						placeholder='Ingresar tratamiento'
 						handlerChange={setDiagnostic}
 						value={diagnostic}
-						addCSS={{ input: "h-[30px]" }}></Input>
-					<div className='flex justify-between'>
+						></TextArea>
+					</div>
+					</div>
+					</div>
+					<div className='flex h-full items-center w-full'>
+						<div className="flex h-14 w-full">
 						<Button addCSS={"ml-0 bg-purple-600 hover:purple-400"}>
-							<FaPlus></FaPlus>Agregar
+							<FaPlus></FaPlus>&nbsp;&nbsp; Agregar
 						</Button>
+						</div>
+						<div className="flex h-14 w-full justify-end">
 						<Button addCSS={"bg-red-600 hover:bg-red-400"}>
-							<FaTimes></FaTimes>Cancelar
+							<FaTimes></FaTimes>&nbsp;&nbsp; Cancelar
 						</Button>
+						</div>
 					</div>
 				</div>
 			</motion.div>

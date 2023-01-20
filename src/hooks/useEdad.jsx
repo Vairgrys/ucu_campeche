@@ -21,7 +21,7 @@ function useEdad() {
 			edad--;
 		}
 
-		setAge(isNaN(edad) ? "seleccione la fecha de nacimiento" : edad);
+		setAge(isNaN(edad) ? "?" : edad + ' años');
 	}
 
 	return [age, updateAge];

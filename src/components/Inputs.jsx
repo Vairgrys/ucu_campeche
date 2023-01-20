@@ -74,6 +74,7 @@ function InputIcon(props) {
 function InputDatepicker(props) {
 	const {
 		value = "",
+		placeholder = '',
 		handlerChange = () => {},
 		addCSS = {
 			input: "",
@@ -81,21 +82,19 @@ function InputDatepicker(props) {
 	} = props;
 
 	return (
-		<LocalizationProvider dateAdapter={AdapterDayjs}>
+		<LocalizationProvider className='' dateAdapter={AdapterDayjs}>
 			<div className='absolute inset-y-0 left-0 flex text-slate-600 items-center pl-3 pointer-events-none'>
 				{props.children}
 			</div>
 			<DatePicker
-				label='Colocar fecha de nacimiento'
+				placeholder={placeholder}
 				value={value}
 				onChange={(event) => {
-					console.log(event.target);
-					debugger;
-					// handlerChange(event.$d);
+					handlerChange(event.$d);
 				}}
 				renderInput={(params) => <TextField {...params} />}
 				className={twMerge(
-					`rounded-lg border-1 text-slate-600 font-medium border-slate-300 p-2.5 pl-10 w-full ${addCSS.input}`
+					`rounded-lg border-1 text-slate-600 bg-white font-medium border-slate-300 p-2.5 pl-10 w-full ${addCSS.input}`
 				)}
 			/>
 		</LocalizationProvider>
