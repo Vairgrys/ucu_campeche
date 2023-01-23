@@ -32,7 +32,7 @@ function Input(props) {
 			}}
 			placeholder={placeholder}
 			className={twMerge(
-				`rounded-lg border-1 border-slate-400 pl-10 p-2.5 w-full dark:bg-gray-700 dark:text-blue ${addCSS.input}`
+				`rounded-lg border-[1px] border-slate-300 px-4 py-4 w-full dark:bg-gray-700 dark:text-blue ${addCSS.input}`
 			)}
 		/>
 	);
@@ -63,7 +63,7 @@ function InputIcon(props) {
 					value={value}
 					placeholder={placeholder}
 					className={twMerge(
-						`rounded-lg border-1 text-slate-600 font-medium border-slate-300 p-2.5 pl-10 w-full ${addCSS.input}`
+						`rounded-lg border-[1px] text-slate-600 font-medium border-slate-300 p-2.5 pl-10 w-full ${addCSS.input}`
 					)}
 				/>
 			</div>
@@ -74,7 +74,7 @@ function InputIcon(props) {
 function InputDatepicker(props) {
 	const {
 		value = "",
-		placeholder = '',
+		placeholder = "",
 		handlerChange = () => {},
 		addCSS = {
 			input: "",

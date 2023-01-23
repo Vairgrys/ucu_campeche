@@ -7,7 +7,7 @@ import Button from "../components/Buttons";
 import { variant } from "../utils/variant";
 import { motion } from "framer-motion";
 import { FaBars, FaPlus, FaSearch } from "react-icons/fa";
-import { FormularioPacientes } from "../components/FormularioPacientes";
+import { FormularioPacientes } from "../components/Forms/FormularioPacientes";
 
 import { useModal } from "../hooks/useModal";
 
@@ -18,7 +18,7 @@ function Home() {
 	dismissMenu = (e) => {
 		e.stopPropagation();
 		e.preventDefault();
-		//setIsMenuOpen(false);
+		toggleMenu(false);
 	};
 
 	return (

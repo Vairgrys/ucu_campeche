@@ -26,7 +26,7 @@ function TextArea(props) {
 			}}
 			placeholder={placeholder}
 			className={twMerge(
-				`rounded-lg border-2 border-slate-300 pl-10 p-2.5 w-full h-full ${addCSS.input}`
+				`rounded-lg border-[1px] border-slate-300 resize-none pl-10 p-2.5 w-full h-full ${addCSS.input}`
 			)}
 		/>
 	);
