@@ -46,6 +46,7 @@
     "tailwind-datepicker-react": "^1.2.3",
     "tailwind-merge": "^1.8.1",
     "tailwind-scrollbar": "^2.1.0",
+    "timepicker-ui": "^2.6.1",
     "zustand": "^4.3.2"
   }
 }

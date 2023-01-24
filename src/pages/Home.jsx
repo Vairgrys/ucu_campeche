@@ -6,14 +6,18 @@ import Button from "../components/Buttons";
 
 import { variant } from "../utils/variant";
 import { motion } from "framer-motion";
-import { FaBars, FaPlus, FaSearch } from "react-icons/fa";
+import { FaBars, FaPlus, FaSearch, FaUsers, FaRegCalendarPlus } from "react-icons/fa";
 import { FormularioPacientes } from "../components/Forms/FormularioPacientes";
+import { FormularioEstancias } from "../components/Forms/FormularioEstancias";
+import { FormularioAcompañantes } from "../components/Forms/FormularioAcompañantes";
 
 import { useModal } from "../hooks/useModal";
 
 function Home() {
 	const [isMenuOpen, toggleMenu] = useModal();
 	const [isFormPacienteOpen, toggleFormPaciente] = useModal();
+	const [isFormEstanciaOpen, toggleFormEstancia] = useModal();
+	const [isFormAcompañanteOpen, toggleFormAcompañante] = useModal();
 
 	dismissMenu = (e) => {
 		e.stopPropagation();
@@ -24,6 +28,24 @@ function Home() {
 	dismissMenuPaciente = (e) => {
 		toggleFormPaciente(false);
 	};
+
+	dismissMenuEstancia = (e) => {
+		toggleFormEstancia(false);
+	};
+
+	dismissMenuAcompañante = (e) => {
+		toggleFormAcompañante(false);
+	};
+
+	const [listaPaciente, setListaPaciente] = useState([]);
+
+	 function eliminarPaciente(idEliminar) {
+		let nuevaLista = listaPaciente.filter((filas) => {
+			return filas.identifier != idEliminar;
+	 	});
+
+	 	setListaPaciente(nuevaLista);
+	}
 
 	return (
 		<>
@@ -52,8 +74,14 @@ function Home() {
 								: variant.modalPageOut
 						}
 						className='w-[650px] h-[800px] bg-slate-100 relative top-4 left-6 shadow-xl rounded-lg'>
-						<Button handlerClick={toggleFormPaciente}>
-							<FaPlus></FaPlus> Añadir Paciente
+						<Button addCSS={("m-2")} handlerClick={toggleFormPaciente}>
+							<FaPlus></FaPlus>&nbsp; Añadir Paciente
+						</Button>
+						<Button handlerClick={toggleFormEstancia} addCSS={("m-2 bg-orange-400 hover:bg-orange-200 focus:ring-orange-200")}>
+							<FaRegCalendarPlus></FaRegCalendarPlus>&nbsp; Añadir Estancia
+						</Button>
+						<Button handlerClick={toggleFormAcompañante} addCSS={("m-2 bg-purple-600 hover:bg-purple-400 focus:ring-purple-400")}>
+							<FaUsers></FaUsers>&nbsp; Añadir Acompañante
 						</Button>
 					</motion.div>
 				</motion.div>
@@ -83,7 +111,7 @@ function Home() {
 							</Table.Tr>
 						</Table.Header>
 						<Table.Body>
-							{/* {listaPaciente &&
+							{listaPaciente &&
 								listaPaciente.map((fila) => {
 									number++;
 									return (
@@ -92,13 +120,13 @@ function Home() {
 											<Table.Td>{fila.lastname}</Table.Td>
 											<Table.Td>{fila.age}</Table.Td>
 											<Table.Td>
-												{fila.cityState}
+												{fila.state}
 											</Table.Td>
 											<Table.Td>{fila.city}</Table.Td>
 											<Table.Td>{fila.status}</Table.Td>
 											<Table.Td>
 												<Button
-													handlerClick={eliminarProducto.bind(
+													handlerClick={eliminarPaciente.bind(
 														this,
 														fila.identifier
 													)}
@@ -109,7 +137,7 @@ function Home() {
 											</Table.Td>
 										</Table.Tr>
 									);
-								})} */}
+								})}
 						</Table.Body>
 					</Table>
 				</div>
@@ -117,6 +145,12 @@ function Home() {
 			<FormularioPacientes
 				isOpen={isFormPacienteOpen}
 				toggleIsOpen={toggleFormPaciente}></FormularioPacientes>
+			<FormularioEstancias
+				isOpen={isFormEstanciaOpen}
+				toggleIsOpen={toggleFormEstancia}></FormularioEstancias>
+			<FormularioAcompañantes
+				isOpen={isFormAcompañanteOpen}
+				toggleIsOpen={toggleFormAcompañante}></FormularioAcompañantes>
 		</>
 	);
 }

@@ -6,39 +6,39 @@ import { FaPlus, FaTimes } from "react-icons/fa";
 import Button from "../Buttons";
 import Input from "../Inputs";
 import Select from "../Selects";
+import { useActionData } from "react-router-dom";
 
 function FormularioPacientes(props) {
 	const { isOpen = false, toggleIsOpen = () => {} } = props;
 
 	var identifier = 0;
 
-	
 	const [name, setName] = useState("");
 	const [lastname, setLastName] = useState("");
-	const [birthday, setBirthday] = useState(new Date());
+	const [birthday, setBirthday] = useState("");
 	const [age, updateAge] = useEdad();
 	const [phone, setPhone] = useState("");
 	const [sex, setSex] = useState("");
 	const [email, setEmail] = useState("");
 	const [scholarship, setScholarship] = useState("");
 	const [identity, setIdentity] = useState("");
-	const [country, setCountry] = useState("");
 	const [state, setState] = useState("");
 	const [city, setCity] = useState("");
+	const [location, setLocation] = useState("");
 	const [address, setAddress] = useState("");
 	const [diagnostic, setDiagnostic] = useState("");
 	const [status, setStatus] = useState("");
 
 	const [isValid, setIsValid] = useState(false);
 	const [validMsg, setValidMsg] = useState("");
-	
+	const [listaPaciente, setListaPaciente] = useState([]);
 	
 	useEffect(() => {
 		updateAge(birthday);
 	}, [birthday]); 
 
 	function validarInputs(e) {
-		try {;
+		try {
 		if (name === "")
 			throw new Error("Por favor llene el campo nombre");
 		if (lastname === "") 
@@ -55,11 +55,11 @@ function FormularioPacientes(props) {
 			throw new Error("Por favor llene el campo escolaridad");
 		if (identity === "") 
 			throw new Error("Por favor llene el campo INE");
-		if (country === "") 
-			throw new Error("Por favor llene el campo país");
 		if (state === "") 
-			throw new Error("Por favor llene el campo estado");
+			throw new Error("Por favor llene el campo país");
 		if (city === "") 
+			throw new Error("Por favor llene el campo estado");
+		if (location === "") 
 			throw new Error("Por favor llene el campo municipio");
 		if (address === "") 
 			throw new Error("Por favor llene el campo dirección");
@@ -67,30 +67,38 @@ function FormularioPacientes(props) {
 			throw new Error("Por favor llene el campo diagnostico");
 		if (status === "") 
 			throw new Error("Por favor llene el campo tratamiento");
+
+			identifier++;
+		setListaPaciente([
+			...listaPaciente,
+	 		{ name, lastname, age, state, city, status },
+	 	]);
+
+			setIsValid(true);
 		} catch (err) {
 			console.log(err);
 			setIsValid(false);
 			setValidMsg(err.message);
 		}
+
+		var user = new Object();
+			user.Nombre = name;
+			user.Apellido = lastname;
+			user.Cumpleaños = birthday;
+			user.Teléfono = phone;
+			user.Sexo = sex;
+			user.Correo = email;
+			user.Escolaridad = scholarship;
+			user.INE = identity;
+			user.Estado = state;
+			user.Ciudad = city;
+			user.Localidad = location;
+			user.Dirección = address;
+			user.Diagnóstico = diagnostic;
+			user.Tratamiento = status;
+
+			console.log(user);
 	}
-
-	// const [listaPaciente, setListaPaciente] = useState([]);
-
-	// function generarPaciente(e) {
-	// 	identifier++;
-	// 	setListaPaciente([
-	// 		...listaPaciente,
-	// 		{ name, lastname, birthday, cityState, city, diagnostic },
-	// 	]);
-	// }
-
-	// function eliminarPaciente(idEliminar) {
-	// 	let nuevaLista = listaPaciente.filter((filas) => {
-	// 		return filas.identifier != idEliminar;
-	// 	});
-
-	// 	setListaPaciente(nuevaLista);
-	// }
 
 	return (
 		<motion.div
@@ -136,7 +144,7 @@ function FormularioPacientes(props) {
 						<label className='text-slate-600'>Nombre(s)</label>
 						<div className='flex h-8'>
 							<Input
-								placeholder='Ingresar Nombre(s)'
+								placeholder='Ingresar nombre(s)'
 								handlerChange={setName}
 								value={name}></Input>
 						</div>
@@ -145,7 +153,7 @@ function FormularioPacientes(props) {
 						<label className='text-slate-600'>Apellidos</label>
 						<div className='flex h-8'>
 							<Input
-								placeholder='Ingresar Apellidos'
+								placeholder='Ingresar apellidos'
 								handlerChange={setLastName}
 								value={lastname}></Input>
 						</div>
@@ -156,12 +164,12 @@ function FormularioPacientes(props) {
 						<label className='text-slate-600'>
 							Fecha de Nacimiento
 						</label>
-						<Input.datepicker value={birthday} setBirthday={setBirthday}></Input.datepicker>
+						<Input.datepicker value={birthday} handlerChange={setBirthday}></Input.datepicker>
 					</div>
 					
 					<div className='flex flex-col m-1'>
 						<label className='text-slate-600'>Edad</label>
-						<div className='flex'>
+						<div className='flex h-8'>
 							<Input addCSS={
 						"p-0"}
 						disabled={true} value={age}></Input>
@@ -182,7 +190,7 @@ function FormularioPacientes(props) {
 					<div className='flex flex-col w-full m-1 place-content-around'>
 						<label className='text-slate-600'>Género</label>
 						<div className='flex h-8 justify-center'>
-							<Select value={sex} handlerChange={setSex} addCSS={"p-0 pl-2 border-0"}>
+							<Select value={sex} handlerChange={setSex} addCSS={"p-0 pl-2 border-2 border-slate-200"}>
 								<Select.options disabled={true} selected={true}>Selecciona tu género</Select.options>
 								<Select.options value='Masculino'>Masculino</Select.options>	
 								<Select.options value='Femenino'>Femenino</Select.options>
@@ -230,8 +238,8 @@ function FormularioPacientes(props) {
 						<div className='flex h-8'>
 							<Input
 								placeholder='Ingresar estado'
-								handlerChange={setCountry}
-								value={country}></Input>
+								handlerChange={setState}
+								value={state}></Input>
 						</div>
 					</div>
 					<div className='flex-col w-full m-1'>
@@ -239,8 +247,8 @@ function FormularioPacientes(props) {
 						<div className='flex h-8'>
 							<Input
 								placeholder='Ingresar ciudad'
-								handlerChange={setState}
-								value={state}></Input>
+								handlerChange={setCity}
+								value={city}></Input>
 						</div>
 					</div>
 					<div className='flex-col w-full m-1'>
@@ -248,8 +256,8 @@ function FormularioPacientes(props) {
 						<div className='flex h-8'>
 							<Input
 								placeholder='Ingresar localidad'
-								handlerChange={setCity}
-								value={city}></Input>
+								handlerChange={setLocation}
+								value={location}></Input>
 						</div>
 					</div>
 				</div>
@@ -269,8 +277,8 @@ function FormularioPacientes(props) {
 							<Input.textarea
 								addCSS={"flex w-full"}
 								placeholder='Ingresar diagnóstico'
-								handlerChange={setStatus}
-								value={status}></Input.textarea>
+								handlerChange={setDiagnostic}
+								value={diagnostic}></Input.textarea>
 						</div>
 					</div>
 				</div>
@@ -281,8 +289,8 @@ function FormularioPacientes(props) {
 							<Input.textarea
 								addCSS={"flex w-full rounded-lg border-1"}
 								placeholder='Ingresar tratamiento'
-								handlerChange={setDiagnostic}
-								value={diagnostic}></Input.textarea>
+								handlerChange={setStatus}
+								value={status}></Input.textarea>
 						</div>
 					</div>
 				</div>

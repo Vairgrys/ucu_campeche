@@ -47,6 +47,30 @@ const variant = {
 			duration: 0.2,
 		},
 	},
+	modalPageInEstancias: {
+		opacity: 1,
+		transition: {
+			duration: 0.2,
+		},
+	},
+	modalPageOutEstancias: {
+		opacity: 0,
+		transition: {
+			duration: 0.2,
+		},
+	},
+	modalPageInAcompañantes: {
+		opacity: 1,
+		transition: {
+			duration: 0.2,
+		},
+	},
+	modalPageOutAcompañantes: {
+		opacity: 0,
+		transition: {
+			duration: 0.2,
+		},
+	},
 };
 
 export {variant}

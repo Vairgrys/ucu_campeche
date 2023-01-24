@@ -5,14 +5,14 @@ import * as React from "react";
 import { twMerge } from "tailwind-merge";
 
 function Select(props) {
-	const { addCSS = {}, value='', handlerChange = () => {}} = props;
+	const { addCSS = {}, handlerChange = () => {}} = props;
     return (
 		<select 
 		onChange={(event) => {
 						handlerChange(event.target.value);
 					}}
 		className={twMerge(
-				`flex w-full relative overflow-x-auto shadow-md sm:rounded-lg ${addCSS}`
+				`flex w-full relative overflow-x-auto sm:rounded-lg ${addCSS}`
 			)}>{props.children}</select>
 	);
 }
@@ -25,8 +25,7 @@ function Options(props) {
 				` ${addCSS}`
 			)}
 			disabled={disabled}
-			selected={selected}
-			value={props.children}>
+			selected={selected}>
 				{props.children}</option>
 			);
 		}

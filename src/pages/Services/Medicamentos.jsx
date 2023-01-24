@@ -54,6 +54,14 @@ function Medicamentos() {
 			setIsValid(false);
 			setValidMsg(err.message);
 		}
+
+		var Medicamentos = new Object();
+		Medicamentos.Código = code;
+		Medicamentos.Medicina = medicine;
+		Medicamentos.Descripción = description;
+		Medicamentos.Cantidad = amount;
+
+		console.log(Medicamentos);
 	}
 
 	function eliminarProducto(idEliminar) {
