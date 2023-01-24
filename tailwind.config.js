@@ -5,6 +5,7 @@ module.exports = {
     "./node_modules/flowbite/**/*.js",
     "./node_modules/tailwind-datepicker-react/dist/**/*.js", 
     "./src/**/*.{html,js,jsx}",
+    "./src/*.{html,js,jsx}",
   ],
   theme: {
     fontFamily: {

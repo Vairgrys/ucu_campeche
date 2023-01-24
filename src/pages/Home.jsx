@@ -1,17 +1,25 @@
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 import Table from "../components/Tables";
 import Input from "../components/Inputs";
 import Button from "../components/Buttons";
 
 import { variant } from "../utils/variant";
-import { motion } from "framer-motion";
-import { FaBars, FaPlus, FaSearch, FaUsers, FaRegCalendarPlus } from "react-icons/fa";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+	FaBars,
+	FaPlus,
+	FaSearch,
+	FaUsers,
+	FaRegCalendarPlus,
+} from "react-icons/fa";
 import { FormularioPacientes } from "../components/Forms/FormularioPacientes";
 import { FormularioEstancias } from "../components/Forms/FormularioEstancias";
 import { FormularioAcompañantes } from "../components/Forms/FormularioAcompañantes";
 
 import { useModal } from "../hooks/useModal";
+import { usePatientStore } from "../store/patientStore";
+import { PatientsList } from "../components/TableRows/patientsList";
 
 function Home() {
 	const [isMenuOpen, toggleMenu] = useModal();
@@ -39,12 +47,12 @@ function Home() {
 
 	const [listaPaciente, setListaPaciente] = useState([]);
 
-	 function eliminarPaciente(idEliminar) {
+	function eliminarPaciente(idEliminar) {
 		let nuevaLista = listaPaciente.filter((filas) => {
 			return filas.identifier != idEliminar;
-	 	});
+		});
 
-	 	setListaPaciente(nuevaLista);
+		setListaPaciente(nuevaLista);
 	}
 
 	return (
@@ -52,40 +60,41 @@ function Home() {
 			<Button
 				handlerClick={toggleMenu}
 				addCSS={
-					"rounded-full to-blue-500 from-indigo-700 ease-in-out transition duration-300 bg-gradient-to-t hover:bg-gradient-to-l text-white fixed z-10 shadow-lg p-4 text-xl hover:ring-4 border-[1px] border-blue-600  top-4 left-6"
+					"rounded-full to-blue-500 from-indigo-700 ease-in-out transition duration-300 bg-gradient-to-t hover:bg-gradient-to-l text-white fixed z-10 shadow-xl p-4 text-xl hover:ring-4 border-[1px] border-blue-600  top-2 left-0"
 				}>
 				<FaBars></FaBars>
 			</Button>
 			<div
 				// Fondo General //
 				onClick={(e) => dismissMenu(e)}
-				className='w-screen h-screen flex justify-center items-center to-orange-300  from-orange-500 bg-gradient-to-t  dark:bg-slate-900'>
+				className='w-screen h-screen flex justify-center items-center to-blue-300  from-green-300 bg-gradient-to-t  dark:bg-slate-900'>
 				<motion.div
 					// Primer Modal con boton agregar paciente
 					initial={{ opacity: 0 }}
 					animate={isMenuOpen ? variant.modalIn : variant.modalOut}
-					className='w-screen h-screen absolute z-20 bg-slate-400 bg-opacity-30 backdrop-blur-[1px]'>
+					className='w-screen h-screen absolute z-20 bg-slate-200 bg-opacity-70 backdrop-blur-[3px]'>
 					<motion.div
-						onClick={(e) => e.stopPropagation()}
-						initial={{ opacity: 0, width: 0, height: 0 }}
+						initial={{ opacity: 0 }}
 						animate={
 							isMenuOpen
 								? variant.modalPageIn
 								: variant.modalPageOut
 						}
-						className='w-[650px] h-[800px] bg-slate-100 relative top-4 left-6 shadow-xl rounded-lg'>
-						<Button addCSS={("m-2")} handlerClick={toggleFormPaciente}>
-							<FaPlus></FaPlus>&nbsp; Añadir Paciente
+						className='h-full w-full grid grid-cols-4 gap-4 grid-rows-5 px-24 py-16 relative  rounded-lg'>
+						<Button
+							addCSS='my-5 rounded-full transition hover:ring-[10px] ring-blue-400 bg-gradient-to-t px-4 py-3 text-xl flex flex-row justify-center items-center from-teal-600 to-green-400 border-0 shadow-xl'
+							handlerClick={toggleFormPaciente}>
+							<FaPlus></FaPlus> &nbsp;&nbsp; Añadir Paciente
 						</Button>
-						<Button handlerClick={toggleFormEstancia} addCSS={("m-2 bg-orange-400 hover:bg-orange-200 focus:ring-orange-200")}>
-							<FaRegCalendarPlus></FaRegCalendarPlus>&nbsp; Añadir Estancia
+						<Button addCSS='my-5 rounded-full transition hover:ring-[10px] ring-purple-400 bg-gradient-to-t px-4 py-3 text-xl flex flex-row justify-center items-center from-indigo-600 to-purple-400 border-0 shadow-xl'>
+							<FaPlus></FaPlus> &nbsp;&nbsp; Módulo Usuarios
 						</Button>
-						<Button handlerClick={toggleFormAcompañante} addCSS={("m-2 bg-purple-600 hover:bg-purple-400 focus:ring-purple-400")}>
-							<FaUsers></FaUsers>&nbsp; Añadir Acompañante
+						<Button addCSS='my-5 rounded-full transition hover:ring-[10px] ring-orange-400 bg-gradient-to-t px-4 py-3 text-xl flex flex-row justify-center items-center from-orange-500 to-yellow-400 border-0 shadow-xl'>
+							<FaPlus></FaPlus> &nbsp;&nbsp; Módulo Monitoreo
 						</Button>
 					</motion.div>
 				</motion.div>
-				<div className='w-[1300px] h-[800px] flex flex-col item p-6 bg-slate-100 drop-shadow-lg rounded-lg bg-opacity-90'>
+				<div className='w-[1100px] h-[700px] flex flex-col item p-6 bg-slate-100 drop-shadow-lg rounded-lg bg-opacity-90'>
 					<Input.icon
 						placeholder='Búsqueda de pacientes por nombre'
 						addCSS={{
@@ -106,38 +115,14 @@ function Home() {
 								<Table.Th>Edad</Table.Th>
 								<Table.Th>Estado</Table.Th>
 								<Table.Th>Municipio</Table.Th>
-								<Table.Th>Estatus</Table.Th>
+								<Table.Th>Télefono</Table.Th>
 								<Table.Th>Acciones</Table.Th>
 							</Table.Tr>
 						</Table.Header>
 						<Table.Body>
-							{listaPaciente &&
-								listaPaciente.map((fila) => {
-									number++;
-									return (
-										<Table.Tr key={"fila" + number}>
-											<Table.Td>{fila.name}</Table.Td>
-											<Table.Td>{fila.lastname}</Table.Td>
-											<Table.Td>{fila.age}</Table.Td>
-											<Table.Td>
-												{fila.state}
-											</Table.Td>
-											<Table.Td>{fila.city}</Table.Td>
-											<Table.Td>{fila.status}</Table.Td>
-											<Table.Td>
-												<Button
-													handlerClick={eliminarPaciente.bind(
-														this,
-														fila.identifier
-													)}
-													addCSS='bg-red-400 hover:bg-red-600 ring-red-300 px-2'
-													text='Borrar'>
-													<FaTrash></FaTrash>
-												</Button>
-											</Table.Td>
-										</Table.Tr>
-									);
-								})}
+							<Suspense fallback={<p>cargando...</p>}>
+								<PatientsList></PatientsList>
+							</Suspense>
 						</Table.Body>
 					</Table>
 				</div>

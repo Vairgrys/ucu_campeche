@@ -7,6 +7,7 @@ import { Login } from "./pages/Login";
 import { Home } from "./pages/Home";
 import { Despensa } from "./pages/Services/Despensa";
 import { Medicamentos } from "./pages/Services/Medicamentos";
+import { Testing } from "./pages/Testing";
 
 function App() {
 	return (
@@ -17,9 +18,10 @@ function App() {
 				<Route
 					path='/servicios/despensa'
 					element={<Despensa></Despensa>}></Route>
-				<Route path='/servicios/medicamentos' 
+				<Route
+					path='/servicios/medicamentos'
 					element={<Medicamentos></Medicamentos>}></Route>
-				<Route path='/*' element={<p>Pagina No Encontrada</p>}></Route>
+				<Route path='/*' element={<Home></Home>}></Route>
 			</Routes>
 		</BrowserRouter>
 	);

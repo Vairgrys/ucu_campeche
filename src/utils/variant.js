@@ -21,16 +21,12 @@ const variant = {
 	},
 	modalPageIn: {
 		opacity: 1,
-		height: "700px",
-		width: "550px",
 		transition: {
 			duration: 0.4,
 		},
 	},
 	modalPageOut: {
 		opacity: 0,
-		height: 0,
-		width: 0,
 		transition: {
 			duration: 0.4,
 		},
