@@ -21,6 +21,10 @@ function Home() {
 		toggleMenu(false);
 	};
 
+	dismissMenuPaciente = (e) => {
+		toggleFormPaciente(false);
+	};
+
 	return (
 		<>
 			<Button
@@ -47,7 +51,7 @@ function Home() {
 								? variant.modalPageIn
 								: variant.modalPageOut
 						}
-						className='w-[500px] h-[800px] bg-slate-100 relative top-4 left-6 shadow-xl rounded-lg'>
+						className='w-[650px] h-[800px] bg-slate-100 relative top-4 left-6 shadow-xl rounded-lg'>
 						<Button handlerClick={toggleFormPaciente}>
 							<FaPlus></FaPlus> Añadir Paciente
 						</Button>

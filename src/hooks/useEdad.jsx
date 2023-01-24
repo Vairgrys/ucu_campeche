@@ -4,6 +4,7 @@ function useEdad() {
 	const [age, setAge] = useState(0);
 
 	function updateAge(birthday) {
+
 		var fechaNa = new Date(birthday);
 		var hoy = new Date();
 
