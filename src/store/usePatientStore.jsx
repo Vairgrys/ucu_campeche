@@ -5,7 +5,7 @@ const usePatientStore = create((set, get) => ({
 	patients: [],
 	getPatients: async (nombre_completo = "") => {
 		await axios
-			.post("https://api-ucu-campeche/pacientes.php", {
+			.post("https://api.unacariciahumana.com/api/patients", {
 				task: "getPacientes",
 				data: {
 					nombre_completo: nombre_completo,

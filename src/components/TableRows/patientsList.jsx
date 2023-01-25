@@ -1,11 +1,16 @@
 import { useEffect } from "react";
-import { usePatientStore } from "../../store/patientStore";
+import { usePatientStore } from "../../store/usePatientStore";
+
+import Table from "../Tables";
+import Button from "../Buttons";
+import { FaTrash } from "react-icons/fa";
 
 const PatientsList = () => {
 	const [listaPacientes, getListaPacientes] = usePatientStore((state) => [
 		state.patients,
 		state.getPatients,
 	]);
+	var number = 0;
 
 	useEffect(() => {
 		getListaPacientes();
@@ -26,10 +31,6 @@ const PatientsList = () => {
 							<Table.Td>{fila.telefono}</Table.Td>
 							<Table.Td>
 								<Button
-									handlerClick={eliminarProducto.bind(
-										this,
-										fila.pkpaciente
-									)}
 									addCSS='bg-red-400 hover:bg-red-600 ring-red-300 px-2'
 									text='Borrar'>
 									<FaTrash></FaTrash>
@@ -42,4 +43,4 @@ const PatientsList = () => {
 	);
 };
 
-export { PatientsList };
+export default PatientsList;

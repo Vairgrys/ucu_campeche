@@ -18,14 +18,17 @@ import { FormularioEstancias } from "../components/Forms/FormularioEstancias";
 import { FormularioAcompañantes } from "../components/Forms/FormularioAcompañantes";
 
 import { useModal } from "../hooks/useModal";
-import { usePatientStore } from "../store/patientStore";
-import { PatientsList } from "../components/TableRows/patientsList";
+import { lazy } from "react";
+import { TableLoading } from "../components/Skeletons/TableLoading";
 
 function Home() {
 	const [isMenuOpen, toggleMenu] = useModal();
 	const [isFormPacienteOpen, toggleFormPaciente] = useModal();
 	const [isFormEstanciaOpen, toggleFormEstancia] = useModal();
 	const [isFormAcompañanteOpen, toggleFormAcompañante] = useModal();
+	const PatientsList = lazy(() =>
+		import("../components/TableRows/patientsList")
+	);
 
 	dismissMenu = (e) => {
 		e.stopPropagation();
@@ -80,16 +83,16 @@ function Home() {
 								? variant.modalPageIn
 								: variant.modalPageOut
 						}
-						className='h-full w-full grid grid-cols-4 gap-4 grid-rows-5 px-24 py-16 relative  rounded-lg'>
+						className='h-full w-full px-24 py-16 relative  rounded-lg'>
 						<Button
-							addCSS='my-5 rounded-full transition hover:ring-[10px] ring-blue-400 bg-gradient-to-t px-4 py-3 text-xl flex flex-row justify-center items-center from-teal-600 to-green-400 border-0 shadow-xl'
+							addCSS='my-5 rounded-full transition hover:ring-[10px] ring-blue-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-teal-600 to-green-400 border-0 shadow-xl'
 							handlerClick={toggleFormPaciente}>
 							<FaPlus></FaPlus> &nbsp;&nbsp; Añadir Paciente
 						</Button>
-						<Button addCSS='my-5 rounded-full transition hover:ring-[10px] ring-purple-400 bg-gradient-to-t px-4 py-3 text-xl flex flex-row justify-center items-center from-indigo-600 to-purple-400 border-0 shadow-xl'>
+						<Button addCSS='my-5 rounded-full transition hover:ring-[10px] ring-purple-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-indigo-600 to-purple-400 border-0 shadow-xl'>
 							<FaPlus></FaPlus> &nbsp;&nbsp; Módulo Usuarios
 						</Button>
-						<Button addCSS='my-5 rounded-full transition hover:ring-[10px] ring-orange-400 bg-gradient-to-t px-4 py-3 text-xl flex flex-row justify-center items-center from-orange-500 to-yellow-400 border-0 shadow-xl'>
+						<Button addCSS='my-5 rounded-full transition hover:ring-[10px] ring-orange-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-orange-500 to-yellow-400 border-0 shadow-xl'>
 							<FaPlus></FaPlus> &nbsp;&nbsp; Módulo Monitoreo
 						</Button>
 					</motion.div>
@@ -120,7 +123,10 @@ function Home() {
 							</Table.Tr>
 						</Table.Header>
 						<Table.Body>
-							<Suspense fallback={<p>cargando...</p>}>
+							<Suspense
+								fallback={
+									<TableLoading cols={7}></TableLoading>
+								}>
 								<PatientsList></PatientsList>
 							</Suspense>
 						</Table.Body>
