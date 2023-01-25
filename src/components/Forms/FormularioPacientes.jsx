@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { variant } from "../../utils/variant";
 import { useEdad } from "../../hooks/useEdad";
 import { FaPlus, FaTimes } from "react-icons/fa";
@@ -8,7 +8,11 @@ import Input from "../Inputs";
 import Select from "../Selects";
 
 function FormularioPacientes(props) {
-	const { isOpen = false, toggleIsOpen = () => {} } = props;
+	const {
+		isOpen = false,
+		toggleIsOpen = () => {},
+		dismissMenu = () => {},
+	} = props;
 
 	var identifier = 0;
 
@@ -31,47 +35,43 @@ function FormularioPacientes(props) {
 	const [isValid, setIsValid] = useState(false);
 	const [validMsg, setValidMsg] = useState("");
 	const [listaPaciente, setListaPaciente] = useState([]);
-	
+
 	useEffect(() => {
 		updateAge(birthday);
-	}, [birthday]); 
+	}, [birthday]);
 
 	function validarInputs(e) {
 		try {
-		if (name === "")
-			throw new Error("Por favor llene el campo nombre");
-		if (lastname === "") 
-			throw new Error("Por favor llene el campo apellido");
-		if (birthday === "") 
-			throw new Error("Por favor llene el campo cumpleaños");
-		if (phone === "") 
-			throw new Error("Por favor llene el campo teléfono");
-		if (sex === "") 
-			throw new Error("Por favor llene el campo género");
-		if (email === "") 
-			throw new Error("Por favor llene el campo correo");
-		if (scholarship === "") 
-			throw new Error("Por favor llene el campo escolaridad");
-		if (identity === "") 
-			throw new Error("Por favor llene el campo INE");
-		if (state === "") 
-			throw new Error("Por favor llene el campo país");
-		if (city === "") 
-			throw new Error("Por favor llene el campo estado");
-		if (location === "") 
-			throw new Error("Por favor llene el campo municipio");
-		if (address === "") 
-			throw new Error("Por favor llene el campo dirección");
-		if (diagnostic === "") 
-			throw new Error("Por favor llene el campo diagnostico");
-		if (status === "") 
-			throw new Error("Por favor llene el campo tratamiento");
+			if (name === "") throw new Error("Por favor llene el campo nombre");
+			if (lastname === "")
+				throw new Error("Por favor llene el campo apellido");
+			if (birthday === "")
+				throw new Error("Por favor llene el campo cumpleaños");
+			if (phone === "")
+				throw new Error("Por favor llene el campo teléfono");
+			if (sex === "") throw new Error("Por favor llene el campo género");
+			if (email === "")
+				throw new Error("Por favor llene el campo correo");
+			if (scholarship === "")
+				throw new Error("Por favor llene el campo escolaridad");
+			if (identity === "")
+				throw new Error("Por favor llene el campo INE");
+			if (state === "") throw new Error("Por favor llene el campo país");
+			if (city === "") throw new Error("Por favor llene el campo estado");
+			if (location === "")
+				throw new Error("Por favor llene el campo municipio");
+			if (address === "")
+				throw new Error("Por favor llene el campo dirección");
+			if (diagnostic === "")
+				throw new Error("Por favor llene el campo diagnostico");
+			if (status === "")
+				throw new Error("Por favor llene el campo tratamiento");
 
 			identifier++;
-		setListaPaciente([
-			...listaPaciente,
-	 		{ name, lastname, age, state, city, status },
-	 	]);
+			setListaPaciente([
+				...listaPaciente,
+				{ name, lastname, age, state, city, status },
+			]);
 
 			setIsValid(true);
 		} catch (err) {
@@ -94,31 +94,29 @@ function FormularioPacientes(props) {
 			Localidad: location,
 			Dirección: address,
 			Diagnóstico: diagnostic,
-			Tratamiento: status
+			Tratamiento: status,
 		};
 
-			//console.log(user);
+		//console.log(user);
 	}
 
 	return (
 		<motion.div
 			initial={{ opacity: 0 }}
-			animate={isOpen ? variant.modalIn : variant.modalOut}
-			className='w-screen h-screen fixed top-0 left-0 flex justify-center items-center z-30 bg-slate-400 bg-opacity-30 '>
+			animate={variant.modalIn}
+			exit={variant.modalOut}
+			className='w-screen h-screen fixed top-0 z-10 left-0 flex justify-center items-center bg-slate-400 backdrop-blur-sm bg-opacity-50 '>
 			<motion.div
 				initial={{
 					opacity: 0,
 				}}
-				animate={
-					isOpen
-						? variant.modalPageInPacientes
-						: variant.modalPageOutPacientes
-				}
+				animate={variant.modalPageInPacientes}
+				exit={variant.modalPageOutPacientes}
 				onClick={(e) => e.stopPropagation()}
-				className=' px-10 py-6 w-[650px] h-auto flex flex-col absolute bg-slate-50 shadow-xl rounded-lg'>
+				className=' px-10 py-6 w-[650px] min-h-[500px] h-auto flex flex-col absolute bg-slate-50 shadow-xl rounded-lg'>
 				<Button
-					handlerClick={() => {
-						toggleIsOpen(false);
+					handlerClick={(e) => {
+						dismissMenu(e);
 					}}
 					addCSS={
 						"absolute right-2 top-2 p-2 border-0 hover:border-0 hover:bg-slate-50 hover:text-red-400 text-slate-400 bg-slate-50 hover:focus:ring-0"
@@ -129,15 +127,12 @@ function FormularioPacientes(props) {
 					<h1 className='text-orange-500 flex flex-row items-center font-medium text-2xl w-full'>
 						AGREGAR PACIENTE
 					</h1>
-				<div className='flex ml-2 items-center w-full'>
+					<div className='flex ml-2 items-center w-full'>
 						{!isValid && (
-							<p className='text-red-500 font-bold'>
-								{validMsg}
-							</p>
+							<p className='text-red-500 font-bold'>{validMsg}</p>
 						)}
 					</div>
 				</div>
-
 
 				<div className='flex w-full mb-2'>
 					<div className='flex flex-col w-full m-1'>
@@ -164,28 +159,39 @@ function FormularioPacientes(props) {
 						<label className='text-slate-600'>
 							Fecha de Nacimiento
 						</label>
-						<Input.datepicker value={birthday} setBirthday={setBirthday}></Input.datepicker>
+						<Input.datepicker
+							value={birthday}
+							setBirthday={setBirthday}></Input.datepicker>
 					</div>
-					
+
 					<div className='flex flex-col w-1/3 m-1'>
 						<label className='text-slate-600'>Edad</label>
 						<div className='flex h-8'>
-							<Input addCSS={
-						"p-0"}
-						disabled={true} value={age}></Input>
+							<Input
+								addCSS={"p-0"}
+								disabled={true}
+								value={age}></Input>
 						</div>
 					</div>
 					<div className='flex flex-col w-4/5 m-1'>
 						<label className='text-slate-600'>Género</label>
 						<div className='flex h-8 justify-center'>
-							<Select value={sex} handlerChange={setSex} addCSS={"p-0 pl-2 border-2 border-slate-200"}>
-								<Select.options disabled={true} selected={true}>Selecciona tu género</Select.options>
-								<Select.options value='Masculino'>Masculino</Select.options>	
-								<Select.options value='Femenino'>Femenino</Select.options>
+							<Select
+								value={sex}
+								handlerChange={setSex}
+								addCSS={"p-0 pl-2 border-2 border-slate-200"}>
+								<Select.options defaultValue={true}>
+									Selecciona tu género
+								</Select.options>
+								<Select.options value='Masculino'>
+									Masculino
+								</Select.options>
+								<Select.options value='Femenino'>
+									Femenino
+								</Select.options>
 							</Select>
 						</div>
 					</div>
-
 				</div>
 				<div className='flex mb-2'>
 					<div className='flex flex-col w-full m-1'>
@@ -198,7 +204,7 @@ function FormularioPacientes(props) {
 						</div>
 					</div>
 
-						<div className='flex flex-col w-full m-1'>
+					<div className='flex flex-col w-full m-1'>
 						<label className='text-slate-600'>Correo</label>
 						<div className='flex h-8'>
 							<Input
@@ -209,8 +215,8 @@ function FormularioPacientes(props) {
 					</div>
 				</div>
 
-					<div className='flex mb-2'>
-						<div className='flex flex-col w-full m-1'>
+				<div className='flex mb-2'>
+					<div className='flex flex-col w-full m-1'>
 						<label className='text-slate-600'>Escolaridad</label>
 						<div className='flex h-8'>
 							<Input
@@ -218,8 +224,8 @@ function FormularioPacientes(props) {
 								handlerChange={setScholarship}
 								value={scholarship}></Input>
 						</div>
-						</div>
-						<div className='flex flex-col w-full m-1'>
+					</div>
+					<div className='flex flex-col w-full m-1'>
 						<label className='text-slate-600'>INE</label>
 						<div className='flex h-8'>
 							<Input
@@ -227,8 +233,8 @@ function FormularioPacientes(props) {
 								handlerChange={setIdentity}
 								value={identity}></Input>
 						</div>
-						</div>
 					</div>
+				</div>
 
 				<div className='flex w-full mb-2'>
 					<div className='flex-col w-full m-1'>
@@ -291,16 +297,25 @@ function FormularioPacientes(props) {
 					</div>
 				</div>
 
-
 				<br className='m-4' />
 				<div className='flex h-1/4 justify-center items-center w-full'>
 					<div className='flex'>
-						<Button handlerClick={validarInputs} addCSS={"bg-purple-600 hover:bg-purple-400 focus:ring-violet-300"}>
+						<Button
+							handlerClick={validarInputs}
+							addCSS={
+								"bg-purple-600 hover:bg-purple-400 focus:ring-violet-300"
+							}>
 							<FaPlus></FaPlus>&nbsp;&nbsp; Agregar
 						</Button>
 					</div>
 					<div className='flex'>
-						<Button handlerClick={(e) => dismissMenuPaciente(e)} addCSS={"bg-slate-400 hover:bg-slate-300 focus:ring-slate-300"}>
+						<Button
+							handlerClick={() => {
+								toggleIsOpen(false);
+							}}
+							addCSS={
+								"bg-slate-400 hover:bg-slate-300 focus:ring-slate-300"
+							}>
 							<FaTimes></FaTimes>&nbsp;&nbsp; Cancelar
 						</Button>
 					</div>
