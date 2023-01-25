@@ -1,8 +1,5 @@
-import React, { useState } from "react";
 import { twMerge } from "tailwind-merge";
-
 import * as React from "react";
-import { twMerge } from "tailwind-merge";
 
 function Select(props) {
 	const { addCSS = {}, handlerChange = () => {}} = props;
@@ -18,7 +15,7 @@ function Select(props) {
 }
 
 function Options(props) {
-	const { addCSS = {}, disabled='', selected='' } = props;
+	const { addCSS = {}, disabled='', selected=''} = props;
 	return(
 		<option 
 		className={twMerge(

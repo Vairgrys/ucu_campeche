@@ -68,7 +68,7 @@ function Login() {
 								<FaLock></FaLock>
 							</Input.icon>
 							<div className='flex mt-6 flex-row justify-end'>
-								<Button handlerClick={iniciarSesion}>
+								<Button>
 										Iniciar sesión
 									</Button>
 								<Button

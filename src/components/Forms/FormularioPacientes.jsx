@@ -6,7 +6,6 @@ import { FaPlus, FaTimes } from "react-icons/fa";
 import Button from "../Buttons";
 import Input from "../Inputs";
 import Select from "../Selects";
-import { useActionData } from "react-router-dom";
 
 function FormularioPacientes(props) {
 	const { isOpen = false, toggleIsOpen = () => {} } = props;
@@ -98,7 +97,7 @@ function FormularioPacientes(props) {
 			Tratamiento: status
 		};
 
-			console.log(user);
+			//console.log(user);
 	}
 
 	return (

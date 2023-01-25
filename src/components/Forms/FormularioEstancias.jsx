@@ -1,12 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { variant } from "../../utils/variant";
-import { useEdad } from "../../hooks/useEdad";
 import { FaPlus, FaTimes } from "react-icons/fa";
 import Button from "../Buttons";
 import Input from "../Inputs";
-import Select from "../Selects";
-import { useActionData } from "react-router-dom";
 
 function FormularioEstancias(props) {
 	const { isOpen = false, toggleIsOpen = () => {} } = props;
@@ -14,7 +11,7 @@ function FormularioEstancias(props) {
 	const [validMsg, setValidMsg] = useState("");
 
 	const [fechaTermino, setFechaTermino] = useState("");
-	const [horaTermino, setHoraTermino] = useState("");
+	const [horaTermino, setHoraTermino] = useState("12:00 PM");
 
     function validarInputsEstancia(e) {
 		try {
@@ -36,7 +33,7 @@ function FormularioEstancias(props) {
 		HoradeTermino: horaTermino
 	}
 
-	console.log(estancia);
+	//console.log(estancia);
 
 	return (
 		<motion.div

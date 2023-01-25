@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { variant } from "../../utils/variant";
 import { useEdad } from "../../hooks/useEdad";
@@ -6,7 +6,6 @@ import { FaPlus, FaTimes } from "react-icons/fa";
 import Button from "../Buttons";
 import Input from "../Inputs";
 import Select from "../Selects";
-import { useActionData } from "react-router-dom";
 
 function FormularioAcompañantes(props) {
 	const { isOpen = false, toggleIsOpen = () => {} } = props;
@@ -17,10 +16,15 @@ function FormularioAcompañantes(props) {
 	const [nameAcom, setNameAcom] = useState('');
 	const [lastnameAcom, setLastNameAcom] = useState('');
 	const [birthdayAcom, setBirthdayAcom] = useState('');
+	const [ageAcom, updateAgeAcom] = useEdad();
 	const [scholarshipAcom, setScholarShipAcom] = useState('');
 	const [sexAcom, setSexAcom] = useState('');
 	const [phoneAcom, setPhoneAcom] = useState('');
 	const [relationshipAcom, setRelationshipAcom] = useState('');
+
+	useEffect(() => {
+		updateAgeAcom(birthdayAcom);
+	}, [birthdayAcom]); 
 
 
 	function validarInputsAcompañantes(e) {
@@ -58,7 +62,7 @@ function FormularioAcompañantes(props) {
 		ParentescoAcompañante: relationshipAcom
 	}
 
-	console.log(Acompañante)
+	//console.log(Acompañante)
 
 	return (
 		<motion.div
@@ -122,7 +126,7 @@ function FormularioAcompañantes(props) {
 					<div className="m-1">
 						<label>Edad</label>
 						<div className="flex h-8">
-						<Input placeholder="Edad"></Input>
+						<Input value={ageAcom} disabled={true} placeholder="Edad"></Input>
 						</div>
 					</div>
 				</div>

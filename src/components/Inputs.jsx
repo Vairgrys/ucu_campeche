@@ -1,4 +1,4 @@
-import React, { useState, createRef, useEffect} from "react";
+import React, { useState, createRef, useEffect, useCallback} from "react";
 import { twMerge } from "tailwind-merge";
 
 import { TimepickerUI } from 'timepicker-ui';
@@ -70,7 +70,7 @@ function InputIcon(props) {
 function InputDatepicker(props) {
 
 	const {
-		birthday = '',
+		value = '',
 		setBirthday = (event) => {},
 	} = props;
 
@@ -110,7 +110,7 @@ function InputDatepicker(props) {
 			<Datepicker datepicker-buttons options={options} 
 				onChange={handleChange} 
 				show={show} 
-				value={birthday}
+				value={value}
 				setShow={handleClose} />
 		</div>
 	)
@@ -148,35 +148,36 @@ function InputTextArea(props) {
 }
 
 function InputTime(props) {
-	const [inputValue, setInputValue] = useState("12:00 PM");
 	const {
+		value = '',
+		handlerChange = () => {},
  		addCSS = {
 			time: "",
 		},
 	} = props;
-
     
   	tmRef = createRef(null);
 
-  handleAccept = ({ detail: { hour, minutes, type } }) => {
-    setInputValue(`${hour}:${minutes} ${type}`);
-  };
-
+	const handleChange = useCallback(({ detail: { hour, minutes, type } }) => {
+    	handlerChange(`${hour}:${minutes} ${type}`);
+  	}, []);
 
   useEffect(() => {
-	   const tm = new TimepickerUI(tmRef.current, {theme: 'crane-radius',});
-    	tm.create();
-    	tmRef.current.addEventListener("accept", handleAccept);
-    	tmRef.current.removeEventListener("accept", handleAccept);
-  }, [])
-
+    const tm = tmRef.current;
+    const newPicker = new TimepickerUI(tm, {theme: 'm3'});
+    newPicker.create();
+    tm.addEventListener("accept", handleChange);
+    return () => {
+      tm.removeEventListener("accept", handleChange);
+    };
+  }, []);
+	
     return (
-      <div className="timepicker-ui flex h-8" ref={tmRef}>
+      <div className="timepicker-ui flex h-8 text-center" ref={tmRef}>
         <input
           type="test"
-          className={twMerge(`bg-white w-full pl-2 flex border-slate-300 border-[1px] rounded-lg timepicker-ui-input ${addCSS.time}`)}
-          onChange={setInputValue}
-		  defaultValue={inputValue}
+          className={twMerge(`bg-white w-full pl-2 text-center flex border-slate-300 border-[1px] rounded-lg ${addCSS.time}`)}
+		  defaultValue={value}
         />
       </div>
     )
