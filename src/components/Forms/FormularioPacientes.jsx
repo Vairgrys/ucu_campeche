@@ -2,16 +2,14 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { variant } from "../../utils/variant";
 import { useEdad } from "../../hooks/useEdad";
-import { FaPlus, FaTimes } from "react-icons/fa";
+import { FaPlus, FaUndo, FaTimes } from "react-icons/fa";
 import Button from "../Buttons";
 import Input from "../Inputs";
 import Select from "../Selects";
 
 function FormularioPacientes(props) {
 	const {
-		isOpen = false,
 		toggleIsOpen = () => {},
-		dismissMenu = () => {},
 	} = props;
 
 	var identifier = 0;
@@ -43,23 +41,20 @@ function FormularioPacientes(props) {
 	function validarInputs(e) {
 		try {
 			if (name === "") throw new Error("Por favor llene el campo nombre");
-			if (lastname === "")
-				throw new Error("Por favor llene el campo apellido");
-			if (birthday === "")
-				throw new Error("Por favor llene el campo cumpleaños");
-			if (phone === "")
-				throw new Error("Por favor llene el campo teléfono");
-			if (sex === "") throw new Error("Por favor llene el campo género");
+			if (lastname === "") throw new Error("Por favor llene el campo apellido");
+			if (birthday === "") throw new Error("Por favor llene el campo fecha de nacimiento");
+			if (sex === '') throw new Error("Por favor llene el campo género");
+			if (phone === "") throw new Error("Por favor llene el campo teléfono");
 			if (email === "")
 				throw new Error("Por favor llene el campo correo");
 			if (scholarship === "")
 				throw new Error("Por favor llene el campo escolaridad");
 			if (identity === "")
 				throw new Error("Por favor llene el campo INE");
-			if (state === "") throw new Error("Por favor llene el campo país");
-			if (city === "") throw new Error("Por favor llene el campo estado");
+			if (state === "") throw new Error("Por favor llene el campo estado");
+			if (city === "") throw new Error("Por favor llene el campo municipio");
 			if (location === "")
-				throw new Error("Por favor llene el campo municipio");
+				throw new Error("Por favor llene el campo localidad");
 			if (address === "")
 				throw new Error("Por favor llene el campo dirección");
 			if (diagnostic === "")
@@ -116,7 +111,7 @@ function FormularioPacientes(props) {
 				className=' px-10 py-6 w-[650px] min-h-[500px] h-auto flex flex-col absolute bg-slate-50 shadow-xl rounded-lg'>
 				<Button
 					handlerClick={(e) => {
-						dismissMenu(e);
+						dismissMenuPaciente(e);
 					}}
 					addCSS={
 						"absolute right-2 top-2 p-2 border-0 hover:border-0 hover:bg-slate-50 hover:text-red-400 text-slate-400 bg-slate-50 hover:focus:ring-0"
@@ -124,7 +119,7 @@ function FormularioPacientes(props) {
 					<FaTimes></FaTimes>
 				</Button>
 				<div className='flex mb-2 '>
-					<h1 className='text-orange-500 flex flex-row items-center font-medium text-2xl w-full'>
+					<h1 className='text-orange-500 flex flex-row items-center font-medium text-2xl w-3/4'>
 						AGREGAR PACIENTE
 					</h1>
 					<div className='flex ml-2 items-center w-full'>
@@ -180,7 +175,7 @@ function FormularioPacientes(props) {
 								value={sex}
 								handlerChange={setSex}
 								addCSS={"p-0 pl-2 border-2 border-slate-200"}>
-								<Select.options defaultValue={true}>
+								<Select.options selected={true} disabled={true} defaultValue={true}>
 									Selecciona tu género
 								</Select.options>
 								<Select.options value='Masculino'>
@@ -250,7 +245,7 @@ function FormularioPacientes(props) {
 						<label className='text-slate-600'>Municipio</label>
 						<div className='flex h-8'>
 							<Input
-								placeholder='Ingresar ciudad'
+								placeholder='Ingresar municipio'
 								handlerChange={setCity}
 								value={city}></Input>
 						</div>
@@ -316,7 +311,7 @@ function FormularioPacientes(props) {
 							addCSS={
 								"bg-slate-400 hover:bg-slate-300 focus:ring-slate-300"
 							}>
-							<FaTimes></FaTimes>&nbsp;&nbsp; Cancelar
+							<FaUndo></FaUndo>&nbsp;&nbsp; Regresar
 						</Button>
 					</div>
 				</div>
