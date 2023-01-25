@@ -8,9 +8,7 @@ import Input from "../Inputs";
 import Select from "../Selects";
 
 function FormularioPacientes(props) {
-	const {
-		toggleIsOpen = () => {},
-	} = props;
+	const { toggleIsOpen = () => {}, dismissMenu = () => {} } = props;
 
 	var identifier = 0;
 
@@ -41,18 +39,23 @@ function FormularioPacientes(props) {
 	function validarInputs(e) {
 		try {
 			if (name === "") throw new Error("Por favor llene el campo nombre");
-			if (lastname === "") throw new Error("Por favor llene el campo apellido");
-			if (birthday === "") throw new Error("Por favor llene el campo fecha de nacimiento");
-			if (sex === '') throw new Error("Por favor llene el campo género");
-			if (phone === "") throw new Error("Por favor llene el campo teléfono");
+			if (lastname === "")
+				throw new Error("Por favor llene el campo apellido");
+			if (birthday === "")
+				throw new Error("Por favor llene el campo fecha de nacimiento");
+			if (sex === "") throw new Error("Por favor llene el campo género");
+			if (phone === "")
+				throw new Error("Por favor llene el campo teléfono");
 			if (email === "")
 				throw new Error("Por favor llene el campo correo");
 			if (scholarship === "")
 				throw new Error("Por favor llene el campo escolaridad");
 			if (identity === "")
 				throw new Error("Por favor llene el campo INE");
-			if (state === "") throw new Error("Por favor llene el campo estado");
-			if (city === "") throw new Error("Por favor llene el campo municipio");
+			if (state === "")
+				throw new Error("Por favor llene el campo estado");
+			if (city === "")
+				throw new Error("Por favor llene el campo municipio");
 			if (location === "")
 				throw new Error("Por favor llene el campo localidad");
 			if (address === "")
@@ -111,7 +114,7 @@ function FormularioPacientes(props) {
 				className=' px-10 py-6 w-[650px] min-h-[500px] h-auto flex flex-col absolute bg-slate-50 shadow-xl rounded-lg'>
 				<Button
 					handlerClick={(e) => {
-						dismissMenuPaciente(e);
+						dismissMenu(e);
 					}}
 					addCSS={
 						"absolute right-2 top-2 p-2 border-0 hover:border-0 hover:bg-slate-50 hover:text-red-400 text-slate-400 bg-slate-50 hover:focus:ring-0"
@@ -175,7 +178,10 @@ function FormularioPacientes(props) {
 								value={sex}
 								handlerChange={setSex}
 								addCSS={"p-0 pl-2 border-2 border-slate-200"}>
-								<Select.options selected={true} disabled={true} defaultValue={true}>
+								<Select.options
+									selected={true}
+									disabled={true}
+									defaultValue={true}>
 									Selecciona tu género
 								</Select.options>
 								<Select.options value='Masculino'>
