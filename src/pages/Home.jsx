@@ -38,24 +38,18 @@ function Home() {
 	};
 
 	dismissMenuPaciente = (e) => {
-		e.stopPropagation();
-		e.preventDefault();
 		toggleFormPaciente(false);
 		toggleMenu(false);
 	};
 
 	dismissMenuEstancia = (e) => {
-		e.stopPropagation();
-		e.preventDefault();
 		toggleFormEstancia(false);
-		toggleMenu(false);
+		toggleMenu(true);
 	};
 
 	dismissMenuAcompañante = (e) => {
-		e.stopPropagation();
-		e.preventDefault();
 		toggleFormAcompañante(false);
-		toggleMenu(false);
+		toggleMenu(true);
 	};
 
 	const [listaPaciente, setListaPaciente] = useState([]);
@@ -161,15 +155,15 @@ function Home() {
 				<FormularioEstancias
 					key='formularioEstancias'
 					isOpen={isFormEstanciaOpen}
-					dismissMenu={dismissMenuEstancia}
 					toggleIsOpen={toggleFormEstancia}></FormularioEstancias>
 				)}
 				{isFormAcompañanteOpen && (
 				<FormularioAcompañantes
 					key='formularioAcompañantes'
 					isOpen={isFormAcompañanteOpen}
-					dismissMenu={dismissMenuAcompañante}
-					toggleIsOpen={toggleFormAcompañante}></FormularioAcompañantes>
+					toggleIsOpen={
+						toggleFormAcompañante
+					}></FormularioAcompañantes>
 				)}
 			</AnimatePresence>
 		</>

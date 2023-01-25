@@ -34,9 +34,9 @@ function FormularioAcompañantes(props) {
 		if (lastnameAcom === "") 
 			throw new Error("Por favor llene el campo apellido");
 		if (birthdayAcom === "") 
-			throw new Error("Por favor llene el campo fecha de nacimiento");
+			throw new Error("Por favor llene el campo cumpleaños");
 		if (scholarshipAcom === "") 
-			throw new Error("Por favor llene el campo escolaridad");
+			throw new Error("Por favor llene el campo teléfono");
 		if (sexAcom === "") 
 			throw new Error("Por favor llene el campo género");
 		if (phoneAcom === "") 
@@ -67,20 +67,22 @@ function FormularioAcompañantes(props) {
 	return (
 		<motion.div
 			initial={{ opacity: 0 }}
-			animate={variant.modalIn}
-			exit={variant.modalOut}
+			animate={isOpen ? variant.modalIn : variant.modalOut}
 			className='w-screen h-screen fixed top-0 left-0 flex justify-center items-center z-30 bg-slate-400 bg-opacity-30 '>
 			<motion.div
 				initial={{
 					opacity: 0,
 				}}
-				animate={variant.modalPageInAcompañantes}
-				exit={variant.modalPageOutAcompañantes}
+				animate={
+					isOpen
+						? variant.modalPageInAcompañantes
+						: variant.modalPageOutAcompañantes
+				}
 				onClick={(e) => e.stopPropagation()}
 				className=' px-10 py-6 w-[650px] h-auto flex flex-col absolute bg-slate-50 shadow-xl rounded-lg'>
 				<Button
-					handlerClick={(e) => {
-						dismissMenuAcompañante(e);
+					handlerClick={() => {
+						toggleIsOpen(false);
 					}}
 					addCSS={
 						"absolute right-2 top-2 p-2 border-0 hover:border-0 hover:bg-slate-50 hover:text-red-400 text-slate-400 bg-slate-50 hover:focus:ring-0"
@@ -171,7 +173,7 @@ function FormularioAcompañantes(props) {
 						</Button>
 					</div>
 					<div className='flex'>
-						<Button handlerClick={() => {toggleIsOpen(false);}} addCSS={"bg-slate-400 hover:bg-slate-300 focus:ring-slate-300"}>
+						<Button handlerClick={(e) => dismissMenuAcompañante(e)} addCSS={"bg-slate-400 hover:bg-slate-300 focus:ring-slate-300"}>
 							<FaUndo></FaUndo>&nbsp;&nbsp; Regresar
 						</Button>
 					</div>

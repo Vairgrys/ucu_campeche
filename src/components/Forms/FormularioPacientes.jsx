@@ -2,13 +2,17 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { variant } from "../../utils/variant";
 import { useEdad } from "../../hooks/useEdad";
-import { FaPlus, FaUndo, FaTimes } from "react-icons/fa";
+import { FaPlus, FaTimes, FaUndo } from "react-icons/fa";
 import Button from "../Buttons";
 import Input from "../Inputs";
 import Select from "../Selects";
 
 function FormularioPacientes(props) {
-	const { toggleIsOpen = () => {}, dismissMenu = () => {} } = props;
+	const {
+		isOpen = false,
+		toggleIsOpen = () => {},
+		dismissMenu = () => {},
+	} = props;
 
 	var identifier = 0;
 
@@ -42,22 +46,20 @@ function FormularioPacientes(props) {
 			if (lastname === "")
 				throw new Error("Por favor llene el campo apellido");
 			if (birthday === "")
-				throw new Error("Por favor llene el campo fecha de nacimiento");
-			if (sex === "") throw new Error("Por favor llene el campo género");
+				throw new Error("Por favor llene el campo cumpleaños");
 			if (phone === "")
 				throw new Error("Por favor llene el campo teléfono");
+			if (sex === "") throw new Error("Por favor llene el campo género");
 			if (email === "")
 				throw new Error("Por favor llene el campo correo");
 			if (scholarship === "")
 				throw new Error("Por favor llene el campo escolaridad");
 			if (identity === "")
 				throw new Error("Por favor llene el campo INE");
-			if (state === "")
-				throw new Error("Por favor llene el campo estado");
-			if (city === "")
-				throw new Error("Por favor llene el campo municipio");
+			if (state === "") throw new Error("Por favor llene el campo país");
+			if (city === "") throw new Error("Por favor llene el campo estado");
 			if (location === "")
-				throw new Error("Por favor llene el campo localidad");
+				throw new Error("Por favor llene el campo municipio");
 			if (address === "")
 				throw new Error("Por favor llene el campo dirección");
 			if (diagnostic === "")
@@ -122,7 +124,7 @@ function FormularioPacientes(props) {
 					<FaTimes></FaTimes>
 				</Button>
 				<div className='flex mb-2 '>
-					<h1 className='text-orange-500 flex flex-row items-center font-medium text-2xl w-3/4'>
+					<h1 className='text-orange-500 flex flex-row items-center font-medium text-2xl w-full'>
 						AGREGAR PACIENTE
 					</h1>
 					<div className='flex ml-2 items-center w-full'>
@@ -178,10 +180,7 @@ function FormularioPacientes(props) {
 								value={sex}
 								handlerChange={setSex}
 								addCSS={"p-0 pl-2 border-2 border-slate-200"}>
-								<Select.options
-									selected={true}
-									disabled={true}
-									defaultValue={true}>
+								<Select.options defaultValue={true}>
 									Selecciona tu género
 								</Select.options>
 								<Select.options value='Masculino'>
@@ -251,7 +250,7 @@ function FormularioPacientes(props) {
 						<label className='text-slate-600'>Municipio</label>
 						<div className='flex h-8'>
 							<Input
-								placeholder='Ingresar municipio'
+								placeholder='Ingresar ciudad'
 								handlerChange={setCity}
 								value={city}></Input>
 						</div>

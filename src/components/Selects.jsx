@@ -17,11 +17,10 @@ function Select(props) {
 }
 
 function Options(props) {
-	const { addCSS = {}, selected = "", disabled = "", defaultValue = "" } = props;
+	const { addCSS = {}, disabled = "", defaultValue = "" } = props;
 	return (
 		<option
 			className={twMerge(` ${addCSS}`)}
-			selected={selected}
 			disabled={disabled}
 			defaultValue={defaultValue}>
 			{props.children}
