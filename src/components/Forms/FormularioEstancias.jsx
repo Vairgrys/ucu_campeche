@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { variant } from "../../utils/variant";
 import { useEdad } from "../../hooks/useEdad";
@@ -14,9 +14,9 @@ function FormularioEstancias(props) {
 	const [validMsg, setValidMsg] = useState("");
 
 	const [fechaTermino, setFechaTermino] = useState("");
-	//const [horaTermino, setHoraTermino] = useState("");
+	const [horaTermino, setHoraTermino] = useState("");
 
-    function validarInputs(e) {
+    function validarInputsEstancia(e) {
 		try {
 		if (fechaTermino === "")
 			throw new Error("Por favor seleccione la fecha de termino");
@@ -31,6 +31,12 @@ function FormularioEstancias(props) {
 		}
 	}
 
+	var estancia = {
+		FechadeTermino: fechaTermino,
+		HoradeTermino: horaTermino
+	}
+
+	console.log(estancia);
 
 	return (
 		<motion.div
@@ -79,7 +85,7 @@ function FormularioEstancias(props) {
 							<div className="pl-2">
 								<label>Hora de Termino</label>
 								<div className="flex w-full">
-								<Input.time></Input.time>
+								<Input.time value={horaTermino} handlerChange={setHoraTermino}></Input.time>
 								</div>
 								<hr className='mt-6 w-1/2' />
 								<h4 className="pt-2 col-span-3 text-sm text-slate-400 mb-5">Hora/Minutos</h4>
@@ -88,7 +94,7 @@ function FormularioEstancias(props) {
 				<br className='m-4' />
 				<div className='flex h-1/4 justify-center items-center w-full'>
 					<div className='flex'>
-						<Button addCSS={"bg-red-600 hover:bg-red-400 focus:ring-red-300"}>
+						<Button handlerClick={validarInputsEstancia} addCSS={"bg-red-600 hover:bg-red-400 focus:ring-red-300"}>
 							<FaPlus></FaPlus>&nbsp;&nbsp; Finalizar
 						</Button>
 					</div>

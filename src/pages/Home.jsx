@@ -1,15 +1,17 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useState } from "react";
 
 import Table from "../components/Tables";
 import Input from "../components/Inputs";
 import Button from "../components/Buttons";
 
 import { variant } from "../utils/variant";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import {
 	FaBars,
 	FaPlus,
 	FaSearch,
+	FaTv,
+	FaUser,
 	FaUsers,
 	FaRegCalendarPlus,
 } from "react-icons/fa";
@@ -38,14 +40,17 @@ function Home() {
 
 	dismissMenuPaciente = (e) => {
 		toggleFormPaciente(false);
+		toggleMenu(true);
 	};
 
 	dismissMenuEstancia = (e) => {
 		toggleFormEstancia(false);
+		toggleMenu(true);
 	};
 
 	dismissMenuAcompañante = (e) => {
 		toggleFormAcompañante(false);
+		toggleMenu(true);
 	};
 
 	const [listaPaciente, setListaPaciente] = useState([]);
@@ -85,15 +90,21 @@ function Home() {
 						}
 						className='h-full w-full px-24 py-16 relative  rounded-lg'>
 						<Button
-							addCSS='my-5 rounded-full transition hover:ring-[10px] ring-blue-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-teal-600 to-green-400 border-0 shadow-xl'
+							addCSS='my-5 rounded-full transition hover:ring-[10px] ring-green-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-teal-600 to-green-400 border-0 shadow-xl'
 							handlerClick={toggleFormPaciente}>
 							<FaPlus></FaPlus> &nbsp;&nbsp; Añadir Paciente
 						</Button>
-						<Button addCSS='my-5 rounded-full transition hover:ring-[10px] ring-purple-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-indigo-600 to-purple-400 border-0 shadow-xl'>
-							<FaPlus></FaPlus> &nbsp;&nbsp; Módulo Usuarios
+						<Button addCSS='my-5 rounded-full transition hover:ring-[10px] ring-blue-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-blue-600 to-cyan-400 border-0 shadow-xl'>
+							<FaUser></FaUser> &nbsp;&nbsp; Módulo Usuarios
 						</Button>
-						<Button addCSS='my-5 rounded-full transition hover:ring-[10px] ring-orange-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-orange-500 to-yellow-400 border-0 shadow-xl'>
-							<FaPlus></FaPlus> &nbsp;&nbsp; Módulo Monitoreo
+						<Button addCSS='my-5 rounded-full transition hover:ring-[10px] ring-yellow-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-yellow-500 to-amber-400 border-0 shadow-xl'>
+							<FaTv></FaTv> &nbsp;&nbsp; Módulo Monitoreo
+						</Button>
+						<Button handlerClick={toggleFormAcompañante} addCSS='my-5 rounded-full transition hover:ring-[10px] ring-purple-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-indigo-600 to-purple-400 border-0 shadow-xl'>
+							<FaUsers></FaUsers> &nbsp;&nbsp; Registrar Acompañantes
+						</Button>
+						<Button handlerClick={toggleFormEstancia} addCSS='my-5 rounded-full transition hover:ring-[10px] ring-orange-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-orange-500 to-yellow-400 border-0 shadow-xl'>
+							<FaRegCalendarPlus></FaRegCalendarPlus> &nbsp;&nbsp; Módulo Estancias
 						</Button>
 					</motion.div>
 				</motion.div>

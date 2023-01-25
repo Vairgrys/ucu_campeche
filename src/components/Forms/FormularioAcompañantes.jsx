@@ -48,6 +48,18 @@ function FormularioAcompañantes(props) {
 		}
 	}
 
+	var Acompañante = {
+		NombreAcompañante: nameAcom,
+		ApellidoAcompañante: lastnameAcom,
+		FechaNacimientoAcompañante: birthdayAcom,
+		EscolaridadAcompañante: scholarshipAcom,
+		GéneroAcompañante: sexAcom,
+		TeléfonoAcompañante: phoneAcom,
+		ParentescoAcompañante: relationshipAcom
+	}
+
+	console.log(Acompañante)
+
 	return (
 		<motion.div
 			initial={{ opacity: 0 }}
@@ -105,7 +117,7 @@ function FormularioAcompañantes(props) {
 				<div className='flex w-full mb-2'>
 					<div className='w-full m-1'>
 						<label>Fecha de Nacimiento</label>
-						<Input.datepicker value={birthdayAcom} handlerChange={setBirthdayAcom}></Input.datepicker>
+						<Input.datepicker value={birthdayAcom} setBirthday={setBirthdayAcom}></Input.datepicker>
 					</div>
 					<div className="m-1">
 						<label>Edad</label>
@@ -124,8 +136,8 @@ function FormularioAcompañantes(props) {
 					</div>
 					<div className="w-full m-1">
 						<label>Sexo</label>
-						<div value={sexAcom} handlerChange={setSexAcom} className="flex h-8">
-						<Select addCSS={"p-0 pl-2 border-2 border-slate-200"}>
+						<div className="flex h-8">
+						<Select value={sexAcom} handlerChange={setSexAcom} addCSS={"p-0 pl-2 border-2 border-slate-200"}>
 								<Select.options disabled={true} selected={true}>Selecciona tu género</Select.options>
 								<Select.options value='Masculino'>Masculino</Select.options>	
 								<Select.options value='Femenino'>Femenino</Select.options>
@@ -137,14 +149,14 @@ function FormularioAcompañantes(props) {
 				<div className='flex w-full mb-2'>
 					<div className='w-full m-1'>
 						<label>Teléfono</label>
-						<div value={phoneAcom} handlerChange={setPhoneAcom}className="flex h-8">
-						<Input placeholder="Ingresa teléfono"></Input>
+						<div className="flex h-8">
+						<Input value={phoneAcom} handlerChange={setPhoneAcom} placeholder="Ingresa teléfono"></Input>
 						</div>
 					</div>
 					<div className="w-full m-1">
 						<label>Parentesco</label>
 						<div className="flex h-8">
-						<Input value={relationshipAcom} handlerChange={setRelationshipAcom}placeholder="Ingresa parentesco"></Input>
+						<Input value={relationshipAcom} handlerChange={setRelationshipAcom} placeholder="Ingresa parentesco"></Input>
 						</div>
 					</div>
 				</div>

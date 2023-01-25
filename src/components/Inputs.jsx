@@ -71,17 +71,17 @@ function InputDatepicker(props) {
 
 	const {
 		birthday = '',
-		handlerChange = (e) => {},
+		setBirthday = (event) => {},
 	} = props;
 
 	const options = {
 	title: "Fecha de Nacimiento",
 	autoHide: true,
-	todayBtn: true,
+	todayBtn: false,
 	maxDate: new Date(),
 	minDate: new Date("1900-01-01"),
 	theme: {
-		background: "bg-slate-100 dark:bg-slate-50",
+		background: "bg-white",
 		todayBtn: "",
 		clearBtn: "",
 		icons: "",
@@ -101,10 +101,14 @@ function InputDatepicker(props) {
 		setShow(state)
 	}
 
+	function handleChange(event){
+		setBirthday(event)
+	}
+
 	return (
 		<div>
 			<Datepicker datepicker-buttons options={options} 
-				onChange={handlerChange} 
+				onChange={handleChange} 
 				show={show} 
 				value={birthday}
 				setShow={handleClose} />
@@ -144,13 +148,13 @@ function InputTextArea(props) {
 }
 
 function InputTime(props) {
+	const [inputValue, setInputValue] = useState("12:00 PM");
 	const {
-		addCSS = {
+ 		addCSS = {
 			time: "",
 		},
 	} = props;
 
-	const [inputValue, setInputValue] = useState("12:00 PM");
     
   	tmRef = createRef(null);
 
@@ -160,7 +164,7 @@ function InputTime(props) {
 
 
   useEffect(() => {
-	   const tm = new TimepickerUI(tmRef.current, {theme: 'crane-straight',});
+	   const tm = new TimepickerUI(tmRef.current, {theme: 'crane-radius',});
     	tm.create();
     	tmRef.current.addEventListener("accept", handleAccept);
     	tmRef.current.removeEventListener("accept", handleAccept);
@@ -171,7 +175,8 @@ function InputTime(props) {
         <input
           type="test"
           className={twMerge(`bg-white w-full pl-2 flex border-slate-300 border-[1px] rounded-lg timepicker-ui-input ${addCSS.time}`)}
-          defaultValue={inputValue}
+          onChange={setInputValue}
+		  defaultValue={inputValue}
         />
       </div>
     )
