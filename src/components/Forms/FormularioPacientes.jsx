@@ -18,7 +18,8 @@ function FormularioPacientes(props) {
 
 	const [name, setName] = useState("");
 	const [lastname, setLastName] = useState("");
-	const [birthday, setBirthday] = useState("");
+	const [birthday, setBirthday] = useState(new Date());
+	const [formatBirthday, setFormatBirthday] = useState("");
 	const [age, updateAge] = useEdad();
 	const [phone, setPhone] = useState("");
 	const [sex, setSex] = useState("");
@@ -38,6 +39,7 @@ function FormularioPacientes(props) {
 
 	useEffect(() => {
 		updateAge(birthday);
+		setFormatBirthday(birthday.toISOString());
 	}, [birthday]);
 
 	function validarInputs(e) {
@@ -46,20 +48,21 @@ function FormularioPacientes(props) {
 			if (lastname === "")
 				throw new Error("Por favor llene el campo apellido");
 			if (birthday === "")
-				throw new Error("Por favor llene el campo cumpleaños");
+				throw new Error("Por favor llene el campo fecha de nacimiento");
+			if (sex === "") throw new Error("Por favor llene el campo género");
 			if (phone === "")
 				throw new Error("Por favor llene el campo teléfono");
-			if (sex === "") throw new Error("Por favor llene el campo género");
 			if (email === "")
 				throw new Error("Por favor llene el campo correo");
 			if (scholarship === "")
 				throw new Error("Por favor llene el campo escolaridad");
 			if (identity === "")
 				throw new Error("Por favor llene el campo INE");
-			if (state === "") throw new Error("Por favor llene el campo país");
-			if (city === "") throw new Error("Por favor llene el campo estado");
+			if (state === "")
+				throw new Error("Por favor llene el campo estado");
+			if (city === "") throw new Error("Por favor llene el campo ciudad");
 			if (location === "")
-				throw new Error("Por favor llene el campo municipio");
+				throw new Error("Por favor llene el campo localidad");
 			if (address === "")
 				throw new Error("Por favor llene el campo dirección");
 			if (diagnostic === "")
@@ -81,23 +84,23 @@ function FormularioPacientes(props) {
 		}
 
 		var user = {
-			Nombre: name,
-			Apellido: lastname,
-			Cumpleaños: birthday,
-			Teléfono: phone,
-			Sexo: sex,
-			Correo: email,
-			Escolaridad: scholarship,
-			INE: identity,
-			Estado: state,
-			Municipio: city,
-			Localidad: location,
-			Dirección: address,
-			Diagnóstico: diagnostic,
-			Tratamiento: status,
+			nombre: name,
+			apellido: lastname,
+			fechaNacimiento: formatBirthday,
+			telefono: phone,
+			sexo: sex,
+			correo: email,
+			escolaridad: scholarship,
+			ine: identity,
+			estado: state,
+			municipio: city,
+			localidad: location,
+			direccion: address,
+			diagnostico: diagnostic,
+			tratamiento: status,
 		};
 
-		//console.log(user);
+		console.log(user);
 	}
 
 	return (
@@ -124,7 +127,7 @@ function FormularioPacientes(props) {
 					<FaTimes></FaTimes>
 				</Button>
 				<div className='flex mb-2 '>
-					<h1 className='text-orange-500 flex flex-row items-center font-medium text-2xl w-full'>
+					<h1 className='text-orange-500 flex flex-row items-center font-medium text-2xl w-3/4'>
 						AGREGAR PACIENTE
 					</h1>
 					<div className='flex ml-2 items-center w-full'>
@@ -174,19 +177,19 @@ function FormularioPacientes(props) {
 						</div>
 					</div>
 					<div className='flex flex-col w-4/5 m-1'>
-						<label className='text-slate-600'>Género</label>
+						<label className='text-slate-600'>Sexo</label>
 						<div className='flex h-8 justify-center'>
 							<Select
 								value={sex}
 								handlerChange={setSex}
 								addCSS={"p-0 pl-2 border-2 border-slate-200"}>
 								<Select.options defaultValue={true}>
-									Selecciona tu género
+									Selecciona tu sexo
 								</Select.options>
-								<Select.options value='Masculino'>
+								<Select.options value='M'>
 									Masculino
 								</Select.options>
-								<Select.options value='Femenino'>
+								<Select.options value='F'>
 									Femenino
 								</Select.options>
 							</Select>

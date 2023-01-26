@@ -34,22 +34,10 @@ function Home() {
 	dismissMenu = (e) => {
 		e.stopPropagation();
 		e.preventDefault();
-		toggleMenu(false);
-	};
-
-	dismissMenuPaciente = (e) => {
 		toggleFormPaciente(false);
-		toggleMenu(false);
-	};
-
-	dismissMenuEstancia = (e) => {
 		toggleFormEstancia(false);
-		toggleMenu(true);
-	};
-
-	dismissMenuAcompañante = (e) => {
 		toggleFormAcompañante(false);
-		toggleMenu(true);
+		toggleMenu(false);
 	};
 
 	const [listaPaciente, setListaPaciente] = useState([]);
@@ -148,22 +136,24 @@ function Home() {
 					<FormularioPacientes
 						key='formularioPacientes'
 						isOpen={isFormPacienteOpen}
-						dismissMenu={dismissMenuPaciente}
+						dismissMenu={dismissMenu}
 						toggleIsOpen={toggleFormPaciente}></FormularioPacientes>
 				)}
 				{isFormEstanciaOpen && (
-				<FormularioEstancias
-					key='formularioEstancias'
-					isOpen={isFormEstanciaOpen}
-					toggleIsOpen={toggleFormEstancia}></FormularioEstancias>
+					<FormularioEstancias
+						key='formularioEstancias'
+						isOpen={isFormEstanciaOpen}
+						dismissMenu={dismissMenu}
+						toggleIsOpen={toggleFormEstancia}></FormularioEstancias>
 				)}
 				{isFormAcompañanteOpen && (
-				<FormularioAcompañantes
-					key='formularioAcompañantes'
-					isOpen={isFormAcompañanteOpen}
-					toggleIsOpen={
-						toggleFormAcompañante
-					}></FormularioAcompañantes>
+					<FormularioAcompañantes
+						key='formularioAcompañantes'
+						isOpen={isFormAcompañanteOpen}
+						dismissMenu={dismissMenu}
+						toggleIsOpen={
+							toggleFormAcompañante
+						}></FormularioAcompañantes>
 				)}
 			</AnimatePresence>
 		</>
