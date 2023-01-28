@@ -6,6 +6,7 @@ import { FaPlus, FaTimes, FaUndo } from "react-icons/fa";
 import Button from "../Buttons";
 import Input from "../Inputs";
 import Select from "../Selects";
+import { usePatientStore } from "../../store/usePatientStore";
 
 function FormularioPacientes(props) {
 	const {
@@ -14,7 +15,10 @@ function FormularioPacientes(props) {
 		dismissMenu = () => {},
 	} = props;
 
-	var identifier = 0;
+	const [savePatient, requestPatients] = usePatientStore((state) => [
+		state.savePatient,
+		state.requestPatients,
+	]);
 
 	const [name, setName] = useState("");
 	const [lastname, setLastName] = useState("");
@@ -70,7 +74,6 @@ function FormularioPacientes(props) {
 			if (status === "")
 				throw new Error("Por favor llene el campo tratamiento");
 
-			identifier++;
 			setListaPaciente([
 				...listaPaciente,
 				{ name, lastname, age, state, city, status },
@@ -83,13 +86,14 @@ function FormularioPacientes(props) {
 			setValidMsg(err.message);
 		}
 
-		var user = {
+		var patient = {
 			nombre: name,
 			apellido: lastname,
-			fechaNacimiento: formatBirthday,
+			fechaNacimiento: "1997-08-27",
 			telefono: phone,
 			sexo: sex,
 			correo: email,
+			edad: age,
 			escolaridad: scholarship,
 			ine: identity,
 			estado: state,
@@ -100,7 +104,13 @@ function FormularioPacientes(props) {
 			tratamiento: status,
 		};
 
-		console.log(user);
+		savePatient(patient, (response) => {
+			if (response.data?.status && response.data.status == true) {
+				// mensaje si se pudo guardar
+				alert(response.data?.msg);
+				requestPatients();
+			}
+		});
 	}
 
 	return (
@@ -173,7 +183,7 @@ function FormularioPacientes(props) {
 							<Input
 								addCSS={"p-0"}
 								disabled={true}
-								value={age}></Input>
+								value={age + " años"}></Input>
 						</div>
 					</div>
 					<div className='flex flex-col w-4/5 m-1'>

@@ -4,7 +4,6 @@ function useEdad() {
 	const [age, setAge] = useState(0);
 
 	function updateAge(birthday) {
-
 		var fechaNa = new Date(birthday);
 		var hoy = new Date();
 
@@ -22,7 +21,7 @@ function useEdad() {
 			edad--;
 		}
 
-		setAge(isNaN(edad) ? "?" : edad + ' años');
+		setAge(isNaN(edad) ? "?" : edad);
 	}
 
 	return [age, updateAge];

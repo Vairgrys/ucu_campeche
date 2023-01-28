@@ -3,12 +3,22 @@ import axios from "axios";
 
 const usePatientStore = create((set, get) => ({
 	patients: [],
-	getPatients: async (nombre_completo = "") => {
+	savePatient: async (data, callback = () => {}) => {
 		await axios
 			.post("https://api.unacariciahumana.com/api/patients", {
-				task: "getPacientes",
+				task: "setPatient",
 				data: {
-					nombre_completo: nombre_completo,
+					...data,
+				},
+			})
+			.then((response) => callback(response));
+	},
+	requestPatients: async (fullname = "") => {
+		await axios
+			.post("https://api.unacariciahumana.com/api/patients", {
+				task: "getPatients",
+				data: {
+					fullname: fullname,
 				},
 			})
 			.then((response) => set({ patients: response.data }));

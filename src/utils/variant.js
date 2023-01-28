@@ -3,7 +3,7 @@ const variant = {
 		opacity: 1,
 		display: "flex",
 		transition: {
-			duration: 0.4,
+			duration: 0.2,
 			delayChildren: 0.5,
 			staggerChildren: 0.3,
 		},
@@ -14,7 +14,7 @@ const variant = {
 			display: "none",
 		},
 		transition: {
-			duration: 0.4,
+			duration: 0.2,
 			delayChildren: 0.5,
 			staggerChildren: 0.2,
 		},
@@ -22,13 +22,13 @@ const variant = {
 	modalPageIn: {
 		opacity: 1,
 		transition: {
-			duration: 0.4,
+			duration: 0.2,
 		},
 	},
 	modalPageOut: {
 		opacity: 0,
 		transition: {
-			duration: 0.4,
+			duration: 0.2,
 		},
 	},
 	modalPageInPacientes: {
