@@ -18,6 +18,7 @@ import {
 import { FormularioPacientes } from "../components/Forms/FormularioPacientes";
 import { FormularioEstancias } from "../components/Forms/FormularioEstancias";
 import { FormularioAcompañantes } from "../components/Forms/FormularioAcompañantes";
+import { FormularioUsuarios } from "../components/Forms/FormularioUsuarios";
 
 import { useModal } from "../hooks/useModal";
 import { lazy } from "react";
@@ -30,6 +31,7 @@ function Home() {
 	const [isFormPacienteOpen, toggleFormPaciente] = useModal();
 	const [isFormEstanciaOpen, toggleFormEstancia] = useModal();
 	const [isFormAcompañanteOpen, toggleFormAcompañante] = useModal();
+	const [isFormUsuarioOpen, toggleFormUsuario] = useModal();
 
 	dismissMenu = (e) => {
 		e.stopPropagation();
@@ -37,6 +39,7 @@ function Home() {
 		toggleFormPaciente(false);
 		toggleFormEstancia(false);
 		toggleFormAcompañante(false);
+		toggleFormUsuario(false);
 		toggleMenu(false);
 	};
 
@@ -112,7 +115,9 @@ function Home() {
 						handlerClick={toggleFormPaciente}>
 						<FaPlus></FaPlus> &nbsp;&nbsp; Añadir Paciente
 					</Button>
-					<Button addCSS='my-5 rounded-full transition hover:ring-[10px] ring-blue-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-blue-600 to-cyan-400 border-0 shadow-xl'>
+					<Button
+						handlerClick={toggleFormUsuario}
+						addCSS='my-5 rounded-full transition hover:ring-[10px] ring-blue-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-blue-600 to-cyan-400 border-0 shadow-xl'>
 						<FaUser></FaUser> &nbsp;&nbsp; Módulo Usuarios
 					</Button>
 					<Button addCSS='my-5 rounded-full transition hover:ring-[10px] ring-yellow-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-yellow-500 to-amber-400 border-0 shadow-xl'>
@@ -139,12 +144,12 @@ function Home() {
 						dismissMenu={dismissMenu}
 						toggleIsOpen={toggleFormPaciente}></FormularioPacientes>
 				)}
-				{isFormEstanciaOpen && (
-					<FormularioEstancias
-						key='formularioEstancias'
-						isOpen={isFormEstanciaOpen}
+				{isFormUsuarioOpen && (
+					<FormularioUsuarios
+						key='formularioUsuarios'
+						isOpen={isFormUsuarioOpen}
 						dismissMenu={dismissMenu}
-						toggleIsOpen={toggleFormEstancia}></FormularioEstancias>
+						toggleIsOpen={toggleFormUsuario}></FormularioUsuarios>
 				)}
 				{isFormAcompañanteOpen && (
 					<FormularioAcompañantes
@@ -154,6 +159,13 @@ function Home() {
 						toggleIsOpen={
 							toggleFormAcompañante
 						}></FormularioAcompañantes>
+				)}
+				{isFormEstanciaOpen && (
+					<FormularioEstancias
+						key='formularioEstancias'
+						isOpen={isFormEstanciaOpen}
+						dismissMenu={dismissMenu}
+						toggleIsOpen={toggleFormEstancia}></FormularioEstancias>
 				)}
 			</AnimatePresence>
 		</>

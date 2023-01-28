@@ -1,9 +1,11 @@
-import React, { useState, createRef, useEffect, useCallback} from "react";
+import React, { useState, createRef, useEffect, useCallback } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { TimepickerUI } from 'timepicker-ui';
+import { TimepickerUI } from "timepicker-ui";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 
-import Datepicker from "tailwind-datepicker-react"
+import Datepicker from "tailwind-datepicker-react";
 
 function Input(props) {
 	const {
@@ -22,9 +24,8 @@ function Input(props) {
 			type={type}
 			value={value}
 			disabled={disabled}
-
 			onChange={(event) => {
-				handlerChange(event.target.value);
+				handlerChange(event.target.value.toUpperCase());
 			}}
 			placeholder={placeholder}
 			className={twMerge(
@@ -68,57 +69,72 @@ function InputIcon(props) {
 }
 
 function InputDatepicker(props) {
-
-	const {
-		value = '',
-		setBirthday = (event) => {},
-	} = props;
+	const { value = "", setBirthday = (event) => {} } = props;
 
 	const options = {
-	title: "Fecha de Nacimiento",
-	autoHide: true,
-	todayBtn: false,
-	maxDate: new Date(),
-	minDate: new Date("1900-01-01"),
-	theme: {
-		background: "bg-white",
-		todayBtn: "",
-		clearBtn: "",
-		icons: "",
-		text: "text-slate-600",
-		disabledText: "bg-slate-100 text-slate-300",
-		input: "bg-white placeholder:text-slate-300 h-8",
-		inputIcon: "",
-		selected: "text-slate-50",
-	},
-	datepickerClassNames: "",
-	defaultDate: new Date(),
-	language: "es",
-}
+		title: "Fecha de Nacimiento",
+		autoHide: true,
+		todayBtn: false,
+		maxDate: new Date(),
+		minDate: new Date("1900-01-01"),
+		theme: {
+			background: "bg-white",
+			todayBtn: "",
+			clearBtn: "",
+			icons: "",
+			text: "text-slate-600",
+			disabledText: "bg-slate-100 text-slate-300",
+			input: "bg-white placeholder:text-slate-300 h-8",
+			inputIcon: "",
+			selected: "text-slate-50",
+		},
+		datepickerClassNames: "",
+		defaultDate: new Date(),
+		language: "es",
+	};
 
 	const [show, setShow] = useState(false);
 	const handleClose = (state) => {
-		setShow(state)
-	}
+		setShow(state);
+	};
 
-	function handleChange(event){
-		setBirthday(event)
+	function handleChange(event) {
+		setBirthday(event);
 	}
 
 	return (
 		<div>
-			<Datepicker datepicker-buttons options={options} 
-				onChange={handleChange} 
-				show={show} 
+			<Datepicker
+				datepicker-buttons
+				options={options}
+				onChange={handleChange}
+				show={show}
 				value={value}
-				setShow={handleClose} />
+				setShow={handleClose}
+			/>
 		</div>
-	)
-
+	);
 }
 
-function InputMike() {
-	return <></>;
+function InputPhone(props) {
+	const {
+		value = "",
+		handlerChange = () => {},
+		addCSS = {
+			phone: "",
+		},
+	} = props;
+
+	return (
+		<PhoneInput
+			international
+			defaultCountry='MX'
+			placeholder='Ingresa el número telefónico'
+			maxLength='16'
+			value={value}
+			onChange={handlerChange}
+		/>
+	);
 }
 
 function InputTextArea(props) {
@@ -137,7 +153,7 @@ function InputTextArea(props) {
 			type={type}
 			value={value}
 			onChange={(event) => {
-				handlerChange(event.target.value);
+				handlerChange(event.target.value.toUpperCase());
 			}}
 			placeholder={placeholder}
 			className={twMerge(
@@ -149,42 +165,43 @@ function InputTextArea(props) {
 
 function InputTime(props) {
 	const {
-		value = '',
+		value = "",
 		handlerChange = () => {},
- 		addCSS = {
+		addCSS = {
 			time: "",
 		},
 	} = props;
-    
-  	tmRef = createRef(null);
+
+	tmRef = createRef(null);
 
 	const handleChange = useCallback(({ detail: { hour, minutes, type } }) => {
-    	handlerChange(`${hour}:${minutes} ${type}`);
-  	}, []);
+		handlerChange(`${hour}:${minutes} ${type}`);
+	}, []);
 
-  useEffect(() => {
-    const tm = tmRef.current;
-    const newPicker = new TimepickerUI(tm, {theme: 'm3'});
-    newPicker.create();
-    tm.addEventListener("accept", handleChange);
-    return () => {
-      tm.removeEventListener("accept", handleChange);
-    };
-  }, []);
-	
-    return (
-      <div className="timepicker-ui flex h-8 text-center" ref={tmRef}>
-        <input
-          type="test"
-          className={twMerge(`bg-white w-full pl-2 text-center flex border-slate-300 border-[1px] rounded-lg ${addCSS.time}`)}
-		  defaultValue={value}
-        />
-      </div>
-    )
-	
+	useEffect(() => {
+		const tm = tmRef.current;
+		const newPicker = new TimepickerUI(tm, { theme: "m3" });
+		newPicker.create();
+		tm.addEventListener("accept", handleChange);
+		return () => {
+			tm.removeEventListener("accept", handleChange);
+		};
+	}, []);
+
+	return (
+		<div className='timepicker-ui flex h-8 text-center' ref={tmRef}>
+			<input
+				type='test'
+				className={twMerge(
+					`bg-white w-full pl-2 text-center flex border-slate-300 border-[1px] rounded-lg ${addCSS.time}`
+				)}
+				defaultValue={value}
+			/>
+		</div>
+	);
 }
 
-Input.Mike = InputMike;
+Input.phone = InputPhone;
 Input.icon = InputIcon;
 Input.datepicker = InputDatepicker;
 Input.textarea = InputTextArea;

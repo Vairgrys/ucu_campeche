@@ -7,6 +7,7 @@ import Button from "../Buttons";
 import Input from "../Inputs";
 import Select from "../Selects";
 import { usePatientStore } from "../../store/usePatientStore";
+import moment from "moment";
 
 function FormularioPacientes(props) {
 	const {
@@ -43,7 +44,8 @@ function FormularioPacientes(props) {
 
 	useEffect(() => {
 		updateAge(birthday);
-		setFormatBirthday(birthday.toISOString());
+		var momentDate = moment(birthday);
+		setFormatBirthday(momentDate.format("YYYY-MM-DD"));
 	}, [birthday]);
 
 	function validarInputs(e) {
@@ -53,7 +55,7 @@ function FormularioPacientes(props) {
 				throw new Error("Por favor llene el campo apellido");
 			if (birthday === "")
 				throw new Error("Por favor llene el campo fecha de nacimiento");
-			if (sex === "") throw new Error("Por favor llene el campo género");
+			if (sex === "") throw new Error("Por favor llene el campo sexo");
 			if (phone === "")
 				throw new Error("Por favor llene el campo teléfono");
 			if (email === "")
@@ -64,7 +66,8 @@ function FormularioPacientes(props) {
 				throw new Error("Por favor llene el campo INE");
 			if (state === "")
 				throw new Error("Por favor llene el campo estado");
-			if (city === "") throw new Error("Por favor llene el campo ciudad");
+			if (city === "")
+				throw new Error("Por favor llene el campo municipio");
 			if (location === "")
 				throw new Error("Por favor llene el campo localidad");
 			if (address === "")
@@ -89,7 +92,7 @@ function FormularioPacientes(props) {
 		var patient = {
 			nombre: name,
 			apellido: lastname,
-			fechaNacimiento: "1997-08-27",
+			fechaNacimiento: formatBirthday,
 			telefono: phone,
 			sexo: sex,
 			correo: email,
@@ -103,6 +106,8 @@ function FormularioPacientes(props) {
 			diagnostico: diagnostic,
 			tratamiento: status,
 		};
+
+		console.log(patient);
 
 		savePatient(patient, (response) => {
 			if (response.data?.status && response.data.status == true) {
@@ -210,10 +215,10 @@ function FormularioPacientes(props) {
 					<div className='flex flex-col w-full m-1'>
 						<label className='text-slate-600'>Teléfono</label>
 						<div className='flex h-8'>
-							<Input
+							<Input.phone
 								placeholder='Ingresar teléfono'
 								handlerChange={setPhone}
-								value={phone}></Input>
+								value={phone}></Input.phone>
 						</div>
 					</div>
 
@@ -221,6 +226,7 @@ function FormularioPacientes(props) {
 						<label className='text-slate-600'>Correo</label>
 						<div className='flex h-8'>
 							<Input
+								type='email'
 								placeholder='Ingresar correo electrónico'
 								handlerChange={setEmail}
 								value={email}></Input>

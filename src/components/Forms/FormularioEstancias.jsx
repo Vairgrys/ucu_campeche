@@ -10,14 +10,14 @@ function FormularioEstancias(props) {
 	const [isValid, setIsValid] = useState(false);
 	const [validMsg, setValidMsg] = useState("");
 
-	const [fechaTermino, setFechaTermino] = useState("");
-	const [horaTermino, setHoraTermino] = useState("");
+	const [fechaT, setFechaT] = useState("");
+	const [horaT, setHoraT] = useState("");
 
 	function validarInputsEstancia(e) {
 		try {
-			if (fechaTermino === "")
+			if (fechaT === "")
 				throw new Error("Por favor seleccione la fecha de termino");
-			if (horaTermino === "")
+			if (horaT === "")
 				throw new Error("Por favor seleccione la hora de termino");
 
 			setIsValid(true);
@@ -29,8 +29,8 @@ function FormularioEstancias(props) {
 	}
 
 	var estancia = {
-		fechaTermino: fechaTermino,
-		horaTermino: horaTermino,
+		fechaTermino: fechaT,
+		horaTermino: horaT,
 	};
 
 	console.log(estancia);
@@ -72,8 +72,8 @@ function FormularioEstancias(props) {
 					<div className='w-full'>
 						<label>Fecha de Termino</label>
 						<Input.datepicker
-							value={fechaTermino}
-							setBirthday={setFechaTermino}></Input.datepicker>
+							value={fechaT}
+							setBirthday={setFechaT}></Input.datepicker>
 						<hr className='mt-6 w-1/2' />
 						<h4 className='pt-2 col-span-3 text-sm text-slate-400 mb-5'>
 							Año/Mes/Día
@@ -83,8 +83,8 @@ function FormularioEstancias(props) {
 						<label>Hora de Termino</label>
 						<div className='flex w-full'>
 							<Input.time
-								value={horaTermino}
-								handlerChange={setHoraTermino}></Input.time>
+								value={horaT}
+								handlerChange={setHoraT}></Input.time>
 						</div>
 						<hr className='mt-6 w-1/2' />
 						<h4 className='pt-2 col-span-3 text-sm text-slate-400 mb-5'>

@@ -37,7 +37,7 @@ function FormularioAcompañantes(props) {
 			if (scholarshipAcom === "")
 				throw new Error("Por favor llene el campo escolaridad");
 			if (sexAcom === "")
-				throw new Error("Por favor llene el campo género");
+				throw new Error("Por favor llene el campo sexo");
 			if (phoneAcom === "")
 				throw new Error("Por favor llene el campo teléfono");
 			if (relationshipAcom === "")
@@ -129,7 +129,7 @@ function FormularioAcompañantes(props) {
 						<label>Edad</label>
 						<div className='flex h-8'>
 							<Input
-								value={ageAcom}
+								value={ageAcom + "años"}
 								disabled={true}
 								placeholder='Edad'></Input>
 						</div>
@@ -153,7 +153,7 @@ function FormularioAcompañantes(props) {
 								value={sexAcom}
 								handlerChange={setSexAcom}
 								addCSS={"p-0 pl-2 border-2 border-slate-200"}>
-								<Select.options disabled={true} selected={true}>
+								<Select.options defaultValue={true}>
 									Selecciona tu sexo
 								</Select.options>
 								<Select.options value='Masculino'>
