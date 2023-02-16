@@ -1,15 +1,15 @@
 import { twMerge } from "tailwind-merge";
 
 function Table(props) {
-	const { addCSS = {} } = props;
+	const { className = {} } = props;
 	return (
 		<div
 			className={twMerge(
-				`relative overflow-x-auto shadow-md sm:rounded-lg ${addCSS?.container}`
+				`relative overflow-x-auto shadow-md sm:rounded-lg ${className?.container}`
 			)}>
 			<table
 				className={twMerge(
-					`w-full text-sm text-left text-gray-500 dark:text-gray-400 ${addCSS?.table}`
+					`w-full text-sm text-left text-gray-500 dark:text-gray-400 ${className?.table}`
 				)}>
 				{props.children}
 			</table>
@@ -19,7 +19,11 @@ function Table(props) {
 
 function Header(props) {
 	return (
-		<thead className='text-xs top-0 sticky text-white uppercase bg-green-500 dark:bg-gray-700 dark:text-gray-400'>
+		<thead
+			className={twMerge(
+				"text-xs top-0 sticky text-white uppercase bg-green-500 dark:bg-gray-700 dark:text-gray-400",
+				props.className
+			)}>
 			{props.children}
 		</thead>
 	);
@@ -38,7 +42,11 @@ function Th(props) {
 }
 
 function Td(props) {
-	return <td className='px-6 py-4 bg-slate-100'>{props.children}</td>;
+	return (
+		<td className={twMerge("px-2 py-2 bg-slate-100", props.className)}>
+			{props.children}
+		</td>
+	);
 }
 
 function Tr(props) {

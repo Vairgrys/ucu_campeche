@@ -87,7 +87,7 @@ function Medicamentos() {
 							<label className='text-slate-600'>Código</label>
 							<Input.icon
 								handlerChange={setCode}
-								addCSS={{
+								className={{
 									input: "tracking-widest text-slate-700 font-bold",
 								}}
 								value={code}>
@@ -135,7 +135,7 @@ function Medicamentos() {
 						</h4>
 					</div>
 					<Table
-						addCSS={{
+						className={{
 							container: "h-auto shadow-lg ",
 							table: "h-full ",
 						}}>
@@ -166,7 +166,7 @@ function Medicamentos() {
 														this,
 														fila.identifier
 													)}
-													addCSS='bg-red-500 hover:bg-red-600 ring-red-300 px-2'
+													className='bg-red-500 hover:bg-red-600 ring-red-300 px-2'
 													text='Borrar'>
 													<FaTrash></FaTrash>
 												</Button>
@@ -178,7 +178,7 @@ function Medicamentos() {
 					</Table>
 					<div className='flex justify-end mt-6 right-2'>
 						<Button
-							addCSS='flex order-last bg-red-500 hover:bg-red-600 ring-red-300'
+							className='flex order-last bg-red-500 hover:bg-red-600 ring-red-300'
 							text='Generar'>
 							<FaFilePdf></FaFilePdf>
 							&nbsp;&nbsp; Generar PDF

@@ -15,7 +15,7 @@ function Input(props) {
 		maxlength = "",
 		type = "text",
 		handlerChange = () => {},
-		addCSS = {
+		className = {
 			input: "",
 		},
 	} = props;
@@ -24,14 +24,16 @@ function Input(props) {
 		<input
 			type={type}
 			value={value}
-			disabled={disabled}
+			readOnly={disabled}
 			onChange={(event) => {
 				handlerChange(event.target.value.toUpperCase());
 			}}
 			maxLength={maxlength}
 			placeholder={placeholder}
 			className={twMerge(
-				`rounded-lg border-[1px] border-slate-300 placeholder:text-slate-300 text-slate-600 w-full dark:bg-gray-700 dark:text-blue ${addCSS.input}`
+				`rounded-lg border-[1px] text-sm border-slate-300 placeholder:text-slate-300 text-slate-600 w-full dark:bg-gray-700 dark:text-blue ${
+					disabled ? "cursor-text" : ""
+				} ${className.input}`
 			)}
 		/>
 	);
@@ -43,7 +45,7 @@ function InputIcon(props) {
 		placeholder = "",
 		type = "text",
 		handlerChange = () => {},
-		addCSS = {
+		className = {
 			input: "",
 		},
 	} = props;
@@ -62,7 +64,7 @@ function InputIcon(props) {
 					value={value}
 					placeholder={placeholder}
 					className={twMerge(
-						`rounded-lg border-[1px] text-slate-600 font-medium border-slate-300 p-2.5 pl-10 w-full ${addCSS.input}`
+						`rounded-lg border-[1px] text-slate-600 font-medium border-slate-300 p-2.5 pl-10 w-full ${className.input}`
 					)}
 				/>
 			</div>
@@ -143,7 +145,7 @@ function InputTextArea(props) {
 		placeholder = "",
 		type = "textarea",
 		handlerChange = () => {},
-		addCSS = {
+		className = {
 			input: "",
 		},
 	} = props;
@@ -157,7 +159,7 @@ function InputTextArea(props) {
 			}}
 			placeholder={placeholder}
 			className={twMerge(
-				`rounded-lg border-[1px] placeholder:text-slate-300 text-slate-600 border-slate-300 resize-none pl-10 p-2.5 w-full h-full ${addCSS.input}`
+				`rounded-lg border-[1px] placeholder:text-slate-300 text-slate-600 border-slate-300 resize-none pl-10 p-2.5 w-full h-full ${className.input}`
 			)}
 		/>
 	);
@@ -168,7 +170,7 @@ function InputTime(props) {
 		value = "12:00",
 		handlerChange = () => {},
 		placeholder = "Selecciona la Hora",
-		addCSS = {
+		className = {
 			time: "",
 		},
 	} = props;
@@ -200,7 +202,7 @@ function InputTime(props) {
 			<input
 				type='test'
 				className={twMerge(
-					`timepicker-ui-input p-2 rounded-lg border-[1px] border-slate-300 placeholder:text-slate-300 text-slate-600 w-full dark:bg-gray-700 dark:text-blue h-8 ${addCSS}`
+					`timepicker-ui-input p-2 rounded-lg border-[1px] border-slate-300 placeholder:text-slate-300 text-slate-600 w-full dark:bg-gray-700 dark:text-blue h-8 ${className}`
 				)}
 				placeholder={placeholder}
 				defaultValue={value}

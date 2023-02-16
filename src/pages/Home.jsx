@@ -24,7 +24,7 @@ import { useModal } from "../hooks/useModal";
 import { lazy } from "react";
 import { TableLoading } from "../components/Skeletons/TableLoading";
 
-const PatientsList = lazy(() => import("../components/TableRows/patientsList"));
+const PatientsList = lazy(() => import("../components/TableRows/PatientsList"));
 
 function Home() {
 	const [isMenuOpen, toggleMenu] = useModal();
@@ -61,14 +61,14 @@ function Home() {
 				<div className='w-[1100px] h-[700px] flex flex-col item p-6 bg-slate-100 drop-shadow-lg rounded-lg bg-opacity-90'>
 					<Input.icon
 						placeholder='Búsqueda de pacientes por nombre'
-						addCSS={{
+						className={{
 							input: "bg-opacity-70 bg-slate-100 border-[2px] w-96",
 						}}>
 						<FaSearch></FaSearch>
 					</Input.icon>
 					<hr />
 					<Table
-						addCSS={{
+						className={{
 							container: "h-auto shadow-lg ",
 							table: "h-full ",
 						}}>
@@ -96,7 +96,7 @@ function Home() {
 			</div>
 			<Button
 				handlerClick={toggleMenu}
-				addCSS={`rounded-full z-10 to-blue-500 from-indigo-700 ease-in-out transition duration-300 bg-gradient-to-t hover:bg-gradient-to-l text-white fixed shadow-xl p-4 text-xl hover:ring-4 border-[1px] border-blue-600  top-2 left-0`}>
+				className={`rounded-full z-10 to-blue-500 from-indigo-700 ease-in-out transition duration-300 bg-gradient-to-t hover:bg-gradient-to-l text-white fixed shadow-xl p-4 text-xl hover:ring-4 border-[1px] border-blue-600  top-2 left-0`}>
 				<FaBars></FaBars>
 			</Button>
 			<motion.div
@@ -111,26 +111,26 @@ function Home() {
 					}
 					className='h-full w-full px-24 py-16 relative  rounded-lg'>
 					<Button
-						addCSS='my-5 rounded-full transition hover:ring-[10px] ring-green-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-teal-600 to-green-400 border-0 shadow-xl'
+						className='my-5 rounded-full transition hover:ring-[10px] ring-green-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-teal-600 to-green-400 border-0 shadow-xl'
 						handlerClick={toggleFormPaciente}>
 						<FaPlus></FaPlus> &nbsp;&nbsp; Añadir Paciente
 					</Button>
 					<Button
 						handlerClick={toggleFormUsuario}
-						addCSS='my-5 rounded-full transition hover:ring-[10px] ring-blue-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-blue-600 to-cyan-400 border-0 shadow-xl'>
+						className='my-5 rounded-full transition hover:ring-[10px] ring-blue-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-blue-600 to-cyan-400 border-0 shadow-xl'>
 						<FaUser></FaUser> &nbsp;&nbsp; Módulo Usuarios
 					</Button>
-					<Button addCSS='my-5 rounded-full transition hover:ring-[10px] ring-yellow-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-yellow-500 to-amber-400 border-0 shadow-xl'>
+					<Button className='my-5 rounded-full transition hover:ring-[10px] ring-yellow-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-yellow-500 to-amber-400 border-0 shadow-xl'>
 						<FaTv></FaTv> &nbsp;&nbsp; Módulo Monitoreo
 					</Button>
 					<Button
 						handlerClick={toggleFormAcompañante}
-						addCSS='my-5 rounded-full transition hover:ring-[10px] ring-purple-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-indigo-600 to-purple-400 border-0 shadow-xl'>
+						className='my-5 rounded-full transition hover:ring-[10px] ring-purple-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-indigo-600 to-purple-400 border-0 shadow-xl'>
 						<FaUsers></FaUsers> &nbsp;&nbsp; Registrar Acompañantes
 					</Button>
 					<Button
 						handlerClick={toggleFormEstancia}
-						addCSS='my-5 rounded-full transition hover:ring-[10px] ring-orange-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-orange-500 to-yellow-400 border-0 shadow-xl'>
+						className='my-5 rounded-full transition hover:ring-[10px] ring-orange-400 bg-gradient-to-t px-10 py-7 text-xl flex flex-row justify-center items-center from-orange-500 to-yellow-400 border-0 shadow-xl'>
 						<FaRegCalendarPlus></FaRegCalendarPlus> &nbsp;&nbsp;
 						Módulo Estancias
 					</Button>

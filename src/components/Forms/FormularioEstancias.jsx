@@ -69,7 +69,7 @@ function FormularioEstancias(props) {
 					handlerClick={(e) => {
 						dismissMenu(e);
 					}}
-					addCSS={
+					className={
 						"absolute right-2 top-2 p-2 border-0 hover:border-0 hover:bg-slate-50 hover:text-red-400 text-slate-400 bg-slate-50 hover:focus:ring-0"
 					}>
 					<FaTimes></FaTimes>
@@ -143,7 +143,7 @@ function FormularioEstancias(props) {
 					<div className='flex'>
 						<Button
 							handlerClick={validarInputsEstancia}
-							addCSS={
+							className={
 								"bg-red-600 hover:bg-red-400 focus:ring-red-300"
 							}>
 							<FaPlus></FaPlus>&nbsp;&nbsp; Finalizar
@@ -154,7 +154,7 @@ function FormularioEstancias(props) {
 							handlerClick={() => {
 								toggleIsOpen(false);
 							}}
-							addCSS={
+							className={
 								"bg-slate-400 hover:bg-slate-300 focus:ring-slate-300"
 							}>
 							<FaUndo></FaUndo>&nbsp;&nbsp; Regresar

@@ -7,9 +7,15 @@ import Button from "../Buttons";
 import Input from "../Inputs";
 import Select from "../Selects";
 import moment from "moment";
+import { useParentsStore } from "../../store/useParentsStore";
 
 function FormularioAcompañantes(props) {
 	const { isOpen = false, toggleIsOpen = () => {} } = props;
+
+	const [saveParent, requestParents] = useParentsStore((state) => [
+		state.saveParent,
+		state.requestParents,
+	]);
 
 	const [isValid, setIsValid] = useState(false);
 	const [validMsg, setValidMsg] = useState("");
@@ -69,6 +75,7 @@ function FormularioAcompañantes(props) {
 		};
 
 		console.log(Acompanante);
+		saveParent(Acompanante);
 	}
 
 	return (
@@ -89,7 +96,7 @@ function FormularioAcompañantes(props) {
 					handlerClick={(e) => {
 						dismissMenu(e);
 					}}
-					addCSS={
+					className={
 						"absolute right-2 top-2 p-2 border-0 hover:border-0 hover:bg-slate-50 hover:text-red-400 text-slate-400 bg-slate-50 hover:focus:ring-0"
 					}>
 					<FaTimes></FaTimes>
@@ -151,10 +158,12 @@ function FormularioAcompañantes(props) {
 							<Select
 								value={scholarshipAcom}
 								handlerChange={setScholarShipAcom}
-								addCSS={"p-0 pl-2 border-2 border-slate-200"}>
+								className={
+									"p-0 pl-2 border-2 border-slate-200"
+								}>
 								<Select.options
 									defaultValue={true}
-									addCSS={"text-slate-300"}>
+									className={"text-slate-300"}>
 									Selecciona la escolaridad
 								</Select.options>
 								<Select.options value='NINGUNA'>
@@ -187,10 +196,12 @@ function FormularioAcompañantes(props) {
 							<Select
 								value={sexAcom}
 								handlerChange={setSexAcom}
-								addCSS={"p-0 pl-2 border-2 border-slate-200"}>
+								className={
+									"p-0 pl-2 border-2 border-slate-200"
+								}>
 								<Select.options
 									defaultValue={true}
-									addCSS={"text-slate-300"}>
+									className={"text-slate-300"}>
 									Selecciona tu sexo
 								</Select.options>
 								<Select.options value='M'>
@@ -243,7 +254,7 @@ function FormularioAcompañantes(props) {
 					<div className='flex'>
 						<Button
 							handlerClick={validarInputsAcompañantes}
-							addCSS={
+							className={
 								"bg-purple-600 hover:bg-purple-400 focus:ring-violet-300"
 							}>
 							<FaPlus></FaPlus>&nbsp;&nbsp; Agregar
@@ -254,7 +265,7 @@ function FormularioAcompañantes(props) {
 							handlerClick={() => {
 								toggleIsOpen(false);
 							}}
-							addCSS={
+							className={
 								"bg-slate-400 hover:bg-slate-300 focus:ring-slate-300"
 							}>
 							<FaUndo></FaUndo>&nbsp;&nbsp; Regresar

@@ -72,7 +72,7 @@ function FormularioUsuarios(props) {
 					handlerClick={(e) => {
 						dismissMenu(e);
 					}}
-					addCSS={
+					className={
 						"absolute right-2 top-2 p-2 border-0 hover:border-0 hover:bg-slate-50 hover:text-red-400 text-slate-400 bg-slate-50 hover:focus:ring-0"
 					}>
 					<FaTimes></FaTimes>
@@ -157,7 +157,9 @@ function FormularioUsuarios(props) {
 							<Select
 								value={group}
 								handlerChange={setGroup}
-								addCSS={"p-0 pl-2 border-2 border-slate-200"}>
+								className={
+									"p-0 pl-2 border-2 border-slate-200"
+								}>
 								<Select.options defaultValue={true}>
 									Selecciona el rol del usuario
 								</Select.options>
@@ -182,7 +184,7 @@ function FormularioUsuarios(props) {
 					<div className='flex'>
 						<Button
 							handlerClick={validarInputsUsuarios}
-							addCSS={
+							className={
 								"bg-red-600 hover:bg-red-400 focus:ring-red-300"
 							}>
 							<FaPlus></FaPlus>&nbsp;&nbsp; Finalizar
@@ -193,7 +195,7 @@ function FormularioUsuarios(props) {
 							handlerClick={() => {
 								toggleIsOpen(false);
 							}}
-							addCSS={
+							className={
 								"bg-slate-400 hover:bg-slate-300 focus:ring-slate-300"
 							}>
 							<FaUndo></FaUndo>&nbsp;&nbsp; Regresar
