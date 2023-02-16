@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { variant } from "../../utils/variant";
 import { FaPlus, FaTimes, FaUndo } from "react-icons/fa";
 import Button from "../Buttons";
 import Input from "../Inputs";
+import moment from "moment";
 
 function FormularioEstancias(props) {
 	const { isOpen = false, toggleIsOpen = () => {} } = props;
@@ -11,13 +12,28 @@ function FormularioEstancias(props) {
 	const [validMsg, setValidMsg] = useState("");
 
 	const [fechaT, setFechaT] = useState("");
+	const [fFechaT, setFFechaT] = useState("");
 	const [horaT, setHoraT] = useState("");
+	const [fechaI, setFechaI] = useState("");
+	const [fFechaI, setFFechaI] = useState("");
+	const [horaI, setHoraI] = useState("");
+
+	useEffect(() => {
+		var momentDate = moment(fechaT);
+		setFFechaT(momentDate.format("YYYY-MM-DD"));
+		var momentDate = moment(fechaI);
+		setFFechaI(momentDate.format("YYYY-MM-DD"));
+	}, [fechaT, fechaI]);
 
 	function validarInputsEstancia(e) {
 		try {
-			if (fechaT === "")
+			if (fechaI === "" || fechaI === "invalid date")
+				throw new Error("Por favor seleccione la fecha de inicio");
+			if (horaI === "" || horaI === "invalid date")
+				throw new Error("Por favor seleccione la hora de inicio");
+			if (fechaT === "" || fechaT === "invalid date")
 				throw new Error("Por favor seleccione la fecha de termino");
-			if (horaT === "")
+			if (horaT === "" || horaT === "invalid date")
 				throw new Error("Por favor seleccione la hora de termino");
 
 			setIsValid(true);
@@ -26,14 +42,14 @@ function FormularioEstancias(props) {
 			setIsValid(false);
 			setValidMsg(err.message);
 		}
+		var estancia = {
+			fechaInicio: fFechaI + " " + horaI,
+			fechaTermino: fFechaT + " " + horaT,
+			estado: 1,
+		};
+
+		console.log(estancia);
 	}
-
-	var estancia = {
-		fechaTermino: fechaT,
-		horaTermino: horaT,
-	};
-
-	console.log(estancia);
 
 	return (
 		<motion.div
@@ -70,13 +86,42 @@ function FormularioEstancias(props) {
 				</div>
 				<div className='flex w-full'>
 					<div className='w-full'>
+						<label>Fecha de Inicio</label>
+						<Input.datepicker
+							title='Fecha de Inicio'
+							value={fechaI}
+							setBirthday={setFechaI}></Input.datepicker>
+						<hr className='mt-6 w-2/5' />
+						<h4 className='pt-2 col-span-3 text-sm text-slate-400 mb-5'>
+							Día / Mes / Año
+						</h4>
+					</div>
+					<div className='pl-2'>
+						<label>Hora de Inicio</label>
+						<div className='flex w-full'>
+							<Input.time
+								value={horaI}
+								name={"horaInicio"}
+								handlerChange={setHoraI}></Input.time>
+						</div>
+						<hr className='mt-6 w-3/4' />
+						<h4 className='pt-2 col-span-3 text-sm text-slate-400 mb-5'>
+							Hora / Minutos
+						</h4>
+					</div>
+				</div>
+
+				<div className='flex w-full'>
+					<div className='w-full'>
 						<label>Fecha de Termino</label>
 						<Input.datepicker
+							title='Fecha de Termino'
+							maxLimit={new Date("2100-12-31")}
 							value={fechaT}
 							setBirthday={setFechaT}></Input.datepicker>
-						<hr className='mt-6 w-1/2' />
+						<hr className='mt-6 w-2/5' />
 						<h4 className='pt-2 col-span-3 text-sm text-slate-400 mb-5'>
-							Año/Mes/Día
+							Día / Mes / Año
 						</h4>
 					</div>
 					<div className='pl-2'>
@@ -84,11 +129,12 @@ function FormularioEstancias(props) {
 						<div className='flex w-full'>
 							<Input.time
 								value={horaT}
+								name={"horaTermino"}
 								handlerChange={setHoraT}></Input.time>
 						</div>
-						<hr className='mt-6 w-1/2' />
+						<hr className='mt-6 w-3/4' />
 						<h4 className='pt-2 col-span-3 text-sm text-slate-400 mb-5'>
-							Hora/Minutos
+							Hora / Minutos
 						</h4>
 					</div>
 				</div>

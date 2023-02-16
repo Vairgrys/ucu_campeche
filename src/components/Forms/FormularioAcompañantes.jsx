@@ -6,6 +6,7 @@ import { FaPlus, FaTimes, FaUndo } from "react-icons/fa";
 import Button from "../Buttons";
 import Input from "../Inputs";
 import Select from "../Selects";
+import moment from "moment";
 
 function FormularioAcompañantes(props) {
 	const { isOpen = false, toggleIsOpen = () => {} } = props;
@@ -16,15 +17,21 @@ function FormularioAcompañantes(props) {
 	const [nameAcom, setNameAcom] = useState("");
 	const [lastnameAcom, setLastNameAcom] = useState("");
 	const [birthdayAcom, setBirthdayAcom] = useState("");
+	const [fBirthdayA, setFBirthdayA] = useState("");
 	const [ageAcom, updateAgeAcom] = useEdad();
 	const [scholarshipAcom, setScholarShipAcom] = useState("");
 	const [sexAcom, setSexAcom] = useState("");
+	const [identityA, setIdentityA] = useState("");
 	const [phoneAcom, setPhoneAcom] = useState("");
+	const [fPhoneA, setFPhoneA] = useState("");
 	const [relationshipAcom, setRelationshipAcom] = useState("");
 
 	useEffect(() => {
 		updateAgeAcom(birthdayAcom);
-	}, [birthdayAcom]);
+		var momentDateA = moment(birthdayAcom);
+		setFBirthdayA(momentDateA.format("YYYY-MM-DD"));
+		setFPhoneA(phoneAcom.replace("+", ""));
+	}, [birthdayAcom, phoneAcom]);
 
 	function validarInputsAcompañantes(e) {
 		try {
@@ -32,7 +39,7 @@ function FormularioAcompañantes(props) {
 				throw new Error("Por favor llene el campo nombre");
 			if (lastnameAcom === "")
 				throw new Error("Por favor llene el campo apellido");
-			if (birthdayAcom === "")
+			if (birthdayAcom === "" || birthdayAcom === "invalid date")
 				throw new Error("Por favor llene el campo fecha de nacimiento");
 			if (scholarshipAcom === "")
 				throw new Error("Por favor llene el campo escolaridad");
@@ -49,19 +56,20 @@ function FormularioAcompañantes(props) {
 			setIsValid(false);
 			setValidMsg(err.message);
 		}
+		var Acompanante = {
+			nombre: nameAcom,
+			apellido: lastnameAcom,
+			edad: ageAcom,
+			fechaNacimiento: fBirthdayA,
+			telefono: fPhoneA,
+			escolaridad: scholarshipAcom,
+			parentesco: relationshipAcom,
+			sexo: sexAcom,
+			ine: identityA,
+		};
+
+		console.log(Acompanante);
 	}
-
-	var Acompanante = {
-		nombre: nameAcom,
-		apellido: lastnameAcom,
-		fechaNacimiento: birthdayAcom,
-		escolaridad: scholarshipAcom,
-		sexo: sexAcom,
-		telefono: phoneAcom,
-		parentesco: relationshipAcom,
-	};
-
-	console.log(Acompanante);
 
 	return (
 		<motion.div
@@ -129,7 +137,7 @@ function FormularioAcompañantes(props) {
 						<label>Edad</label>
 						<div className='flex h-8'>
 							<Input
-								value={ageAcom + "años"}
+								value={ageAcom + " años"}
 								disabled={true}
 								placeholder='Edad'></Input>
 						</div>
@@ -140,10 +148,37 @@ function FormularioAcompañantes(props) {
 					<div className='w-full m-1'>
 						<label>Escolaridad</label>
 						<div className='flex h-8'>
-							<Input
+							<Select
 								value={scholarshipAcom}
 								handlerChange={setScholarShipAcom}
-								placeholder='Ingresa escolaridad'></Input>
+								addCSS={"p-0 pl-2 border-2 border-slate-200"}>
+								<Select.options
+									defaultValue={true}
+									addCSS={"text-slate-300"}>
+									Selecciona la escolaridad
+								</Select.options>
+								<Select.options value='NINGUNA'>
+									NINGUNA
+								</Select.options>
+								<Select.options value='INFANTIL'>
+									INFANTIL
+								</Select.options>
+								<Select.options value='PRIMARIA'>
+									PRIMARIA
+								</Select.options>
+								<Select.options value='SECUNDARIA'>
+									SECUNDARIA
+								</Select.options>
+								<Select.options value='MEDIA SUPERIOR'>
+									MEDIA SUPERIOR
+								</Select.options>
+								<Select.options value='SUPERIOR'>
+									SUPERIOR
+								</Select.options>
+								<Select.options value='POST-UNIVERSITARIA'>
+									POST-UNIVERSITARIA
+								</Select.options>
+							</Select>
 						</div>
 					</div>
 					<div className='w-full m-1'>
@@ -153,14 +188,16 @@ function FormularioAcompañantes(props) {
 								value={sexAcom}
 								handlerChange={setSexAcom}
 								addCSS={"p-0 pl-2 border-2 border-slate-200"}>
-								<Select.options defaultValue={true}>
+								<Select.options
+									defaultValue={true}
+									addCSS={"text-slate-300"}>
 									Selecciona tu sexo
 								</Select.options>
-								<Select.options value='Masculino'>
-									Masculino
+								<Select.options value='M'>
+									MASCULINO
 								</Select.options>
-								<Select.options value='Femenino'>
-									Femenino
+								<Select.options value='F'>
+									FEMENINO
 								</Select.options>
 							</Select>
 						</div>
@@ -171,10 +208,10 @@ function FormularioAcompañantes(props) {
 					<div className='w-full m-1'>
 						<label>Teléfono</label>
 						<div className='flex h-8'>
-							<Input
+							<Input.phone
 								value={phoneAcom}
 								handlerChange={setPhoneAcom}
-								placeholder='Ingresa teléfono'></Input>
+								placeholder='Ingresa teléfono'></Input.phone>
 						</div>
 					</div>
 					<div className='w-full m-1'>
@@ -186,6 +223,19 @@ function FormularioAcompañantes(props) {
 								placeholder='Ingresa parentesco'></Input>
 						</div>
 					</div>
+				</div>
+				<div className='w-full flex'>
+					<div className='flex flex-col w-1/2 m-1 mb-2'>
+						<label className='text-slate-600'>INE</label>
+						<div className='flex h-8'>
+							<Input
+								placeholder='Ingresar OCR de 13 dígitos'
+								handlerChange={setIdentityA}
+								maxlength='13'
+								value={identityA}></Input>
+						</div>
+					</div>
+					<div className='w-1/2 flex'> </div>
 				</div>
 
 				<br className='m-4' />

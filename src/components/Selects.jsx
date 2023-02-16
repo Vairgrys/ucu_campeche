@@ -29,6 +29,9 @@ function Options(props) {
 	);
 }
 
+function SelectCiudad() {}
+
 Select.options = Options;
+Select.ciudad = SelectCiudad;
 
 export default Select;

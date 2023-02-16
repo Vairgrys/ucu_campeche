@@ -16,19 +16,24 @@ function FormularioUsuarios(props) {
 	const [name, setName] = useState("");
 	const [lastname, setLastName] = useState("");
 	const [group, setGroup] = useState("");
+	const [email, setEmail] = useState("");
+	const [department, setDepartment] = useState("");
 
 	function validarInputsUsuarios(e) {
 		try {
 			if (user === "")
-				throw new Error("Por favor ingrese el campo de usuario");
+				throw new Error("Por favor ingrese el campo usuario");
 			if (password === "")
-				throw new Error("Por favor ingrese el campo de contraseña");
+				throw new Error("Por favor ingrese el campo contraseña");
 			if (name === "")
-				throw new Error("Por favor ingrese el campo de nombre");
+				throw new Error("Por favor ingrese el campo nombre");
 			if (lastname === "")
-				throw new Error("Por favor ingrese el campo de apellido");
-			if (group === "")
-				throw new Error("Por favor ingrese el campo de rol");
+				throw new Error("Por favor ingrese el campo apellido");
+			if (group === "") throw new Error("Por favor ingrese el campo rol");
+			if (email === "")
+				throw new Error("Por favor ingrese el campo correo");
+			if (department === "")
+				throw new Error("Por favor ingrese el campo departamento");
 
 			setIsValid(true);
 		} catch (err) {
@@ -36,17 +41,18 @@ function FormularioUsuarios(props) {
 			setIsValid(false);
 			setValidMsg(err.message);
 		}
+		var usuario = {
+			usuario: user,
+			contrasena: password,
+			nombre: name,
+			apellido: lastname,
+			rol: group,
+			correo: email,
+			departamento: department,
+		};
+
+		console.log(usuario);
 	}
-
-	var usuario = {
-		usuario: user,
-		contrasena: password,
-		nombre: name,
-		apellido: lastname,
-		rol: group,
-	};
-
-	console.log(usuario);
 
 	return (
 		<motion.div
@@ -81,7 +87,7 @@ function FormularioUsuarios(props) {
 						)}
 					</div>
 				</div>
-				<div className='flex w-full'>
+				<div className='flex w-full mb-2'>
 					<div className='m-1 w-full'>
 						<label>Usuario</label>
 						<div className='flex h-8'>
@@ -92,7 +98,7 @@ function FormularioUsuarios(props) {
 						</div>
 					</div>
 					<div className='m-1 w-full'>
-						<label>Apellido(s)</label>
+						<label>Contraseña</label>
 						<div className='flex h-8'>
 							<Input
 								value={password}
@@ -123,23 +129,52 @@ function FormularioUsuarios(props) {
 					</div>
 				</div>
 
-				<div className='w-full m-1'>
-					<label>Rol</label>
-					<div className='flex h-8'>
-						<Select
-							value={group}
-							handlerChange={setGroup}
-							addCSS={"p-0 pl-2 border-2 border-slate-200"}>
-							<Select.options defaultValue={true}>
-								Selecciona el rol del usuario
-							</Select.options>
-							<Select.options value='3'>
-								ADMINISTRADOR
-							</Select.options>
-							<Select.options value='2'>OPERADOR</Select.options>
-							<Select.options value='1'>USUARIO</Select.options>
-						</Select>
+				<div className='flex w-full mb-2'>
+					<div className='m-1 w-full'>
+						<label>Correo</label>
+						<div className='flex h-8'>
+							<Input
+								value={email}
+								handlerChange={setEmail}
+								placeholder='Ingresar email'></Input>
+						</div>
 					</div>
+					<div className='m-1 w-full'>
+						<label>Departamento</label>
+						<div className='flex h-8'>
+							<Input
+								value={department}
+								handlerChange={setDepartment}
+								placeholder='Ingresar departamento'></Input>
+						</div>
+					</div>
+				</div>
+
+				<div className='flex w-full m-1'>
+					<div className='w-full m-1'>
+						<label>Rol</label>
+						<div className='flex h-8'>
+							<Select
+								value={group}
+								handlerChange={setGroup}
+								addCSS={"p-0 pl-2 border-2 border-slate-200"}>
+								<Select.options defaultValue={true}>
+									Selecciona el rol del usuario
+								</Select.options>
+								<Select.options value='3'>
+									ADMINISTRADOR
+								</Select.options>
+								<Select.options value='2'>
+									OPERADOR
+								</Select.options>
+								<Select.options value='1'>
+									USUARIO
+								</Select.options>
+							</Select>
+						</div>
+					</div>
+
+					<div className='w-full m-1'></div>
 				</div>
 
 				<br className='m-4' />

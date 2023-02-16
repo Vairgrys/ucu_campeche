@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { variant } from "../../utils/variant";
 import { useEdad } from "../../hooks/useEdad";
 import { FaPlus, FaTimes, FaUndo } from "react-icons/fa";
@@ -27,6 +27,7 @@ function FormularioPacientes(props) {
 	const [formatBirthday, setFormatBirthday] = useState("");
 	const [age, updateAge] = useEdad();
 	const [phone, setPhone] = useState("");
+	const [formatPhone, setFormatPhone] = useState("");
 	const [sex, setSex] = useState("");
 	const [email, setEmail] = useState("");
 	const [scholarship, setScholarship] = useState("");
@@ -37,23 +38,24 @@ function FormularioPacientes(props) {
 	const [address, setAddress] = useState("");
 	const [diagnostic, setDiagnostic] = useState("");
 	const [status, setStatus] = useState("");
-
-	const [isValid, setIsValid] = useState(false);
 	const [validMsg, setValidMsg] = useState("");
 	const [listaPaciente, setListaPaciente] = useState([]);
+
+	const [isValid, setIsValid] = useState(false);
 
 	useEffect(() => {
 		updateAge(birthday);
 		var momentDate = moment(birthday);
 		setFormatBirthday(momentDate.format("YYYY-MM-DD"));
-	}, [birthday]);
+		setFormatPhone(phone.replace("+", ""));
+	}, [birthday, phone]);
 
 	function validarInputs(e) {
 		try {
 			if (name === "") throw new Error("Por favor llene el campo nombre");
 			if (lastname === "")
 				throw new Error("Por favor llene el campo apellido");
-			if (birthday === "")
+			if (birthday === "" || birthday === "invalid date")
 				throw new Error("Por favor llene el campo fecha de nacimiento");
 			if (sex === "") throw new Error("Por favor llene el campo sexo");
 			if (phone === "")
@@ -93,7 +95,7 @@ function FormularioPacientes(props) {
 			nombre: name,
 			apellido: lastname,
 			fechaNacimiento: formatBirthday,
-			telefono: phone,
+			telefono: formatPhone,
 			sexo: sex,
 			correo: email,
 			edad: age,
@@ -198,14 +200,16 @@ function FormularioPacientes(props) {
 								value={sex}
 								handlerChange={setSex}
 								addCSS={"p-0 pl-2 border-2 border-slate-200"}>
-								<Select.options defaultValue={true}>
+								<Select.options
+									defaultValue={true}
+									addCSS={"text-slate-300"}>
 									Selecciona tu sexo
 								</Select.options>
 								<Select.options value='M'>
-									Masculino
+									MASCULINO
 								</Select.options>
 								<Select.options value='F'>
-									Femenino
+									FEMENINO
 								</Select.options>
 							</Select>
 						</div>
@@ -235,21 +239,50 @@ function FormularioPacientes(props) {
 				</div>
 
 				<div className='flex mb-2'>
-					<div className='flex flex-col w-full m-1'>
+					<div className='flex flex-col w-4/5 m-1'>
 						<label className='text-slate-600'>Escolaridad</label>
-						<div className='flex h-8'>
-							<Input
-								placeholder='Ingresar escolaridad'
+						<div className='flex h-8 justify-center'>
+							<Select
+								value={scholarship}
 								handlerChange={setScholarship}
-								value={scholarship}></Input>
+								addCSS={"p-0 pl-2 border-2 border-slate-200"}>
+								<Select.options
+									defaultValue={true}
+									addCSS={"text-slate-300"}>
+									Selecciona la escolaridad
+								</Select.options>
+								<Select.options value='NINGUNA'>
+									NINGUNA
+								</Select.options>
+								<Select.options value='INFANTIL'>
+									INFANTIL
+								</Select.options>
+								<Select.options value='PRIMARIA'>
+									PRIMARIA
+								</Select.options>
+								<Select.options value='SECUNDARIA'>
+									SECUNDARIA
+								</Select.options>
+								<Select.options value='MEDIA SUPERIOR'>
+									MEDIA SUPERIOR
+								</Select.options>
+								<Select.options value='SUPERIOR'>
+									SUPERIOR
+								</Select.options>
+								<Select.options value='POST-UNIVERSITARIA'>
+									POST-UNIVERSITARIA
+								</Select.options>
+							</Select>
 						</div>
 					</div>
+
 					<div className='flex flex-col w-full m-1'>
 						<label className='text-slate-600'>INE</label>
 						<div className='flex h-8'>
 							<Input
-								placeholder='Ingresar INE'
+								placeholder='Ingresar OCR de 13 dígitos'
 								handlerChange={setIdentity}
+								maxlength='13'
 								value={identity}></Input>
 						</div>
 					</div>
@@ -274,6 +307,7 @@ function FormularioPacientes(props) {
 								value={city}></Input>
 						</div>
 					</div>
+					<Select.ciudad></Select.ciudad>
 					<div className='flex-col w-full m-1'>
 						<label className='text-slate-600'>Localidad</label>
 						<div className='flex h-8'>
