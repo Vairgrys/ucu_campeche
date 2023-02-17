@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa";
 import { InformacionPaciente } from "../../components/Forms/InformacionPaciente";
 import { ParentsTable } from "../../components/Tables/ParentsTable";
+import { StaysTable } from "../../components/Tables/StaysTable";
 
 function Paciente() {
 	return (
@@ -36,6 +37,7 @@ function Paciente() {
 							<FaPlus></FaPlus>
 						</Button>
 					</h1>
+					<StaysTable></StaysTable>
 				</div>
 				<div className='p-4 shadow-lg rounded-lg mx-6  bg-white w-4/5'>
 					<h1 className='drop-shadow-lg mb-1 text-purple-500 uppercase flex items-center text-xl'>

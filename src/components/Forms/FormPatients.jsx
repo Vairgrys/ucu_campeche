@@ -224,10 +224,10 @@ function FormularioPacientes(props) {
 					<div className='flex flex-col w-full m-1'>
 						<label className='text-slate-600'>Teléfono</label>
 						<div className='flex h-8'>
-							<Input.phone
+							<Input
 								placeholder='Ingresar teléfono'
 								handlerChange={setPhone}
-								value={phone}></Input.phone>
+								value={phone}></Input>
 						</div>
 					</div>
 
