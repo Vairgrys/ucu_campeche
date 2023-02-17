@@ -25,11 +25,8 @@ const StaysList = () => {
 							<Table.Td>{fila.fecha_inicio}</Table.Td>
 							<Table.Td>{fila.fkpaciente}</Table.Td>
 							<Table.Td>{fila.fkacompanante}</Table.Td>
-							<Table.Td className='flex flex-row flex-nowrap items-center justify-start bg-slate-100'>
-								<Button className='px-2 py-2 bg-amber-500 hover:bg-amber-600 ring-amber-400'>
-									<FaPen></FaPen>
-								</Button>
-								<Button className='px-2 py-2 bg-red-400 hover:bg-red-600 ring-red-300'>
+							<Table.Td className='flex flex-row flex-nowrap items-center pl-8 justify-start bg-slate-100'>
+								<Button className='flex px-2 py-2 bg-red-400 hover:bg-red-600 ring-red-300'>
 									<FaTrash></FaTrash>
 								</Button>
 							</Table.Td>
