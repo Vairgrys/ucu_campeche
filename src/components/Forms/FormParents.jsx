@@ -23,15 +23,13 @@ function FormularioAcompañantes(props) {
 	const [sexAcom, setSexAcom] = useState("");
 	const [identityA, setIdentityA] = useState("");
 	const [phoneAcom, setPhoneAcom] = useState("");
-	const [fPhoneA, setFPhoneA] = useState("");
 	const [relationshipAcom, setRelationshipAcom] = useState("");
 
 	useEffect(() => {
 		updateAgeAcom(birthdayAcom);
 		var momentDateA = moment(birthdayAcom);
 		setFBirthdayA(momentDateA.format("YYYY-MM-DD"));
-		setFPhoneA(phoneAcom.replace("+", ""));
-	}, [birthdayAcom, phoneAcom]);
+	}, [birthdayAcom]);
 
 	function validarInputsAcompañantes(e) {
 		try {
@@ -61,7 +59,7 @@ function FormularioAcompañantes(props) {
 			apellido: lastnameAcom,
 			edad: ageAcom,
 			fechaNacimiento: fBirthdayA,
-			telefono: fPhoneA,
+			telefono: phoneAcom,
 			escolaridad: scholarshipAcom,
 			parentesco: relationshipAcom,
 			sexo: sexAcom,
@@ -208,10 +206,11 @@ function FormularioAcompañantes(props) {
 					<div className='w-full m-1'>
 						<label>Teléfono</label>
 						<div className='flex h-8'>
-							<Input.phone
+							<Input
 								value={phoneAcom}
+								maxlength='12'
 								handlerChange={setPhoneAcom}
-								placeholder='Ingresa teléfono'></Input.phone>
+								placeholder='Ingresa teléfono'></Input>
 						</div>
 					</div>
 					<div className='w-full m-1'>

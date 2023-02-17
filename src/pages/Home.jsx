@@ -15,10 +15,10 @@ import {
 	FaUsers,
 	FaRegCalendarPlus,
 } from "react-icons/fa";
-import { FormularioPacientes } from "../components/Forms/FormularioPacientes";
-import { FormularioEstancias } from "../components/Forms/FormularioEstancias";
-import { FormularioAcompañantes } from "../components/Forms/FormularioAcompañantes";
-import { FormularioUsuarios } from "../components/Forms/FormularioUsuarios";
+import { FormularioPacientes } from "../components/Forms/FormPatients";
+import { FormularioEstancias } from "../components/Forms/FormStays";
+import { FormularioAcompañantes } from "../components/Forms/FormParents";
+import { FormularioUsuarios } from "../components/Forms/FormUsers";
 
 import { useModal } from "../hooks/useModal";
 import { lazy } from "react";
