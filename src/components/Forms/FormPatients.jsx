@@ -44,11 +44,16 @@ function FormularioPacientes(props) {
 	const [isValid, setIsValid] = useState(false);
 
 	useEffect(() => {
+		if (phone.length > 0) {
+			setFormatPhone(phone.replace("+", ""));
+		}
+	}, [phone]);
+
+	useEffect(() => {
 		updateAge(birthday);
 		var momentDate = moment(birthday);
 		setFormatBirthday(momentDate.format("YYYY-MM-DD"));
-		setFormatPhone(phone.replace("+", ""));
-	}, [birthday, phone]);
+	}, [birthday]);
 
 	function validarInputs(e) {
 		try {
@@ -109,8 +114,6 @@ function FormularioPacientes(props) {
 			tratamiento: status,
 		};
 
-		console.log(patient);
-
 		savePatient(patient, (response) => {
 			if (response.data?.status && response.data.status == true) {
 				// mensaje si se pudo guardar
@@ -138,7 +141,7 @@ function FormularioPacientes(props) {
 					handlerClick={(e) => {
 						dismissMenu(e);
 					}}
-					addCSS={
+					className={
 						"absolute right-2 top-2 p-2 border-0 hover:border-0 hover:bg-slate-50 hover:text-red-400 text-slate-400 bg-slate-50 hover:focus:ring-0"
 					}>
 					<FaTimes></FaTimes>
@@ -188,7 +191,7 @@ function FormularioPacientes(props) {
 						<label className='text-slate-600'>Edad</label>
 						<div className='flex h-8'>
 							<Input
-								addCSS={"p-0"}
+								className={"p-0"}
 								disabled={true}
 								value={age + " años"}></Input>
 						</div>
@@ -199,10 +202,12 @@ function FormularioPacientes(props) {
 							<Select
 								value={sex}
 								handlerChange={setSex}
-								addCSS={"p-0 pl-2 border-2 border-slate-200"}>
+								className={
+									"p-0 pl-2 border-2 border-slate-200"
+								}>
 								<Select.options
 									defaultValue={true}
-									addCSS={"text-slate-300"}>
+									className={"text-slate-300"}>
 									Selecciona tu sexo
 								</Select.options>
 								<Select.options value='M'>
@@ -245,10 +250,12 @@ function FormularioPacientes(props) {
 							<Select
 								value={scholarship}
 								handlerChange={setScholarship}
-								addCSS={"p-0 pl-2 border-2 border-slate-200"}>
+								className={
+									"p-0 pl-2 border-2 border-slate-200"
+								}>
 								<Select.options
 									defaultValue={true}
-									addCSS={"text-slate-300"}>
+									className={"text-slate-300"}>
 									Selecciona la escolaridad
 								</Select.options>
 								<Select.options value='NINGUNA'>
@@ -332,7 +339,7 @@ function FormularioPacientes(props) {
 						<label className='text-slate-600'>Diagnóstico</label>
 						<div className='flex h-full'>
 							<Input.textarea
-								addCSS={"flex w-full"}
+								className={"flex w-full"}
 								placeholder='Ingresar diagnóstico'
 								handlerChange={setDiagnostic}
 								value={diagnostic}></Input.textarea>
@@ -342,7 +349,7 @@ function FormularioPacientes(props) {
 						<label className='text-slate-600'>Tratamiento</label>
 						<div className='flex'>
 							<Input.textarea
-								addCSS={"flex rounded-lg border-1"}
+								className={"flex rounded-lg border-1"}
 								placeholder='Ingresar tratamiento'
 								handlerChange={setStatus}
 								value={status}></Input.textarea>
@@ -355,7 +362,7 @@ function FormularioPacientes(props) {
 					<div className='flex'>
 						<Button
 							handlerClick={validarInputs}
-							addCSS={
+							className={
 								"bg-purple-600 hover:bg-purple-400 focus:ring-violet-300"
 							}>
 							<FaPlus></FaPlus>&nbsp;&nbsp; Agregar
@@ -366,7 +373,7 @@ function FormularioPacientes(props) {
 							handlerClick={() => {
 								toggleIsOpen(false);
 							}}
-							addCSS={
+							className={
 								"bg-slate-400 hover:bg-slate-300 focus:ring-slate-300"
 							}>
 							<FaUndo></FaUndo>&nbsp;&nbsp; Regresar

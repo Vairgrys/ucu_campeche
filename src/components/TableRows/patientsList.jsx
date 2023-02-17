@@ -30,7 +30,7 @@ const PatientsList = () => {
 							<Table.Td>{fila.municipio}</Table.Td>
 							<Table.Td>{fila.telefono}</Table.Td>
 							<Table.Td>
-								<Button addCSS='bg-red-400 hover:bg-red-600 ring-red-300 px-2'>
+								<Button className='bg-red-400 hover:bg-red-600 ring-red-300 px-2'>
 									<RiServiceFill></RiServiceFill>
 									&nbsp;&nbsp;Servicios
 								</Button>

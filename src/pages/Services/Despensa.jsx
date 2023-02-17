@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 var identifier = 0;
 
 function Despensa() {
-
 	const [isValid, setIsValid] = useState(false);
 	const [validMsg, setValidMsg] = useState("");
 
@@ -25,7 +24,6 @@ function Despensa() {
 		}
 	};
 
-	
 	function generarDatos(e) {
 		try {
 			if (product === "")
@@ -50,7 +48,7 @@ function Despensa() {
 		var Despensa = new Object();
 		Despensa.Producto = product;
 		Despensa.Peso = weight;
-		Despensa.Cantidad =	amount;
+		Despensa.Cantidad = amount;
 
 		console.log(Despensa);
 	}
@@ -77,7 +75,7 @@ function Despensa() {
 						<div className='flex flex-col justify-start mx-2 w-full'>
 							<label className='text-slate-600'>Producto</label>
 							<Input.icon
-								addCSS={{ input: "w-full" }}
+								className={{ input: "w-full" }}
 								handlerChange={setProduct}
 								value={product}>
 								<FaBox></FaBox>
@@ -88,7 +86,7 @@ function Despensa() {
 								Peso / Tamaño
 							</label>
 							<Input.icon
-								addCSS={{ input: "w-full " }}
+								className={{ input: "w-full " }}
 								handlerChange={setWeight}
 								value={weight}>
 								<FaWeight></FaWeight>
@@ -97,7 +95,7 @@ function Despensa() {
 						<div className='flex flex-col justify-start mx-2 w-full'>
 							<label className='text-slate-600'>Cantidad</label>
 							<Input.icon
-								addCSS={{ input: "w-full" }}
+								className={{ input: "w-full" }}
 								handlerChange={setAmount}
 								value={amount}>
 								<FaBoxes></FaBoxes>
@@ -116,7 +114,7 @@ function Despensa() {
 						</h4>
 					</div>
 					<Table
-						addCSS={{
+						className={{
 							container: "h-auto shadow-lg ",
 							table: "h-full ",
 						}}>
@@ -145,7 +143,7 @@ function Despensa() {
 														this,
 														fila.identifier
 													)}
-													addCSS='bg-red-400 hover:bg-red-600 ring-red-300 px-2'
+													className='bg-red-400 hover:bg-red-600 ring-red-300 px-2'
 													text='Borrar'>
 													<FaTrash></FaTrash>
 												</Button>
@@ -157,7 +155,7 @@ function Despensa() {
 					</Table>
 					<div className='flex justify-end mt-6 right-2'>
 						<Button
-							addCSS='flex order-last bg-red-500 hover:bg-red-600 ring-red-300'
+							className='flex order-last bg-red-500 hover:bg-red-600 ring-red-300'
 							text='Generar'>
 							<FaFilePdf></FaFilePdf>
 							&nbsp;&nbsp; Generar PDF
