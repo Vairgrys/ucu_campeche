@@ -5,7 +5,6 @@ import { FaUserCircle, FaLock, FaEye } from "react-icons/fa";
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
 
 function Login() {
 	const [username, setUsername] = useState("");
@@ -69,10 +68,6 @@ function Login() {
 							</Input.icon>
 							<div className='flex mt-6 flex-row justify-end'>
 								<Button>Iniciar sesión</Button>
-								<Button className='bg-slate-400 hover:bg-slate-600 ring-slate-300'>
-									<FaEye></FaEye>
-									&nbsp;&nbsp; Entrar como invitado
-								</Button>
 							</div>
 						</div>
 						<hr className='mt-6' />

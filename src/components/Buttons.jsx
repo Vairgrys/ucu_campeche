@@ -8,6 +8,7 @@ function Button(props) {
 		<>
 			<button
 				onClick={(e) => {
+					e.stopPropagation();
 					handlerClick(e);
 				}}
 				className={twMerge(

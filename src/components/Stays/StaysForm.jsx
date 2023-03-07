@@ -6,8 +6,8 @@ import Button from "../Buttons";
 import Input from "../Inputs";
 import moment from "moment";
 
-function FormularioEstancias(props) {
-	const { isOpen = false, toggleIsOpen = () => {} } = props;
+function StaysForm(props) {
+	const { dismiss = () => {} } = props;
 	const [isValid, setIsValid] = useState(false);
 	const [validMsg, setValidMsg] = useState("");
 
@@ -67,7 +67,7 @@ function FormularioEstancias(props) {
 				className=' px-10 py-6 w-[650px] h-auto flex flex-col absolute bg-slate-50 shadow-xl rounded-lg'>
 				<Button
 					handlerClick={(e) => {
-						dismissMenu(e);
+						dismiss();
 					}}
 					className={
 						"absolute right-2 top-2 p-2 border-0 hover:border-0 hover:bg-slate-50 hover:text-red-400 text-slate-400 bg-slate-50 hover:focus:ring-0"
@@ -152,7 +152,7 @@ function FormularioEstancias(props) {
 					<div className='flex'>
 						<Button
 							handlerClick={() => {
-								toggleIsOpen(false);
+								dismiss();
 							}}
 							className={
 								"bg-slate-400 hover:bg-slate-300 focus:ring-slate-300"
@@ -166,4 +166,4 @@ function FormularioEstancias(props) {
 	);
 }
 
-export { FormularioEstancias };
+export { StaysForm };

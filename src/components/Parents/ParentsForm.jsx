@@ -9,8 +9,8 @@ import Select from "../Selects";
 import moment from "moment";
 import { useParentsStore } from "../../store/useParentsStore";
 
-function FormularioAcompañantes(props) {
-	const { isOpen = false, toggleIsOpen = () => {} } = props;
+function ParentsForm(props) {
+	const { toggleIsOpen = () => {}, dismiss = () => {} } = props;
 
 	const [saveParent, requestParents] = useParentsStore((state) => [
 		state.saveParent,
@@ -94,7 +94,7 @@ function FormularioAcompañantes(props) {
 				className=' px-10 py-6 w-[650px] h-auto flex flex-col absolute bg-slate-50 shadow-xl rounded-lg'>
 				<Button
 					handlerClick={(e) => {
-						dismissMenu(e);
+						dismiss();
 					}}
 					className={
 						"absolute right-2 top-2 p-2 border-0 hover:border-0 hover:bg-slate-50 hover:text-red-400 text-slate-400 bg-slate-50 hover:focus:ring-0"
@@ -263,12 +263,12 @@ function FormularioAcompañantes(props) {
 					<div className='flex'>
 						<Button
 							handlerClick={() => {
-								toggleIsOpen(false);
+								dismiss();
 							}}
 							className={
 								"bg-slate-400 hover:bg-slate-300 focus:ring-slate-300"
 							}>
-							<FaUndo></FaUndo>&nbsp;&nbsp; Regresar
+							<FaUndo></FaUndo>&nbsp;&nbsp; Salir
 						</Button>
 					</div>
 				</div>
@@ -277,4 +277,4 @@ function FormularioAcompañantes(props) {
 	);
 }
 
-export { FormularioAcompañantes };
+export { ParentsForm };

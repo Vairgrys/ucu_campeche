@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Input from "../Inputs";
 
-function InformacionPaciente() {
+function PatientsInfoForm() {
 	return (
 		<motion.div>
 			<div className='flex w-full mb-2'>
@@ -115,9 +115,9 @@ function InformacionPaciente() {
 			<div className='flex h-auto mb-2 m-1'>
 				<div className='flex flex-col w-full'>
 					<label className='text-slate-600 text-sm'>Dirección</label>
-					<Input
+					<Input.textarea
 						disabled={true}
-						placeholder='Ingresar dirección'></Input>
+						placeholder='Ingresar dirección'></Input.textarea>
 				</div>
 			</div>
 			<div className='flex w-full'>
@@ -146,4 +146,4 @@ function InformacionPaciente() {
 	);
 }
 
-export { InformacionPaciente };
+export { PatientsInfoForm };

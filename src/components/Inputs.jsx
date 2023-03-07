@@ -145,9 +145,7 @@ function InputTextArea(props) {
 		placeholder = "",
 		type = "textarea",
 		handlerChange = () => {},
-		className = {
-			input: "",
-		},
+		className = ''
 	} = props;
 
 	return (
@@ -159,7 +157,7 @@ function InputTextArea(props) {
 			}}
 			placeholder={placeholder}
 			className={twMerge(
-				`rounded-lg border-[1px] placeholder:text-slate-300 text-slate-600 border-slate-300 resize-none pl-10 p-2.5 w-full h-full ${className.input}`
+				`rounded-lg border-[1px] placeholder:text-slate-300 text-sm h-16 text-slate-600 border-slate-300 resize-none pl-10 p-2.5 w-full ${className}`
 			)}
 		/>
 	);

@@ -1,5 +1,4 @@
-import { Suspense, useState } from "react";
-
+import { Suspense, useEffect, useState } from "react";
 import Table from "../components/Tables";
 import Input from "../components/Inputs";
 import Button from "../components/Buttons";
@@ -15,18 +14,18 @@ import {
 	FaUsers,
 	FaRegCalendarPlus,
 } from "react-icons/fa";
-import { FormularioPacientes } from "../components/Forms/FormularioPacientes";
-import { FormularioEstancias } from "../components/Forms/FormularioEstancias";
-import { FormularioAcompañantes } from "../components/Forms/FormularioAcompañantes";
-import { FormularioUsuarios } from "../components/Forms/FormularioUsuarios";
+import { PatientsForm } from "../components/Patients/PatientsForm";
+import { StaysForm } from "../components/Stays/StaysForm";
+import { ParentsForm } from "../components/Parents/ParentsForm";
+import { FormularioUsuarios } from "../components/Users/FormularioUsuarios";
 
 import { useModal } from "../hooks/useModal";
 import { lazy } from "react";
 import { TableLoading } from "../components/Skeletons/TableLoading";
 
-const PatientsList = lazy(() => import("../components/TableRows/PatientsList"));
+const PatientsList = lazy(() => import("../components/Patients/PatientsList"));
 
-function Home() {
+function Pacientes() {
 	const [isMenuOpen, toggleMenu] = useModal();
 	const [isFormPacienteOpen, toggleFormPaciente] = useModal();
 	const [isFormEstanciaOpen, toggleFormEstancia] = useModal();
@@ -101,6 +100,9 @@ function Home() {
 			</Button>
 			<motion.div
 				// Primer Modal con boton agregar paciente
+				onClick={(e) => {
+					dismissMenu(e);
+				}}
 				initial={{ opacity: 0 }}
 				animate={isMenuOpen ? variant.modalIn : variant.modalOut}
 				className='w-screen h-screen fixed left-0 top-0 bg-slate-200 bg-opacity-70 backdrop-blur-[3px]'>
@@ -138,11 +140,11 @@ function Home() {
 			</motion.div>
 			<AnimatePresence>
 				{isFormPacienteOpen && (
-					<FormularioPacientes
-						key='formularioPacientes'
+					<PatientsForm
+						key='PatientsForm'
 						isOpen={isFormPacienteOpen}
 						dismissMenu={dismissMenu}
-						toggleIsOpen={toggleFormPaciente}></FormularioPacientes>
+						toggleIsOpen={toggleFormPaciente}></PatientsForm>
 				)}
 				{isFormUsuarioOpen && (
 					<FormularioUsuarios
@@ -152,24 +154,22 @@ function Home() {
 						toggleIsOpen={toggleFormUsuario}></FormularioUsuarios>
 				)}
 				{isFormAcompañanteOpen && (
-					<FormularioAcompañantes
-						key='formularioAcompañantes'
+					<ParentsForm
+						key='ParentsForm'
 						isOpen={isFormAcompañanteOpen}
 						dismissMenu={dismissMenu}
-						toggleIsOpen={
-							toggleFormAcompañante
-						}></FormularioAcompañantes>
+						toggleIsOpen={toggleFormAcompañante}></ParentsForm>
 				)}
 				{isFormEstanciaOpen && (
-					<FormularioEstancias
-						key='formularioEstancias'
+					<StaysForm
+						key='StaysForm'
 						isOpen={isFormEstanciaOpen}
 						dismissMenu={dismissMenu}
-						toggleIsOpen={toggleFormEstancia}></FormularioEstancias>
+						toggleIsOpen={toggleFormEstancia}></StaysForm>
 				)}
 			</AnimatePresence>
 		</>
 	);
 }
 
-export { Home };
+export { Pacientes };

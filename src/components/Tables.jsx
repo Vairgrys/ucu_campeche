@@ -5,7 +5,7 @@ function Table(props) {
 	return (
 		<div
 			className={twMerge(
-				`relative overflow-x-auto shadow-md sm:rounded-lg ${className?.container}`
+				`relative shadow-md sm:rounded-lg ${className?.container}`
 			)}>
 			<table
 				className={twMerge(

@@ -4,6 +4,8 @@ import { usePatientStore } from "../../store/usePatientStore";
 import Table from "../Tables";
 import Button from "../Buttons";
 import { FaTrash, RiServiceFill } from "react-icons/ri";
+import { Dropdown } from "flowbite-react";
+import { Link } from "react-router-dom";
 
 const PatientsList = () => {
 	const [listaPacientes, getListaPacientes] = usePatientStore((state) => [
@@ -30,10 +32,37 @@ const PatientsList = () => {
 							<Table.Td>{fila.municipio}</Table.Td>
 							<Table.Td>{fila.telefono}</Table.Td>
 							<Table.Td>
-								<Button className='bg-red-400 hover:bg-red-600 ring-red-300 px-2'>
-									<RiServiceFill></RiServiceFill>
-									&nbsp;&nbsp;Servicios
-								</Button>
+								<Dropdown
+									label='Servicios'
+									className=' bg-red-400'>
+									<Dropdown.Item>
+										<Link
+											to={
+												"/pacientes/informacion/" +
+												fila.pkpaciente
+											}>
+											Información del Paciente
+										</Link>
+									</Dropdown.Item>
+									<Dropdown.Item>
+										<Link
+											to={
+												"/servicios/medicamentos/" +
+												fila.pkpaciente
+											}>
+											Servicio de Medicamentos
+										</Link>
+									</Dropdown.Item>
+									<Dropdown.Item>
+										<Link
+											to={
+												"/servicios/despensa/" +
+												fila.pkpaciente
+											}>
+											Servicio de Despensa
+										</Link>
+									</Dropdown.Item>
+								</Dropdown>
 							</Table.Td>
 						</Table.Tr>
 					);

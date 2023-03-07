@@ -5,7 +5,7 @@ const usePatientStore = create((set, get) => ({
 	patients: [],
 	savePatient: async (data, callback = () => {}) => {
 		await axios
-			.post("https://api.unacariciahumana.com/api/patients", {
+			.post(process.env.API_URL+"patients", {
 				task: "setPatient",
 				data: {
 					...data,
@@ -15,7 +15,7 @@ const usePatientStore = create((set, get) => ({
 	},
 	requestPatients: async (fullname = "") => {
 		await axios
-			.post("https://api.unacariciahumana.com/api/patients", {
+			.post(process.env.API_URL+"patients", {
 				task: "getPatients",
 				data: {
 					fullname: fullname,

@@ -9,7 +9,7 @@ import Select from "../Selects";
 import { usePatientStore } from "../../store/usePatientStore";
 import moment from "moment";
 
-function FormularioPacientes(props) {
+function PatientsForm(props) {
 	const {
 		isOpen = false,
 		toggleIsOpen = () => {},
@@ -57,32 +57,25 @@ function FormularioPacientes(props) {
 
 	function validarInputs(e) {
 		try {
-			if (name === "") throw new Error("Por favor llene el campo nombre");
-			if (lastname === "")
-				throw new Error("Por favor llene el campo apellido");
-			if (birthday === "" || birthday === "invalid date")
-				throw new Error("Por favor llene el campo fecha de nacimiento");
-			if (sex === "") throw new Error("Por favor llene el campo sexo");
-			if (phone === "")
-				throw new Error("Por favor llene el campo teléfono");
-			if (email === "")
-				throw new Error("Por favor llene el campo correo");
-			if (scholarship === "")
-				throw new Error("Por favor llene el campo escolaridad");
-			if (identity === "")
-				throw new Error("Por favor llene el campo INE");
-			if (state === "")
-				throw new Error("Por favor llene el campo estado");
-			if (city === "")
-				throw new Error("Por favor llene el campo municipio");
-			if (location === "")
-				throw new Error("Por favor llene el campo localidad");
-			if (address === "")
-				throw new Error("Por favor llene el campo dirección");
-			if (diagnostic === "")
-				throw new Error("Por favor llene el campo diagnostico");
-			if (status === "")
-				throw new Error("Por favor llene el campo tratamiento");
+			if (
+				name === "" ||
+				lastname === "" ||
+				birthday === "" ||
+				sex === "" ||
+				phone === "" ||
+				email === "" ||
+				scholarship === "" ||
+				identity === "" ||
+				state === "" ||
+				city === "" ||
+				location === "" ||
+				address === "" ||
+				diagnostic === "" ||
+				birthday === "invalid date" ||
+				status === ""
+			) {
+				throw new Error("Favor de llenar todos los campos");
+			}
 
 			setListaPaciente([
 				...listaPaciente,
@@ -224,10 +217,10 @@ function FormularioPacientes(props) {
 					<div className='flex flex-col w-full m-1'>
 						<label className='text-slate-600'>Teléfono</label>
 						<div className='flex h-8'>
-							<Input.phone
-								placeholder='Ingresar teléfono'
+							<Input
+								placeholder='Ingresar numero de telefono'
 								handlerChange={setPhone}
-								value={phone}></Input.phone>
+								value={phone}></Input>
 						</div>
 					</div>
 
@@ -385,4 +378,4 @@ function FormularioPacientes(props) {
 	);
 }
 
-export { FormularioPacientes };
+export { PatientsForm };

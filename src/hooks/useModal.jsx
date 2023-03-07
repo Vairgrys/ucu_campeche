@@ -10,8 +10,11 @@ function useModal() {
 			setIsOpen(!isOpen);
 		}
 	}
+	function dismiss() {
+		toggle(false);
+	}
 
-	return [isOpen, toggle];
+	return [isOpen, toggle, dismiss];
 }
 
 export { useModal };
